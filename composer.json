@@ -7,5 +7,13 @@
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "require": {}
+  "repositories": [
+      {
+          "type": "composer",
+          "url": "https://packages.drupal.org/8"
+      }
+  ],
+  "require": {
+    "drupal/smart_date": "^2.5"
+  }
 }
