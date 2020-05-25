@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/taxonomy\/term\/22?_format=hal_json"
+            "href": "http:\/\/appserver\/taxonomy\/term\/69?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/event_audience"
@@ -12,7 +12,7 @@
     },
     "uuid": [
         {
-            "value": "f9979993-225b-4bdb-906f-daa2626332c5"
+            "value": "913f780a-62d6-4371-b8c4-ad39210bf80c"
         }
     ],
     "langcode": [
@@ -28,7 +28,7 @@
     ],
     "revision_created": [
         {
-            "value": "2020-05-20T23:24:41+00:00",
+            "value": "2020-05-25T21:10:32+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -40,15 +40,7 @@
     ],
     "name": [
         {
-            "value": "Faculty\/Staff",
-            "lang": "en"
-        }
-    ],
-    "description": [
-        {
-            "value": "<p>Faculty \/ Staff<\/p>\r\n",
-            "format": "stanford_html",
-            "processed": "<p>Faculty \/ Staff<\/p>",
+            "value": "Members",
             "lang": "en"
         }
     ],
@@ -64,7 +56,7 @@
     },
     "changed": [
         {
-            "value": "2020-05-20T23:24:41+00:00",
+            "value": "2020-05-25T21:10:32+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
