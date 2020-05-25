@@ -1,6 +1,0 @@
-services:
-  stanford_events_importer.overrider:
-    class: Drupal\stanford_events_importer\Overrides\ConfigOverrides
-    arguments: ['@config.factory']
-    tags:
-      - {name: config.factory.override, priority: 5}

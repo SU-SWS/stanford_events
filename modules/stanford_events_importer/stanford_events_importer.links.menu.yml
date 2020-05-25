@@ -1,6 +1,0 @@
-stanford_events_importer.events_importer_form:
-  title: 'Events'
-  route_name: stanford_events_importer.events_importer_form
-  description: 'Modify the Events Importer Settings'
-  parent: migrate_tools.menu
-  weight: 99

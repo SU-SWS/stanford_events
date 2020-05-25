@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\stanford_events\Plugin\migrate\process;
+namespace Drupal\stanford_events_importer\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
