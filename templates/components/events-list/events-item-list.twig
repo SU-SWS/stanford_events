@@ -1,0 +1,72 @@
+{#
+  Event list item
+
+  Template for an Event List Item.
+
+  * Available variables:
+  * - attributes: For additional HTML attributes not already provided.
+  * - modifier_class: Additional CSS classes to change look and behavior.
+  * - event_list_item_start_mon: Starting month of the event.
+  * - event_list_item_start_date: Date of the event
+  * - event_list_item_end_mon: Ending month of the event if it spans more than one day.
+  * - event_list_item_end_date: Ending day of the event if it spans more than one day.
+  * - su_event_audience: Optional audience for the event.
+  * - su_event_headline: Title of the event. Can be a link off to another website.
+  * - su_event_subheadline: Optional subtile for the event.
+  * - su_event_dek: Descriptive dek/deck for the event.
+  * - su_event_date_time: Date and time for the event.
+  * - su_event_location: Where it is being held.
+#}
+
+{%- set attributes = attributes.addClass(['su-event-list-item', modifier_class]) -%}
+
+{% set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim %}
+
+<div {{ attributes }}>
+  <div class="su-event-list-item__date">
+    <div class="su-date-stacked su-date-stacked--no-background">
+      <span class="su-date-stacked__month">{{ event_list_item_start_mon }}</span>
+      <span class="su-date-stacked__day">{{ event_list_item_start_date }}</span>
+    </div>
+    <span class="su-event-list-item__date__seperator">&ndash;to&ndash;</span>
+    <div class="su-date-stacked su-date-stacked--no-background">
+      <span class="su-date-stacked__month">{{ event_list_item_end_mon }}</span>
+      <span class="su-date-stacked__day">{{ event_list_item_end_date }}</span>
+    </div>
+  </div>
+  <div class="su-event-list-item__details">
+
+    {# Event Audience  #}
+    {%- if su_event_audience|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <span class="event_list_item__taxonomy">{{- su_event_audience -}} </span>
+    {% endif -%}
+
+    {# Event Title  #}
+    <h2 class="event_list_item__title">
+      <a {{ su_event_url_attributes }} href="{{ su_event_url }}">
+        {{- su_event_headline -}}
+      </a>
+    </h2>
+
+    {# Event Subheadline  #}
+    {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="event_list_item__subtitle"> {{- su_event_subheadline -}} </p>
+    {% endif -%}
+
+    {# Event Dek  #}
+    {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="event_list_item__dek"> {{- su_event_dek -}} </p>
+    {% endif -%}
+
+    {# Event Date/Time  #}
+    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="event_list_item__datetime"><span aria-hidden="true"></span> {{- su_event_date_time -}} </p>
+    {% endif -%}
+
+    {# Event Location  #}
+    {%- if su_event_location|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="event_list_item__location"><span aria-hidden="true"></span> {{- su_event_location -}}  </p>
+    {% endif -%}
+
+  </div>
+</div>

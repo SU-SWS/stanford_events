@@ -1,0 +1,45 @@
+events-list:
+  label: Events List Item
+  description: "Building block component for the events list page."
+  fields:
+    events_list_image:
+      type: text
+      label: "Image"
+      description: "The list image."
+      preview: "<img src='https://picsum.photos/900/900/' alt='Example Image' />"
+    events_list_publishing_date:
+      type: text
+      label: "Date"
+      description: "Publishing date"
+      preview: "This is the published date."
+    events_list_headline:
+      type: text
+      label: "Headline"
+      description: "Text heading"
+      preview: "This is the headline."
+    events_list_dek:
+      type: text
+      label: "Dek"
+      description: "This is the dek specific to news items."
+      preview: "<p>Sample text goes here and this list should be able to handle a few lines.</p>"
+    events_list_topics:
+      type: text
+      label: "Topics"
+      description: "Associated terms from the topics taxonomy."
+      preview: "Link to taxonomy terms"
+    events_source:
+      type: text
+      label: "Source"
+      description: "The source field."
+      preview: "I am a link"
+    events_url:
+      type: text
+      label: "URL for item"
+      description: "URL for image and heading"
+      preview: "http://www.stanford.edu/"
+  use: "@events/events-list/events-item-list.twig"
+  libraries:
+    - eventslist:
+        css:
+          component:
+            ../../../dist/css/stanford_events.views.css: { }
