@@ -41,12 +41,19 @@
 # component’s structure to be “swappable”, and omitting these entirely should
 # not break the component’s functionality or basic usability.
 #
-# EXAMPLE:
-#
-stanford_events:
+event_node:
   version: VERSION
   css:
     component:
-      dist/css/stanford_events.styles.css: {}
+      dist/css/stanfod_event.node.css: {}
   js:
-    dist/js/stanford_events.script.js: {}
+    dist/js/stanford_event.node.behaviors.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+event_views:
+  version: VERSION
+  css:
+    component:
+      dist/css/stanford_event.views.css: {}

@@ -76,6 +76,7 @@
     "require": {
         "drupal/allowed_formats": "^1.2",
         "drupal/auto_entitylabel": "3.x-dev#1dd28579f4559cc03d09ab20143b1feb48644fac",
+        "drupal/config_pages_overrides": "^1.0-alpha4",
         "drupal/ctools": "^3.4",
         "drupal/default_content": "^1.0-alpha8",
         "drupal/field_group": "^3.0",
@@ -105,6 +106,9 @@
             },
             "drupal/menu_link_weight": {
                 "https://www.drupal.org/project/menu_link_weight/issues/2956341": "https://www.drupal.org/files/issues/2018-03-27/menu_link_weight-js_error_on_title_field-2956341-2.patch"
+            },
+            "drupal/config_pages_overrides": {
+              "https://www.drupal.org/project/config_pages_overrides/issues/3142820": "https://www.drupal.org/files/issues/2020-05-25/multiplecardinality-3142820-1.patch"
             }
         }
     }

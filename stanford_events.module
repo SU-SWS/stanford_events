@@ -10,13 +10,56 @@
 /**
  * Implements hook_page_attachments.
  */
-function stanford_events_page_attachments(array &$page) {
+function stanford_events_page_attachments(array &$attachments) {
 
-  // Uncomment to add a library to all pages. It is recommended that you don't
-  // just add a library to all pages but rather, conditionally require this
-  // library only where it is needed.
-  // See: https://www.drupal.org/node/2274843
+  // Get the node from the route.
+  $node = \Drupal::routeMatch()->getParameter('node');
 
-  // $page['#attached']['library'][] = 'stanford_events/stanford_events';
+  // Not a node.. Then just continue.
+  if (!$node instanceof NodeInterface || $node->bundle() != 'stanford_events') {
+    return;
+  }
+
+  $attachments['#attached']['library'][] = 'stanford_event/event_node';
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_events_node_presave(EntityInterface $entity) {
+  if ($entity->bundle() != "stanford_event") {
+    return;
+  }
+  // If a news item is being edited or saved, clear out some cache tags.
+  Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Views render arrays contain a cache tag "node_list". This cache tag is
+ * cleared every time ANY node is created, edited or deleted. When this happens
+ * every view on the site gets its cache flushed. This causes poor performance
+ * since a view would get flushed even if it has no relation to that node. To
+ * assist in cache tags, we create a custom cache tag based on the node type
+ * filter on the view. Its a small improvement but will have huge impact in
+ * keeping cached renders much longer.
+ *
+ * @see stanford_event_node_presave()
+ * @see stanford_event_taxonomy_term_presave ()
+ */
+function stanford_events_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+
+  // Node Base Table Views.
+  if ($view->id() == 'stanford_events') {
+    $output['#attached']['library'][] = 'stanford_events/event_views';
+
+    $node_list_position = array_search('node_list', $output['#cache']['tags']);
+    unset($output['#cache']['tags'][$node_list_position]);
+    foreach ($view->filter['type']->value as $node_type) {
+      $output['#cache']['tags'][] = "node_list:$node_type";
+    }
+  }
 
 }

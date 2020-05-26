@@ -46,8 +46,9 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_events.script": path.resolve(srcJS, "stanford_events.js"),
-    "stanford_events.styles": path.resolve(srcSass, "stanford_events.scss"),
+    "stanford_events.node.behaviors": path.resolve(srcJS, "stanford_events.js"),
+    "stanford_events.node": path.resolve(srcSass, "stanford_events.node.scss"),
+    "stanford_events.views": path.resolve(srcSass, "stanford_events.views.scss")
   },
   // Where put build?
   output: {

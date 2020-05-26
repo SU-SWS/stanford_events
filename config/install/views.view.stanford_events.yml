@@ -17,7 +17,7 @@ dependencies:
     - taxonomy
     - user
     - views_infinite_scroll
-id: events
+id: stanford_events
 label: Events
 module: views
 description: ''
