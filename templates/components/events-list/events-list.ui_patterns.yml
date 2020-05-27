@@ -2,16 +2,26 @@ events-list:
   label: Events List Item
   description: "Building block component for the events list page."
   fields:
+    su_event_start_month:
+      type: text
+      label: "Start Month"
+      description: "Event Month"
+      preview: "May"
     su_event_start_date:
       type: text
       label: "Start Date"
       description: "Event date"
-      preview: "This is the date the event starts in."
+      preview: "01"
+    su_event_end_month:
+      type: text
+      label: "End Month"
+      description: "Event Month"
+      preview: "May"
     su_event_end_date:
       type: text
       label: "End Date"
       description: "Event ending date"
-      preview: "This is the date the event starts in."
+      preview: "14"
     su_event_audience:
       type: text
       label: "Audience"

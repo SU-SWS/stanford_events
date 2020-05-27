@@ -724,13 +724,65 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: span
-          element_wrapper_class: ''
+          element_wrapper_class: su-start-month
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_short_month
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_date_time_value:
+          id: su_event_date_time_value
+          table: node__su_event_date_time
+          field: su_event_date_time_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: su-start-date
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          date_format: stanford_short_month_day
+          date_format: stanford_two_digit_day
           custom_date_format: ''
           timezone: ''
           plugin_id: date
@@ -775,14 +827,66 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: span
+          element_wrapper_type: '0'
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          date_format: stanford_short_month_day
+          date_format: stanford_short_month
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_date_time_end_value_1:
+          id: su_event_date_time_end_value_1
+          table: node__su_event_date_time
+          field: su_event_date_time_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_two_digit_day
           custom_date_format: ''
           timezone: ''
           plugin_id: date
@@ -1082,8 +1186,8 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
+          element_wrapper_class: su-event-full-date-time
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -1183,7 +1287,9 @@ display:
           default_field_elements: 0
           inline:
             su_event_date_time_value_1: 0
+            su_event_date_time_value: 0
             su_event_date_time_end_value: 0
+            su_event_date_time_end_value_1: 0
             su_event_type: 0
             title: 0
             su_event_subheadline: 0
@@ -1206,43 +1312,53 @@ display:
             card: default
           pattern_mapping:
             'views_row:su_event_date_time_value_1':
-              destination: su_event_start_date
+              destination: su_event_start_month
               weight: 0
               plugin: views_row
               source: su_event_date_time_value_1
-            'views_row:su_event_date_time_end_value':
-              destination: su_event_end_date
+            'views_row:su_event_date_time_value':
+              destination: su_event_start_date
               weight: 1
+              plugin: views_row
+              source: su_event_date_time_value
+            'views_row:su_event_date_time_end_value_1':
+              destination: su_event_end_date
+              weight: 2
+              plugin: views_row
+              source: su_event_date_time_end_value_1
+            'views_row:su_event_date_time_end_value':
+              destination: su_event_end_month
+              weight: 3
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_type':
               destination: su_event_audience
-              weight: 2
+              weight: 4
               plugin: views_row
               source: su_event_type
             'views_row:title':
               destination: su_event_headline
-              weight: 3
+              weight: 5
               plugin: views_row
               source: title
             'views_row:su_event_subheadline':
               destination: su_event_subheadline
-              weight: 4
+              weight: 6
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
               destination: su_event_dek
-              weight: 5
+              weight: 7
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_date_time_1':
               destination: su_event_date_time
-              weight: 6
+              weight: 8
               plugin: views_row
               source: su_event_date_time_1
             'views_row:su_event_location':
               destination: su_event_location
-              weight: 7
+              weight: 9
               plugin: views_row
               source: su_event_location
     cache_metadata:

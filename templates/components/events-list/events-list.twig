@@ -25,16 +25,18 @@
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
     <div class="su-date-stacked su-date-stacked--no-background">
-      {{ su_event_start_date }}
+      <span class="su-event-start-month">{{ su_event_start_month }}</span>
+      <span class="su-event-start-date">{{ su_event_start_date }}</span>
     </div>
 
     {# Seperator should be conditional #}
-    {%- if su_event_end_date|render|striptags('<drupal-render-placeholder>') is empty %}
+{#    {%- if su_event_end_date|render|striptags('<drupal-render-placeholder>') is empty %}#}
       <span class="su-event-list-item__date__seperator">&ndash;to&ndash;</span>
-    {% endif %}
+{#    {% endif %}#}
 
     <div class="su-date-stacked su-date-stacked--no-background">
-      {{ su_event_end_date }}
+      <span class="su-event-end-month"> {{ su_event_end_month }}</span>
+      <span class="su-event-end-date">{{ su_event_end_date }}</span>
     </div>
   </div>
   <div class="su-event-list-item__details">
@@ -58,13 +60,13 @@
     {% endif -%}
 
     {# Event Date/Time  #}
-    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <span aria-hidden="true"></span> {{- su_event_date_time -}}
-    {% endif -%}
+{#    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}#}
+      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}} </p>
+{#    {% endif -%}#}
 
     {# Event Location  #}
     {%- if su_event_location|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <span aria-hidden="true"></span> {{- su_event_location -}}
+      <p class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</p>
     {% endif -%}
 
   </div>

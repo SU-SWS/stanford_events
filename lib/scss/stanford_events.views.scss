@@ -34,7 +34,8 @@
       display: block;
     }
 
-    .su-event-list-item__date__month {
+    .su-event-start-month,
+    .su-event-end-month {
       @include modular-typography(0);
 
       color: $su-color-black;
@@ -53,7 +54,8 @@
       }
     }
 
-    .su-event-list-item__date__date {
+    .su-event-start-date,
+    .su-event-end-date {
       @include modular-typography(4);
       color: $su-color-black;
     }
@@ -67,6 +69,12 @@
 
     .event_list_item__audience {
       @include modular-spacing('margin', null null -2 null);
+
+      a {
+        color: $su-color-black;
+        font-weight: $su-font-regular;
+        text-decoration: none;
+      }
     }
 
     h2 {
