@@ -109,6 +109,9 @@
             },
             "drupal/config_pages_overrides": {
               "https://www.drupal.org/project/config_pages_overrides/issues/3142820": "https://www.drupal.org/files/issues/2020-05-25/multiplecardinality-3142820-1.patch"
+            },
+            "drupal/ui_patterns": {
+              "https://github.com/nuvoleweb/ui_patterns/pull/269": "https://github.com/nuvoleweb/ui_patterns/compare/8.x-1.x...drclaw:detect-live-preview.patch"
             }
         }
     }

@@ -1,5 +1,6 @@
 langcode: en
 status: true
+dependencies: {  }
 id: stanford_events_importer
 class: null
 field_plugin_method: null
@@ -75,7 +76,7 @@ source:
     type: stanford_event
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
-    map_title: "Open in map"
+    map_title: 'Open in map'
 process:
   status: constants/status
   type: constants/type
@@ -119,12 +120,14 @@ process:
       source: event_end
       values:
         - event_start
-  su_event_date_time/timezone: ""
+  su_event_date_time/timezone: ''
   su_event_type:
     -
       plugin: explode
       source: categories
       delimiter: ','
+    -
+      plugin: array_shift
     -
       plugin: callback
       callable: trim
