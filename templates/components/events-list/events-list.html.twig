@@ -19,8 +19,13 @@
 #}
 
 {%- set attributes = attributes.addClass(['su-event-list-item', modifier_class]) -%}
+{%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
 
-{% set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim %}
+{# Clean up the date fields. #}
+{%- set su_event_start_date = su_event_start_date|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_end_date = su_event_end_date|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_start_month = su_event_start_month|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
 
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
@@ -29,22 +34,23 @@
       <span class="su-event-start-date">{{ su_event_start_date }}</span>
     </div>
 
-    {# Seperator should be conditional #}
-{#    {%- if su_event_end_date|render|striptags('<drupal-render-placeholder>') is empty %}#}
+    {# Seperator and end date should be conditional #}
+    {%- if su_event_start_date != su_event_end_date or su_event_start_month != su_event_end_month %}
       <span class="su-event-list-item__date__seperator">&ndash;to&ndash;</span>
-{#    {% endif %}#}
 
-    <div class="su-date-stacked su-date-stacked--no-background">
-      <span class="su-event-end-month"> {{ su_event_end_month }}</span>
-      <span class="su-event-end-date">{{ su_event_end_date }}</span>
-    </div>
+      <div class="su-date-stacked su-date-stacked--no-background">
+        <span class="su-event-end-month"> {{ su_event_end_month }}</span>
+        <span class="su-event-end-date">{{ su_event_end_date }}</span>
+      </div>
+    {% endif %}
   </div>
+
   <div class="su-event-list-item__details">
 
-    {# Event Audience  #}
-    {%- if su_event_audience|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <span class="event_list_item__audience">{{- su_event_audience -}} </span>
-    {% endif -%}
+    {# Event Type  #}
+    {%- if su_event_type|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <span class="event_list_item__type">{{- su_event_type -}}</span>
+    {%- endif -%}
 
     {# Event Title  #}
     {{- su_event_headline -}}
@@ -52,22 +58,22 @@
     {# Event Subheadline  #}
     {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
       {{- su_event_subheadline -}}
-    {% endif -%}
+    {%- endif -%}
 
     {# Event Dek  #}
-    {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="event_list_item__dek"> {{- su_event_dek -}} </p>
+    {%- if su_event_dek|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="event_list_item__dek"> {{- su_event_dek -}}</p>
     {% endif -%}
 
     {# Event Date/Time  #}
-{#    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}#}
-      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}} </p>
-{#    {% endif -%}#}
+    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
+    {%- endif -%}
 
     {# Event Location  #}
     {%- if su_event_location|render|striptags('<drupal-render-placeholder>') is not empty %}
       <p class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</p>
-    {% endif -%}
+    {%- endif -%}
 
   </div>
 </div>

@@ -22,10 +22,10 @@ events-list:
       label: "End Date"
       description: "Event ending date"
       preview: "14"
-    su_event_audience:
+    su_event_type:
       type: text
-      label: "Audience"
-      description: "This is who the event is targeted."
+      label: "Event Type"
+      description: "The type of the event."
     su_event_headline:
       type: text
       label: "Headline"
@@ -50,13 +50,13 @@ events-list:
       type: text
       label: "Date and time for event"
       description: "Date and time for the event."
-      preview: "Sunday, Aug 30 2020, 12 - 2pm PST"
+      preview: "Sunday, Aug 30 2020, 12:00 - 2:00pm PST"
     su_event_location:
       type: text
       label: "Location for event"
       description: "Location for the event."
       preview: "1234 Main Street, Stanford, CA 94305, United States"
-  use: "@events/events-list/events-list.twig"
+  use: "@events/events-list/events-list.html.twig"
   libraries:
     - eventslist:
         css:
