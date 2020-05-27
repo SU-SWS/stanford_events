@@ -1,10 +1,125 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
-// Your SASS here
-// body {
-//   background-image: url("../../assets/img/test.jpg");
-// }
-div {
-  background-color: lime;
+.su-stuff {
+  @include grid-media-max('sm') {
+
+    .su-event-list-item {
+      display: block;
+    }
+
+  }
+}
+.su-event-list-item {
+  @include modular-spacing('padding', 2 null 3 null);
+
+  display: flex;
+  border-bottom: 1px solid $su-color-cool-grey-25;
+
+  @include grid-media-max('sm') {
+    display: block;
+  }
+
+  .su-event-list-item__date {
+    @include modular-spacing(margin, null 3 null null);
+
+    @include grid-media-max('sm') {
+      align-items: center;
+      display: flex;
+    }
+
+    max-width: 45px;
+
+    span {
+      display: block;
+    }
+
+    .su-event-list-item__date__month {
+      @include modular-typography(0);
+
+      color: $su-color-black;
+      font-weight: $su-font-bold;
+      text-transform: uppercase;
+    }
+
+    .su-event-list-item__date__seperator {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null 0 null);
+      color: $su-color-black;
+
+      @include grid-media-max('sm') {
+        @include modular-spacing(margin, null -1);
+        min-width: 24px;
+      }
+    }
+
+    .su-event-list-item__date__date {
+      @include modular-typography(4);
+      color: $su-color-black;
+    }
+  }
+
+  .su-event-list-item__details {
+    @include big-paragraph;
+
+    color: $su-color-black;
+    flex-grow: 2;
+
+    .event_list_item__audience {
+      @include modular-spacing('margin', null null -2 null);
+    }
+
+    h2 {
+      @include modular-typography(3);
+      @include modular-spacing('margin', null null -1 null);
+
+      > a {
+        color: $su-color-bright-red;
+
+        &::after {
+          background-color: $su-color-bright-red;
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+
+    .views-field-su-event-subheadline {
+      @include modular-spacing('margin', null null 1 null);
+    }
+
+    .views-field-su-event-dek {
+      @include modular-spacing('margin', null null 0 null);
+    }
+
+    .views-field-su-event-date-time {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null -2 null);
+
+      display: flex; //align multirow text with the icon.
+
+      span {
+        //@include icon(calendar-24px, 3rem, topright);
+
+        &:before {
+          background-color: $su-color-black;
+        }
+      }
+    }
+
+    .event_list_item__location {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null 3 null);
+
+      display: flex; //align multirow text with the icon.
+
+      span {
+        //@include icon(map-pin-24px, 3rem, topright);
+
+        &:before {
+          background-color: $su-color-black;
+        }
+      }
+    }
+  }
 }

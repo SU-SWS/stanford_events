@@ -2,42 +2,51 @@ events-list:
   label: Events List Item
   description: "Building block component for the events list page."
   fields:
-    events_list_image:
+    su_event_start_date:
       type: text
-      label: "Image"
-      description: "The list image."
-      preview: "<img src='https://picsum.photos/900/900/' alt='Example Image' />"
-    events_list_publishing_date:
+      label: "Start Date"
+      description: "Event date"
+      preview: "This is the date the event starts in."
+    su_event_end_date:
       type: text
-      label: "Date"
-      description: "Publishing date"
-      preview: "This is the published date."
-    events_list_headline:
+      label: "End Date"
+      description: "Event ending date"
+      preview: "This is the date the event starts in."
+    su_event_audience:
+      type: text
+      label: "Audience"
+      description: "This is who the event is targeted."
+    su_event_headline:
       type: text
       label: "Headline"
       description: "Text heading"
       preview: "This is the headline."
-    events_list_dek:
+    su_event_subheadline:
+      type: text
+      label: "Subheadline"
+      description: "Text subheadline."
+      preview: "This is the subheadline."
+    su_event_dek:
       type: text
       label: "Dek"
       description: "This is the dek specific to news items."
       preview: "<p>Sample text goes here and this list should be able to handle a few lines.</p>"
-    events_list_topics:
+    su_event_url:
       type: text
-      label: "Topics"
-      description: "Associated terms from the topics taxonomy."
-      preview: "Link to taxonomy terms"
-    events_source:
-      type: text
-      label: "Source"
-      description: "The source field."
-      preview: "I am a link"
-    events_url:
-      type: text
-      label: "URL for item"
-      description: "URL for image and heading"
+      label: "URL for event"
+      description: "URL for event."
       preview: "http://www.stanford.edu/"
-  use: "@events/events-list/events-item-list.twig"
+    su_event_date_time:
+      type: text
+      label: "Date and time for event"
+      description: "Date and time for the event."
+      preview: "Sunday, Aug 30 2020, 12 - 2pm PST"
+    su_event_location:
+      type: text
+      label: "Location for event"
+      description: "Location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+  use: "@events/events-list/events-list.twig"
   libraries:
     - eventslist:
         css:
