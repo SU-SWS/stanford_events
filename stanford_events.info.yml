@@ -34,6 +34,7 @@ dependencies:
   - pathauto:pathauto
   - smart_date:smart_date
   - stanford_media:stanford_media
+  - stanford_migrate:stanford_migrate
   - stanford_text_editor:stanford_text_editor
   - taxonomy_menu:taxonomy_menu
   - ui_patterns:ui_patterns
