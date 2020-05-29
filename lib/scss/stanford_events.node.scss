@@ -1,7 +1,81 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
-// Your SASS here
-// body {
-//   background-image: url("../../assets/img/test.jpg");
-// }
+.section-editorial-content {
+  @include modular-spacing('padding', 6 null 3 null);
+  @include modular-spacing('margin', null null 5 null);
+
+  color: $su-color-black;
+
+  h1 {
+    @include modular-spacing('margin', null null -1 null);
+    @include modular-typography(5);
+  }
+
+  .su-event-subheadline {
+    
+  }
+
+  .su-event-dek {
+    @include big-paragraph;
+    @include modular-spacing('margin', null null 4 null);
+  }
+
+  .su-event-sponsor {
+    @include subheading;
+  }
+}
+
+.body-region {
+  @include modular-spacing('padding', null null 5 null);
+
+  border-bottom: 1px solid $su-color-cool-grey-15;
+}
+
+.node-stanford-event-su-event-type {
+  h2 {
+    @include big-paragraph;
+    @include modular-spacing('margin', null null -3 null);
+
+
+    font-weight: $su-font-regular;
+  }
+}
+
+.right-region {
+  @include small-paragraph;
+
+  .jumpstart-ui-page-heading {
+    h2 {
+      @include modular-typography(1);
+      //@include modular-spacing('padding', null null null -1);
+      @include modular-spacing('margin', null null 0 null);
+    }
+  }
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-telephone,
+  .node-stanford-event-su-event-audience {
+    h2 {
+      @include small-paragraph;
+
+      font-weight: $su-font-bold;
+    }
+  }
+
+  .node-stanford-event-su-event-date-time {
+    @include modular-spacing('margin', null null 2 null);
+  }
+
+  .su-event-location {
+    @include modular-spacing('margin', null null 2 null);
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .node-stanford-event-su-event-email {
+    @include modular-spacing('margin', null null 2 null);
+  }
+}
+

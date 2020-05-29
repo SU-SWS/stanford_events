@@ -1,0 +1,27 @@
+{#
+/**
+ * Events Node - Top section of editorial content.
+ * Layout builder section.
+ */
+#}
+{%- set attributes = attributes.addClass('jumpstart-ui--two-column', 'flex-container', 'centered-container', settings.extra_classes) -%}
+
+<div{{ attributes }}>
+  <div class="flex-12-of-12">
+
+
+    {% if content.main|render %}
+      <div {{ region_attributes.main.addClass('editorial-content') }}>
+        {{ content.main }}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+
+
+
+

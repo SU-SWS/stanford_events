@@ -32,11 +32,11 @@ function stanford_events_page_attachments(array &$attachments) {
   $node = \Drupal::routeMatch()->getParameter('node');
 
   // Not a node.. Then just continue.
-  if (!$node instanceof NodeInterface || $node->bundle() != 'stanford_events') {
+  if (!$node instanceof NodeInterface || $node->bundle() != 'stanford_event') {
     return;
   }
 
-  $attachments['#attached']['library'][] = 'stanford_event/event_node';
+  $attachments['#attached']['library'][] = 'stanford_events/event_node';
 }
 
 

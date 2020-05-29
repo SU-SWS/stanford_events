@@ -1,15 +1,18 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
-.su-stuff {
-  @include grid-media-max('sm') {
+// Filtered list
+.stanford-event-terms-utility-results-for {
+  @include modular-spacing('margin', null null 2 null);
 
-    .su-event-list-item {
-      display: block;
-    }
+  > div,
+  h2 {
+    @include small-paragraph;
+    display: inline-block;
 
   }
 }
+
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 3 null);
 
