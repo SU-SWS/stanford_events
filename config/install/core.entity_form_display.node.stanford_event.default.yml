@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_email
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
+    - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
@@ -81,6 +82,20 @@ third_party_settings:
         description: ''
         required_fields: false
       label: 'Event Details'
+    group_schedule_details:
+      children:
+        - su_event_schedule
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Schedule Details'
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
@@ -98,13 +113,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -112,11 +127,11 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 8
     region: content
     third_party_settings: {  }
   su_event_audience:
-    weight: 33
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -130,11 +145,11 @@ content:
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: stanford_wysiwyg
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   su_event_cta:
-    weight: 34
+    weight: 28
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -142,7 +157,7 @@ content:
     type: link_default
     region: content
   su_event_date_time:
-    weight: 27
+    weight: 21
     settings:
       modal: false
     third_party_settings: {  }
@@ -157,7 +172,7 @@ content:
     type: string_textfield
     region: content
   su_event_email:
-    weight: 31
+    weight: 25
     settings:
       size: 60
       placeholder: ''
@@ -165,21 +180,33 @@ content:
     type: email_default
     region: content
   su_event_location:
-    weight: 29
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   su_event_map_link:
-    weight: 30
+    weight: 24
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
+  su_event_schedule:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
   su_event_source:
-    weight: 28
+    weight: 22
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -203,7 +230,7 @@ content:
     type: string_textfield
     region: content
   su_event_telephone:
-    weight: 32
+    weight: 26
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -225,7 +252,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -234,7 +261,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
