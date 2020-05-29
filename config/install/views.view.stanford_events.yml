@@ -1597,7 +1597,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: '<h2>{{ title }}</h2>'
             make_link: false
             path: ''
@@ -1638,7 +1638,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1715,8 +1715,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<h2><a href={{ su_event_source__uri }} class="su-link su-link--external">{{ title }}</a></h2>'
             make_link: false
             path: ''
             absolute: false
@@ -1748,8 +1748,8 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
+          element_default_classes: false
+          empty: '<h2><a href={{ node_view }}>{{ title }}</a></h2>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true

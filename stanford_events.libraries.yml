@@ -45,9 +45,9 @@ event_node:
   version: VERSION
   css:
     component:
-      dist/css/stanford_event.node.css: {}
+      dist/css/stanford_events.node.css: {}
   js:
-    dist/js/stanford_event.node.behaviors.js: {}
+    dist/js/stanford_events.node.behaviors.js: {}
   dependencies:
     - core/jquery
     - core/drupal
