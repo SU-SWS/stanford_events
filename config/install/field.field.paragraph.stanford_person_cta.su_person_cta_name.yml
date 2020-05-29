@@ -9,7 +9,7 @@ field_name: su_person_cta_name
 entity_type: paragraph
 bundle: stanford_person_cta
 label: Name
-description: ''
+description: 'The full name.'
 required: false
 translatable: false
 default_value: {  }

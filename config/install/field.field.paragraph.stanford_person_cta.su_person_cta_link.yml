@@ -11,7 +11,7 @@ field_name: su_person_cta_link
 entity_type: paragraph
 bundle: stanford_person_cta
 label: Link
-description: ''
+description: 'Link the person''s name to something. '
 required: false
 translatable: false
 default_value: {  }
