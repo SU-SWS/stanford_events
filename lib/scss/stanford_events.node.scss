@@ -13,7 +13,7 @@
   }
 
   .su-event-subheadline {
-    
+
   }
 
   .su-event-dek {
@@ -27,18 +27,17 @@
 }
 
 .body-region {
-  @include modular-spacing('padding', null null 5 null);
+  .node-stanford-event-su-event-type {
+    @include modular-spacing('margin', 5 null);
 
-  border-bottom: 1px solid $su-color-cool-grey-15;
-}
+    h2 {
+      @include big-paragraph;
+      @include modular-spacing('margin', null null -3 null);
+      @include modular-spacing('padding', 0 null null null);
 
-.node-stanford-event-su-event-type {
-  h2 {
-    @include big-paragraph;
-    @include modular-spacing('margin', null null -3 null);
-
-
-    font-weight: $su-font-regular;
+      border-top: 1px solid $su-color-cool-grey-15;
+      font-weight: $su-font-regular;
+    }
   }
 }
 
@@ -53,6 +52,7 @@
     }
   }
   .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc,
   .node-stanford-event-su-event-telephone,
   .node-stanford-event-su-event-audience {
     h2 {
