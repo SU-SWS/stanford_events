@@ -43,6 +43,7 @@
 
 .right-region {
   @include small-paragraph;
+  @include modular-spacing('padding', null null null -1);
 
   .jumpstart-ui-page-heading {
     h2 {
