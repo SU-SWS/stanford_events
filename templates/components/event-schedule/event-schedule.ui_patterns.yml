@@ -1,6 +1,6 @@
-person-cta:
-  label: Person CTA
-  description: "A small person postcard like call out."
+event-schedule:
+  label: Event Schedule
+  description: "A place time and people paragraph."
   fields:
     su_person_cta_image:
       type: text
@@ -27,4 +27,4 @@ person-cta:
     - personcta:
         css:
           component:
-            ../../../dist/css/stanford_events.person-cta.css: { }
+            ../../../dist/css/stanford_events.event-schedule.css: { }

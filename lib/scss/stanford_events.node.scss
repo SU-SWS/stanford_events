@@ -79,3 +79,62 @@
   }
 }
 
+
+// -----------------------------------------------------------------------------
+// Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------
+
+// Override of the default margin for paragraphs for the nested ones in the
+// schedule type.
+.content {
+  .su-event-schedule {
+    .ptype-stanford-person-cta {
+      @include modular-spacing('margin-bottom', 0);
+    }
+  }
+}
+
+.su-event-schedule {
+
+  // The block/field title. Todo: Change to a heading tag.
+  &.label-above {
+    > div {
+      &:first-of-type {
+        @include type-a;
+        @include modular-spacing('margin-bottom', 3);
+      }
+    }
+  }
+
+  // The main date heading.
+  .su-schedule-date-time {
+    @include type-b;
+    @include modular-spacing('margin-bottom', 4);
+  }
+
+  // The title of the schedule paragraph.
+  .su-schedule-headline {
+    @include type-c;
+    @include modular-spacing('margin-bottom', -1);
+  }
+
+  // The description of the schedule paragraph.
+  .su-schedule-description {
+    @include big-paragraph;
+    @include modular-spacing('margin-bottom', 1);
+  }
+
+  // Location field styles.
+  .su-schedule-location {
+    @include small-paragraph;
+
+    span,
+    p {
+      @include small-paragraph;
+    }
+  }
+
+}
+// -----------------------------------------------------------------------------
+// End Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------
