@@ -269,5 +269,8 @@ function stanford_events_form_config_pages_stanford_events_importer_form_alter_s
  * @return [type]      [description]
  */
 function stanford_events_schedule_format_date($raw, $obj) {
+  if (!is_int($raw)) {
+    return;
+  }
   return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
 }
