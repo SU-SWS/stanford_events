@@ -15,9 +15,11 @@
 {%- endif -%}
 
 <div{{ attributes.addClass('su-person-cta') }}>
+  {%- if su_person_cta_image|render|striptags("<drupal-placeholder>") is not empty -%}
   <div {{ image_attributes.addClass('su-person-cta__image') }}>
     {{ su_person_cta_image }}
   </div>
+  {%- endif -%}
   <div {{ content_attributes.addClass('su-person-cta__content') }}>
     {%- if su_person_cta_name|render|striptags("<drupal-placeholder>") is not empty -%}
     <p class="su-person_cta__name">
