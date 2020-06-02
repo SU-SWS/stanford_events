@@ -50,7 +50,8 @@ var webpackConfig = {
     "stanford_events.node": path.resolve(srcSass, "stanford_events.node.scss"),
     "stanford_events.views": path.resolve(srcSass, "stanford_events.views.scss"),
     "stanford_events.person-cta": path.resolve(srcSass, "components/person-cta/stanford_events.person-cta.scss"),
-    "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss")
+    "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss"),
+    "stanford_events.event-filter-menu": path.resolve(srcSass, "components/event-filter-menu/stanford_events.event-filter-menu.scss")
   },
   // Where put build?
   output: {

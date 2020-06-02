@@ -159,9 +159,10 @@
     .views-field-title {
       h2 {
         @include modular-typography(2);
-        @include modular-spacing('margin', -1 null 0 null);
+        @include modular-spacing('margin', -2 null 0 null);
 
         color: $su-color-bright-red;
+        font-weight: $su-font-bold;
       }
     }
 
@@ -169,7 +170,6 @@
       @include modular-spacing('margin', null null 1 null);
     }
 
-    // .views-field-su-event-dek { }
 
   }
 }

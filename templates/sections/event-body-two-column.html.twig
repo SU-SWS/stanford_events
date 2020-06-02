@@ -1,7 +1,7 @@
 {% set right_class = 'flex-lg-4-of-12' %}
 {% set left_class = 'flex-lg-7-of-12' %}
 
-<div{{ attributes.addClass('jumpstart-ui--two-column', 'flex-container', 'centered-container', 'su-event-content', settings.extra_classes) }}>
+<div{{ attributes.addClass('flex-container', 'centered-container', 'su-event-content', settings.extra_classes) }}>
 
   {% if content.main|render %}
     <div {{ region_attributes.main.addClass('body-region', left_class) }}>

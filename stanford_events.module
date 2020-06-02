@@ -16,6 +16,18 @@ use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 /**
+ * Implements hook_theme().
+ */
+function stanford_events_theme() {
+  return [
+    'block__menu_block__stanford_event_types' => [
+      'template' => 'block/block--menu-block--stanford-event-types',
+      'base hook' => 'block',
+    ],
+  ];
+}
+
+/**
  * Implements hook_page_attachments.
  */
 function stanford_events_page_attachments(array &$attachments) {
@@ -134,3 +146,5 @@ function stanford_events_schedule_format_date($raw, $obj) {
   }
   return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
 }
+
+
