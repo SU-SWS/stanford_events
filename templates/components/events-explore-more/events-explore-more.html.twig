@@ -16,7 +16,7 @@
   * - su_event_date_time: Date and time for the event.
 #}
 
-{%- set attributes = attributes.addClass(['su-event-explore-more', modifier_class]) -%}
+{%- set attributes = attributes.addClass(['su-event-list-item', 'su-event-explore-more', modifier_class]) -%}
 {%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
 
 {# Clean up the date fields. #}
@@ -66,11 +66,6 @@
     {# Event Date/Time  #}
     {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
       <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
-    {%- endif -%}
-
-    {# Event Location  #}
-    {%- if su_event_location|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</p>
     {%- endif -%}
 
   </div>

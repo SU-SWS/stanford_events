@@ -27,6 +27,18 @@
 {%- set su_event_start_month = su_event_start_month|render|striptags('<drupal-render-placeholder>') -%}
 {%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
 
+{# Separate URL and title #}
+{%- set link_attributes = create_attribute({'class': ['su-link']}) -%}
+{%- set is_external = false -%}
+{%- if su_event_url|render|striptags is not empty -%}
+  {%- set is_external = su_event_url|render|striptags|split('//')[1] ? true : false -%}
+  {%- if is_external -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
+  {%- else -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--action') -%}
+  {%- endif %}
+{%- endif -%}
+
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
     <div class="su-date-stacked su-date-stacked--no-background">
@@ -53,7 +65,11 @@
     {%- endif -%}
 
     {# Event Title  #}
-    {{- su_event_headline -}}
+    {%- if su_event_url|render|striptags is empty -%}
+      {{- su_event_headline -}}
+    {%- else -%}
+      <h2><a {{ link_attributes }} href="{{ su_event_url }}">{{ su_event_headline|render|striptags }}</a></h2>
+    {%- endif -%}
 
     {# Event Subheadline  #}
     {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
