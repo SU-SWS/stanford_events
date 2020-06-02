@@ -1,8 +1,50 @@
 {#
 /**
- * Person CTA - Events
+ * Event Schedule
  */
 #}
+
+{% if region_attributes is empty %}
+  {% set a_info = create_attribute() %}
+  {% set a_time = create_attribute() %}
+  {% set region_attributes =
+    {
+      info: a_info,
+      time: a_time,
+    }
+  %}
+{% endif %}
+
 <div{{ attributes.addClass('su-event-schedule') }}>
+
+  {%- if su_event_time|render|striptags("<drupal-placeholder>") is not empty -%}
+  <div {{ region_attributes.time.addClass("su-event-schedule__time") }}>
+    {{ su_event_time }}
+  </div>
+  {%- endif -%}
+
+  <div {{ region_attributes.info.addClass("su-event-schedule__info") }}>
+    {%- if su_event_headline|render|striptags("<drupal-placeholder>") is not empty -%}
+      <h3 class="su-event-schedule__headline">{{ su_event_headline }}</h3>
+    {%- endif -%}
+
+    {%- if su_event_description|render|striptags("<drupal-placeholder>") is not empty -%}
+      <div class="su-event-schedule__description">
+        {{ su_event_description }}
+      </div>
+    {%- endif -%}
+
+    {%- if su_event_location|render|striptags("<drupal-placeholder>") is not empty -%}
+      <div class="su-event-schedule__location">
+        {{ su_event_location }}
+      </div>
+    {%- endif -%}
+
+    {%- if su_event_speakers|render|striptags("<drupal-placeholder>") is not empty -%}
+      <div class="su-event-schedule__speakers">
+        {{ su_event_speakers}}
+      </div>
+    {%- endif -%}
+  </div>
 
 </div>

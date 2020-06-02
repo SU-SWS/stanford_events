@@ -94,47 +94,39 @@
   }
 }
 
-.su-event-schedule {
+// The Schedule View.
+.stanford-events-schedule-event-schedule-block {
 
-  // The block/field title. Todo: Change to a heading tag.
-  &.label-above {
-    > div {
-      &:first-of-type {
-        @include type-a;
-        @include modular-spacing('margin-bottom', 3);
-      }
-    }
+  // The block title & label (Schedule)
+  .block__title {
+    @include type-a;
+    @include modular-spacing('margin-bottom', 3);
   }
 
-  // The main date heading.
-  .su-schedule-date-time {
+  // The aggregated group heading.
+  .grouping-title {
     @include type-b;
     @include modular-spacing('margin-bottom', 4);
   }
 
-  // The title of the schedule paragraph.
-  .su-schedule-headline {
-    @include type-c;
-    @include modular-spacing('margin-bottom', -1);
+  // Each schedule item.
+  .su-event-schedule {
+    @include modular-spacing('margin-bottom', 5);
   }
 
-  // The description of the schedule paragraph.
-  .su-schedule-description {
-    @include big-paragraph;
-    @include modular-spacing('margin-bottom', 1);
-  }
+  // The speakers field.
+  .su-event-schedule__speakers {
+    > div {
+      @include modular-spacing('margin-bottom', 1);
 
-  // Location field styles.
-  .su-schedule-location {
-    @include small-paragraph;
-
-    span,
-    p {
-      @include small-paragraph;
+      &:last-of-type {
+        @include margin(null null 0 null);
+      }
     }
   }
 
 }
+
 // -----------------------------------------------------------------------------
 // End Schedule Paragraph Styles.
 // -----------------------------------------------------------------------------

@@ -2,5 +2,33 @@
 @import '../../stanford_events.config';
 
 .su-event-schedule {
+  display: flex;
 
+  .su-event-schedule__time {
+    max-width: 100px;
+    width: 100px;
+    @include modular-spacing('margin-right', 2);
+  }
+
+  // The title of the schedule paragraph.
+  .su-event-schedule__headline {
+    @include type-c;
+    @include modular-spacing('margin-bottom', -1);
+  }
+
+  // The description of the schedule paragraph.
+  .su-event-schedule__description {
+    @include big-paragraph;
+    @include modular-spacing('margin-bottom', 1);
+  }
+
+  // Location field styles.
+  .su-event-schedule__location {
+    @include small-paragraph;
+
+    span,
+    p {
+      @include small-paragraph;
+    }
+  }
 }

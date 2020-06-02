@@ -2,27 +2,31 @@ event-schedule:
   label: Event Schedule
   description: "A place time and people paragraph."
   fields:
-    su_person_cta_image:
+    su_event_time:
       type: text
-      label: "Image"
-      description: "Image"
-      preview: "<img src=\"https://placeimg.com/640/480/people\" alt />"
-    su_person_cta_name:
+      label: "Time"
+      description: "The events time span"
+      preview: "2:00pm - 3:00pm"
+    su_event_headline:
       type: text
-      label: "Person Name"
-      description: "Persons full name"
-      preview: "John Wick"
-    su_person_cta_title:
+      label: "Headline"
+      description: "The schedule item headline"
+      preview: "Lightning talks"
+    su_event_description:
       type: text
-      label: "Title"
-      description: "Persons full position or title"
-      preview: "Director of the department of redundancy department"
-    su_person_cta_link:
+      label: "Description"
+      description: "A description of the schedule item"
+      preview: "Director of the department of redundancy department will begin a speach about speaches."
+    su_event_location:
       type: text
-      label: "Person Name Link"
-      description: "Add a link to the person name."
-      preview: "https://google.com/"
-  use: "@stanford_events/components/person-cta/person-cta.html.twig"
+      label: "Location"
+      description: "Where this thing is."
+      preview: "321 University BLVD, Palo Alto, CA, 93256"
+    su_event_speakers:
+      type: text
+      label: "Speakers"
+      description: "A rendered list of speakers."
+  use: "@stanford_events/components/event-schedule/event-schedule.html.twig"
   libraries:
     - personcta:
         css:
