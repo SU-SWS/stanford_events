@@ -80,3 +80,54 @@
   }
 }
 
+
+// -----------------------------------------------------------------------------
+// Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------
+
+// Override of the default margin for paragraphs for the nested ones in the
+// schedule type.
+.content {
+  .su-event-schedule {
+    .ptype-stanford-person-cta {
+      @include modular-spacing('margin-bottom', 0);
+    }
+  }
+}
+
+// The Schedule View.
+.stanford-events-schedule-event-schedule-block {
+
+  // The block title & label (Schedule)
+  .block__title {
+    @include type-a;
+    @include modular-spacing('margin-bottom', 3);
+  }
+
+  // The aggregated group heading.
+  .grouping-title {
+    @include type-b;
+    @include modular-spacing('margin-bottom', 4);
+  }
+
+  // Each schedule item.
+  .su-event-schedule {
+    @include modular-spacing('margin-bottom', 5);
+  }
+
+  // The speakers field.
+  .su-event-schedule__speakers {
+    > div {
+      @include modular-spacing('margin-bottom', 1);
+
+      &:last-of-type {
+        @include margin(null null 0 null);
+      }
+    }
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// End Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------

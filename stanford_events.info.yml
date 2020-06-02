@@ -33,6 +33,7 @@ dependencies:
   - paragraphs:paragraphs
   - pathauto:pathauto
   - smart_date:smart_date
+  - stanford_date_formats:stanford_date_formats
   - stanford_media:stanford_media
   - stanford_migrate:stanford_migrate
   - stanford_text_editor:stanford_text_editor

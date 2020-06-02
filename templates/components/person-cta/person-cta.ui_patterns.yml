@@ -27,4 +27,4 @@ person-cta:
     - personcta:
         css:
           component:
-            ../../../dist/css/stanford_events.person_cta.css: { }
+            ../../../dist/css/stanford_events.person-cta.css: { }
