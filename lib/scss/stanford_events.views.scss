@@ -134,3 +134,37 @@
     }
   }
 }
+
+// Explore More Block
+
+.stanford-events-more-events-block {
+
+  h2 {
+    @include modular-typography(3);
+    @include modular-spacing('margin', 6 null 3 null);
+
+  }
+
+  .views-col {
+    @include modular-spacing('padding', 2 2 3 2);
+    @include box-shadow('shallow');
+
+    border: 1px solid $su-color-cool-grey-15;
+
+    .views-field-title {
+      h2 {
+        @include modular-typography(2);
+        @include modular-spacing('margin', -1 null 0 null);
+
+        color: $su-color-bright-red;
+      }
+    }
+    .views-field-su-event-subheadline {
+      @include modular-spacing('margin', null null 1 null);
+
+    }
+    .views-field-su-event-dek {
+
+    }
+  }
+}
