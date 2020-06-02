@@ -12,9 +12,7 @@
     @include modular-typography(5);
   }
 
-  .su-event-subheadline {
-
-  }
+  // .su-event-subheadline { }
 
   .su-event-dek {
     @include big-paragraph;
@@ -48,10 +46,10 @@
   .jumpstart-ui-page-heading {
     h2 {
       @include modular-typography(1);
-      //@include modular-spacing('padding', null null null -1);
       @include modular-spacing('margin', null null 0 null);
     }
   }
+
   .node-stanford-event-su-event-location,
   .node-stanford-event-su-event-alt-loc,
   .node-stanford-event-su-event-telephone,

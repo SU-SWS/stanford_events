@@ -1,18 +1,16 @@
 <?php
 
-use Drupal\migrate_tools\Form\MigrationExecuteForm;
-use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate_tools\MigrateBatchExecutable;
-use Drupal\migrate\MigrateMessage;
-use Drupal\migrate\MigrateMessageInterface;
-use Drupal\Core\Form\FormStateInterface;
-
 /**
  * @file
  * File description.
  *
  * Long description.
  */
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate_tools\MigrateBatchExecutable;
+use Drupal\migrate\MigrateMessage;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_form_FORM_ID_alter().

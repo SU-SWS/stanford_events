@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
 use Drupal\views\ViewExecutable;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityInterface;
@@ -7,16 +14,6 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
-use Drupal\field\FieldConfigInterface;
-
-/**
- * @file
- * File description.
- *
- * Long description.
- */
 
 /**
  * Implements hook_page_attachments.
@@ -33,7 +30,6 @@ function stanford_events_page_attachments(array &$attachments) {
 
   $attachments['#attached']['library'][] = 'stanford_events/event_node';
 }
-
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
@@ -81,7 +77,7 @@ function stanford_events_node_presave(EntityInterface $entity) {
  * keeping cached renders much longer.
  *
  * @see stanford_event_node_presave()
- * @see stanford_event_taxonomy_term_presave ()
+ * @see stanford_event_taxonomy_term_presave()
  */
 function stanford_events_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
 
@@ -123,10 +119,12 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
 /**
  * Callback for views ds group title formatter.
  *
- * @param string $raw The raw string from a views grouping column.
- * @param object $obj The loaded entity being rendered.
+ * @param string $raw
+ *   The raw string from a views grouping column.
+ * @param object $obj
+ *   The loaded entity being rendered.
  *
- * @return string
+ * @return void|string
  *   The date formatted with stanford_long_day_date_year
  */
 function stanford_events_schedule_format_date($raw, $obj) {

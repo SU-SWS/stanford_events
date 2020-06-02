@@ -22,7 +22,7 @@
   {%- endif -%}
   <div {{ content_attributes.addClass('su-person-cta__content') }}>
     {%- if su_person_cta_name|render|striptags("<drupal-placeholder>") is not empty -%}
-    <p class="su-person_cta__name">
+    <p class="su-person-cta__name">
       {%- if su_person_cta_link|render|striptags("<drupal-placeholder>") is not empty -%}
         <a href="{{ su_person_cta_link|render|striptags }}" {{ link_attributes }}>
       {%- endif -%}
@@ -33,7 +33,7 @@
     </p>
     {%- endif -%}
     {%- if su_person_cta_title|render|striptags("<drupal-placeholder>") is not empty -%}
-      <p class="su-person_cta__title">{{ su_person_cta_title|render|striptags }}</p>
+      <p class="su-person-cta__title">{{ su_person_cta_title|render|striptags }}</p>
     {%- endif -%}
   </div>
 </div>

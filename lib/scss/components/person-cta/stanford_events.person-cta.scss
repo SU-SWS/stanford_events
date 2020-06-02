@@ -27,12 +27,12 @@
     align-items: center;
     justify-content: center;
 
-    .su-person_cta__name {
+    .su-person-cta__name {
       @include margin(null null 0 null);
       width: 100%;
     }
 
-    .su-person_cta__title {
+    .su-person-cta__title {
       width: 100%;
     }
   }
