@@ -139,6 +139,14 @@
 
 .stanford-events-more-events-block {
 
+  .su-event-list-item {
+    display: unset;
+
+    .su-event-list-item__date {
+      max-width: unset;
+    }
+  }
+
   h2 {
     @include modular-typography(3);
     @include modular-spacing('margin', 6 null 3 null);

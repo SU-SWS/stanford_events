@@ -16,7 +16,7 @@
   * - su_event_date_time: Date and time for the event.
 #}
 
-{%- set attributes = attributes.addClass(['su-event-list-item', modifier_class]) -%}
+{%- set attributes = attributes.addClass(['su-event-explore-more', modifier_class]) -%}
 {%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
 
 {# Clean up the date fields. #}
