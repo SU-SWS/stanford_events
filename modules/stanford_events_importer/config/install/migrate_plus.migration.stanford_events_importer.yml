@@ -12,7 +12,7 @@ source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: file
-  urls: null
+  urls: {  }
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
   fields:

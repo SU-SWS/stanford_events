@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/events\/lecture?_format=hal_json"
+            "href": "http:\/\/default\/events\/lecture-reading?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/stanford_event_types"
@@ -40,15 +40,15 @@
     ],
     "name": [
         {
-            "value": "Lecture",
+            "value": "Lecture / Reading",
             "lang": "en"
         }
     ],
     "description": [
         {
-            "value": "<p>Lecture<\/p>\r\n",
+            "value": "<p>Lecture / Reading<\/p>\r\n",
             "format": "stanford_html",
-            "processed": "<p>Lecture<\/p>",
+            "processed": "<p>Lecture / Reading<\/p>",
             "lang": "en"
         }
     ],
@@ -83,7 +83,7 @@
     ],
     "path": [
         {
-            "alias": "\/events\/lecture",
+            "alias": "\/events\/lecture-reading",
             "pid": null,
             "langcode": "en",
             "lang": "en"
