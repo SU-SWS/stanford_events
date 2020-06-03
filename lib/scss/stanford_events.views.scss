@@ -88,12 +88,20 @@
       > a {
         color: $su-color-bright-red;
         font-weight: $su-font-bold;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $su-color-black;
+        }
 
         &::after {
           background-color: $su-color-bright-red;
           height: 20px;
           width: 20px;
         }
+
       }
     }
 
@@ -167,6 +175,10 @@
 
   .su-event-list-item {
     display: unset;
+
+    a {
+      text-decoration: none;
+    }
 
     .su-event-list-item__date {
       max-width: unset;

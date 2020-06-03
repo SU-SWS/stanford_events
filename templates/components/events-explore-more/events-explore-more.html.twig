@@ -16,7 +16,7 @@
   * - su_event_date_time: Date and time for the event.
 #}
 
-{%- set attributes = attributes.addClass(['su-event-list-item', 'su-event-explore-more', modifier_class]) -%}
+{%- set attributes = attributes.addClass(['su-event-list-item', 'su-event-explore-more','su-card--minimal', modifier_class]) -%}
 {%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
 
 {# Clean up the date fields. #}
@@ -26,6 +26,7 @@
 {%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
 
 <div {{ attributes }}>
+  <a href="{{ su_event_source__uri }}">
   <div class="su-event-list-item__date">
     <div class="su-date-stacked su-date-stacked--no-background">
       <span class="su-event-start-month">{{ su_event_start_month }}</span>
@@ -64,4 +65,5 @@
     {%- endif -%}
 
   </div>
+  </a>
 </div>

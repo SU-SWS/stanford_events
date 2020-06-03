@@ -11,6 +11,7 @@
     @include modular-spacing('margin', null null -1 null);
     @include modular-typography(5);
   }
+
   .su-event-type {
     @include subheading;
   }
