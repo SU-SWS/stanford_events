@@ -16,6 +16,40 @@
 }
 
 .stanford-event-types {
+
+  // Filter open/close for xs-lg
+  @include grid-media-max('lg') {
+    & > .menu {
+      display: none;
+    }
+
+    .event_types__collapsable-menu {
+      &.show {
+        & + .menu {
+          display: block;
+        }
+      }
+    }
+  }
+
+
+  // Filter open/close for xl
+  @include grid-media('xl') {
+    & > .menu {
+      display: block;
+    }
+
+    .event-types__collapsable-menu {
+      &.show {
+        + .menu {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+
   @include modular-spacing('padding', 3);
 
   border: 1px solid $su-color-cool-grey-25;
@@ -119,37 +153,6 @@
 
       .is-active {
         color: $su-color-bright-blue;
-      }
-    }
-  }
-
-  // Filter open/close for xs-lg
-  @include grid-media-max('lg') {
-    .menu {
-      display: none;
-    }
-
-    .event-types__collapsable-menu {
-      &.show {
-        & + .menu {
-          display: block;
-        }
-      }
-    }
-  }
-
-
-  // Filter open/close for xl
-  @include grid-media('xl') {
-    .menu {
-      display: block;
-    }
-
-    .event-types__collapsable-menu {
-      &.show {
-        + .menu {
-          display: none;
-        }
       }
     }
   }
