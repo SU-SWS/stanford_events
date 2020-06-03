@@ -58,11 +58,6 @@
       {{- su_event_subheadline -}}
     {%- endif -%}
 
-    {# Event Dek  #}
-    {%- if su_event_dek|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="event_list_item__dek"> {{- su_event_dek -}}</p>
-    {% endif -%}
-
     {# Event Date/Time  #}
     {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
       <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>

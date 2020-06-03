@@ -146,5 +146,3 @@ function stanford_events_schedule_format_date($raw, $obj) {
   }
   return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
 }
-
-

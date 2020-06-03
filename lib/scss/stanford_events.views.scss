@@ -61,6 +61,7 @@
     .su-event-end-date {
       @include modular-typography(4);
       color: $su-color-black;
+      font-weight: $su-font-bold;
     }
   }
 
@@ -86,6 +87,7 @@
 
       > a {
         color: $su-color-bright-red;
+        font-weight: $su-font-bold;
 
         &::after {
           background-color: $su-color-bright-red;
@@ -117,7 +119,12 @@
       }
     }
 
-    .event-list_item__location {
+    .address {
+      @include small-paragraph;
+    }
+
+    .event-list_item__location,
+    .views-field-su-event-location {
       @include small-paragraph;
       @include modular-spacing('margin', null null 3 null);
 
@@ -129,6 +136,28 @@
           background-color: $su-color-black;
         }
       }
+    }
+  }
+}
+
+// Wrapper spacing
+.views-infinite-scroll-content-wrapper {
+  @include modular-spacing('margin-bottom', 5);
+
+  & + .js-pager__items {
+    @include modular-spacing('margin-bottom', 8);
+  }
+}
+
+// Load more button.
+.js-pager__items {
+  text-align: center;
+
+  .pager__item {
+    display: inline-block;
+
+    .button {
+      @include button-big;
     }
   }
 }
@@ -146,7 +175,7 @@
 
   h2 {
     @include modular-typography(3);
-    @include modular-spacing('margin', 6 null 3 null);
+    @include modular-spacing('margin', -2 null 3 null);
 
   }
 
@@ -155,6 +184,16 @@
     @include box-shadow('shallow');
 
     border: 1px solid $su-color-cool-grey-15;
+
+    .su-date-stacked {
+      text-align: left;
+
+      .su-event-start-date,
+      .su-event-end-date {
+        font-weight: $su-font-bold;
+      }
+
+    }
 
     .views-field-title {
       h2 {
@@ -166,10 +205,9 @@
       }
     }
 
-    .views-field-su-event-subheadline {
+    h3 {
+      @include modular-typography(1);
       @include modular-spacing('margin', null null 1 null);
     }
-
-
   }
 }

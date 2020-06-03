@@ -19,6 +19,8 @@
 
   // Filter open/close for xs-lg
   @include grid-media-max('lg') {
+    @include modular-spacing('margin', null null 4 null);
+
     & > .menu {
       display: none;
     }
