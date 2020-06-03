@@ -61,7 +61,7 @@
 
     {# Event Type  #}
     {%- if su_event_type|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <span class="event_list_item__type">{{- su_event_type -}}</span>
+      <span class="event-list_item__type">{{- su_event_type -}}</span>
     {%- endif -%}
 
     {# Event Title  #}
@@ -78,7 +78,7 @@
 
     {# Event Dek  #}
     {%- if su_event_dek|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="event_list_item__dek"> {{- su_event_dek -}}</p>
+      <p class="event-list_item__dek"> {{- su_event_dek -}}</p>
     {% endif -%}
 
     {# Event Date/Time  #}

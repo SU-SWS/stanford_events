@@ -70,7 +70,7 @@
     color: $su-color-black;
     flex-grow: 2;
 
-    .event_list_item__audience {
+    .event-list_item__audience {
       @include modular-spacing('margin', null null -2 null);
 
       a {
@@ -117,7 +117,7 @@
       }
     }
 
-    .event_list_item__location {
+    .event-list_item__location {
       @include small-paragraph;
       @include modular-spacing('margin', null null 3 null);
 
