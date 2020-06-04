@@ -40,15 +40,15 @@
     ],
     "name": [
         {
-            "value": "Conference",
+            "value": "Conference / Symposium",
             "lang": "en"
         }
     ],
     "description": [
         {
-            "value": "<p>Conference<\/p>\r\n",
+            "value": "<p>Conference / Symposium<\/p>\r\n",
             "format": "stanford_html",
-            "processed": "<p>Conference<\/p>",
+            "processed": "<p>Conference / Symposium<\/p>",
             "lang": "en"
         }
     ],
@@ -83,7 +83,7 @@
     ],
     "path": [
         {
-            "alias": "\/events\/conference",
+            "alias": "\/events\/conference-symposium",
             "pid": null,
             "langcode": "en",
             "lang": "en"
