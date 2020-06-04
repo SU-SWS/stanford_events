@@ -36,7 +36,6 @@
       @include modular-spacing('padding', 0 null null null);
 
       border-top: 1px solid $su-color-cool-grey-15;
-      font-weight: $su-font-regular;
     }
   }
 }
@@ -78,6 +77,23 @@
   .node-stanford-event-su-event-email {
     @include modular-spacing('margin', null null 2 null);
   }
+}
+
+.main-region {
+  .stanford-events-more-events-block {
+    @include modular-spacing('margin', null null 5 null);
+  }
+
+  .su-event-cta {
+    @include modular-spacing('margin', null null 9 null);
+
+    align-items: center;
+
+    a {
+      color: $su-color-white;
+    }
+  }
+
 }
 
 
