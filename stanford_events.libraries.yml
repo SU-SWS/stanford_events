@@ -57,3 +57,8 @@ event_views:
   css:
     component:
       dist/css/stanford_events.views.css: {}
+      dist/css/stanford_events.event-filter-menu.css: {}
+  js:
+    dist/js/stanford_events.node.behaviors.js: {}
+    dependencies:
+      - core/jquery

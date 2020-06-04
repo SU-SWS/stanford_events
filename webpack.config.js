@@ -52,6 +52,7 @@ var webpackConfig = {
     "stanford_events.views": path.resolve(srcSass, "stanford_events.views.scss"),
     "stanford_events.person-cta": path.resolve(srcSass, "components/person-cta/stanford_events.person-cta.scss"),
     "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss"),
+    "stanford_events.event-filter-menu": path.resolve(srcSass, "components/event-filter-menu/stanford_events.event-filter-menu.scss"),
     // Event Series.
     "../../modules/stanford_events_series/dist/css/stanford_events_series.node": path.resolve(seriesSrcSass, "stanford_events_series.node.scss"),
     "../../modules/stanford_events_series/dist/css/stanford_events_series.views": path.resolve(seriesSrcSass, "stanford_events_series.views.scss")

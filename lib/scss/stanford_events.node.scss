@@ -12,7 +12,9 @@
     @include modular-typography(5);
   }
 
-  // .su-event-subheadline { }
+  .su-event-type {
+    @include subheading;
+  }
 
   .su-event-dek {
     @include big-paragraph;

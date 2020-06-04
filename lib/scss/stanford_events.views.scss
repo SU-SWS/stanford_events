@@ -61,6 +61,7 @@
     .su-event-end-date {
       @include modular-typography(4);
       color: $su-color-black;
+      font-weight: $su-font-bold;
     }
   }
 
@@ -70,7 +71,7 @@
     color: $su-color-black;
     flex-grow: 2;
 
-    .event_list_item__audience {
+    .event-list-item__audience {
       @include modular-spacing('margin', null null -2 null);
 
       a {
@@ -86,12 +87,21 @@
 
       > a {
         color: $su-color-bright-red;
+        font-weight: $su-font-bold;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $su-color-black;
+        }
 
         &::after {
           background-color: $su-color-bright-red;
           height: 20px;
           width: 20px;
         }
+
       }
     }
 
@@ -117,7 +127,12 @@
       }
     }
 
-    .event_list_item__location {
+    .address {
+      @include small-paragraph;
+    }
+
+    .event-list-item__location,
+    .views-field-su-event-location {
       @include small-paragraph;
       @include modular-spacing('margin', null null 3 null);
 
@@ -133,11 +148,37 @@
   }
 }
 
+// Wrapper spacing
+.views-infinite-scroll-content-wrapper {
+  @include modular-spacing('margin-bottom', 5);
+
+  & + .js-pager__items {
+    @include modular-spacing('margin-bottom', 8);
+  }
+}
+
+// Load more button.
+.js-pager__items {
+  text-align: center;
+
+  .pager__item {
+    display: inline-block;
+
+    .button {
+      @include button-big;
+    }
+  }
+}
+
 // Explore More Block.
 .stanford-events-more-events-block {
 
   .su-event-list-item {
     display: unset;
+
+    a {
+      text-decoration: none;
+    }
 
     .su-event-list-item__date {
       max-width: unset;
@@ -146,7 +187,7 @@
 
   h2 {
     @include modular-typography(3);
-    @include modular-spacing('margin', 6 null 3 null);
+    @include modular-spacing('margin', -2 null 3 null);
 
   }
 
@@ -156,20 +197,29 @@
 
     border: 1px solid $su-color-cool-grey-15;
 
+    .su-date-stacked {
+      text-align: left;
+
+      .su-event-start-date,
+      .su-event-end-date {
+        font-weight: $su-font-bold;
+      }
+
+    }
+
     .views-field-title {
       h2 {
         @include modular-typography(2);
-        @include modular-spacing('margin', -1 null 0 null);
+        @include modular-spacing('margin', -2 null 0 null);
 
         color: $su-color-bright-red;
+        font-weight: $su-font-bold;
       }
     }
 
-    .views-field-su-event-subheadline {
+    h3 {
+      @include modular-typography(1);
       @include modular-spacing('margin', null null 1 null);
     }
-
-    // .views-field-su-event-dek { }
-
   }
 }
