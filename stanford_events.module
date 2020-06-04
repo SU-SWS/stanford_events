@@ -76,13 +76,22 @@ function stanford_events_node_presave(EntityInterface $entity) {
  * filter on the view. Its a small improvement but will have huge impact in
  * keeping cached renders much longer.
  *
- * @see stanford_event_node_presave()
- * @see stanford_event_taxonomy_term_presave()
+ * @see stanford_events_node_presave()
+ * @see stanford_events_taxonomy_term_presave()
  */
 function stanford_events_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
 
+  $allow_list = [
+    'stanford_events',
+    'stanford_events_past',
+    'stanford_events_schedule',
+    'stanford_event_terms_utility',
+  ];
+
+  $id = $view->id();
+
   // Node Base Table Views.
-  if ($view->id() == 'stanford_events') {
+  if (in_array($id, $allow_list)) {
     $output['#attached']['library'][] = 'stanford_events/event_views';
 
     $node_list_position = array_search('node_list', $output['#cache']['tags']);
@@ -133,4 +142,43 @@ function stanford_events_schedule_format_date($raw, $obj) {
     return;
   }
   return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
+}
+
+/**
+ * Implements hook_cron().
+ */
+function stanford_events_cron() {
+
+  // Find all events that have passed since last cron run date and now.
+  // Clear cache for those particular events and clear out the views cache.
+  $last_cron = \Drupal::state()->get('system.cron_last');
+  $now = time();
+  $query = \Drupal::entityQuery('node');
+
+  // Conditions.
+  $query->condition('type', 'stanford_event');
+  $query->condition('status', 1);
+  $query->condition('su_event_date_time.end_value', $last_cron, ">=");
+  $query->condition('su_event_date_time.end_value', $now, "<=");
+
+  // Fetch.
+  $entity_ids = $query->execute();
+
+  if (count($entity_ids)) {
+    // If we have anything that changed clear all the views.
+    Cache::invalidateTags(["node_list:stanford_event"]);
+
+    // Create an array of "node:{id}".
+    array_walk(
+      $entity_ids,
+      function(&$item, $key, $prefix) {
+        $item = $prefix . $item;
+      },
+      "node:"
+    );
+
+    // Then clear the nodes.
+    Cache::invalidateTags($entity_ids);
+  }
+
 }

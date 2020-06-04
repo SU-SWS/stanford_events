@@ -29,6 +29,7 @@ const srcSass = path.resolve(srcDir, 'scss');
 const distSass = path.resolve(distDir, 'css');
 const srcJS = path.resolve(srcDir, 'js');
 const distJS = path.resolve(distDir, 'js');
+const seriesSrcSass = path.resolve(__dirname, "modules/stanford_events_series/lib/scss");
 
 // /////////////////////////////////////////////////////////////////////////////
 // Functions ///////////////////////////////////////////////////////////////////
@@ -50,7 +51,10 @@ var webpackConfig = {
     "stanford_events.node": path.resolve(srcSass, "stanford_events.node.scss"),
     "stanford_events.views": path.resolve(srcSass, "stanford_events.views.scss"),
     "stanford_events.person-cta": path.resolve(srcSass, "components/person-cta/stanford_events.person-cta.scss"),
-    "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss")
+    "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss"),
+    // Event Series.
+    "../../modules/stanford_events_series/dist/css/stanford_events_series.node": path.resolve(seriesSrcSass, "stanford_events_series.node.scss"),
+    "../../modules/stanford_events_series/dist/css/stanford_events_series.views": path.resolve(seriesSrcSass, "stanford_events_series.views.scss")
   },
   // Where put build?
   output: {
