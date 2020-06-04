@@ -93,23 +93,37 @@ function stanford_events_node_presave(EntityInterface $entity) {
  */
 function stanford_events_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
 
-  $allow_list = [
+  $allow_list_node = [
     'stanford_events',
     'stanford_events_past',
     'stanford_events_schedule',
+  ];
+
+  $allow_list_term = [
     'stanford_event_terms_utility',
   ];
 
   $id = $view->id();
 
   // Node Base Table Views.
-  if (in_array($id, $allow_list)) {
+  if (in_array($id, $allow_list_node)) {
     $output['#attached']['library'][] = 'stanford_events/event_views';
 
     $node_list_position = array_search('node_list', $output['#cache']['tags']);
     unset($output['#cache']['tags'][$node_list_position]);
     foreach ($view->filter['type']->value as $node_type) {
       $output['#cache']['tags'][] = "node_list:$node_type";
+    }
+  }
+
+  // Term Base Table Views.
+  if (in_array($id, $allow_list_term)) {
+    $output['#attached']['library'][] = 'stanford_events/event_views';
+
+    $term_list_position = array_search('term_list', $output['#cache']['tags']);
+    unset($output['#cache']['tags'][$term_list_position]);
+    foreach ($view->filter['vid']->value as $term_type) {
+      $output['#cache']['tags'][] = "term_list:$term_type";
     }
   }
 

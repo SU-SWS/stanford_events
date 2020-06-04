@@ -4,11 +4,10 @@
  * Layout builder section.
  */
 #}
-{%- set attributes = attributes.addClass('jumpstart-ui--two-column', 'flex-container', 'centered-container', settings.extra_classes) -%}
+{%- set attributes = attributes.addClass('flex-container', 'centered-container', settings.extra_classes) -%}
 
 <div{{ attributes }}>
   <div class="flex-12-of-12">
-
 
     {% if content.main|render %}
       <div {{ region_attributes.main.addClass('editorial-content') }}>
@@ -18,10 +17,3 @@
 
   </div>
 </div>
-
-
-
-
-
-
-

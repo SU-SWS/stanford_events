@@ -68,7 +68,7 @@
     {%- if su_event_url|render|striptags is empty -%}
       {{- su_event_headline -}}
     {%- else -%}
-      <h2><a {{ link_attributes }} href="{{ su_event_url }}">{{ su_event_headline|render|striptags }}</a></h2>
+      <h2><a {{ link_attributes }} href="{{ su_event_url|render|striptags }}">{{ su_event_headline|render|striptags }}</a></h2>
     {%- endif -%}
 
     {# Event Subheadline  #}
