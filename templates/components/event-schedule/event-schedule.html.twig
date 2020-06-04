@@ -15,6 +15,18 @@
   %}
 {% endif %}
 
+{# Separate URL and title #}
+{%- set link_attributes = create_attribute({'class': ['su-link']}) -%}
+{%- set is_external = false -%}
+{%- if su_event_url|render|striptags is not empty -%}
+  {%- set is_external = su_event_url|render|striptags|split('//')[1] ? true : false -%}
+  {%- if is_external -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
+  {%- else -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--action') -%}
+  {%- endif %}
+{%- endif -%}
+
 <div{{ attributes.addClass('su-event-schedule') }}>
 
   {%- if su_event_time|render|striptags("<drupal-placeholder>") is not empty -%}
@@ -25,7 +37,17 @@
 
   <div {{ region_attributes.info.addClass("su-event-schedule__info") }}>
     {%- if su_event_headline|render|striptags("<drupal-placeholder>") is not empty -%}
-      <h3 class="su-event-schedule__headline">{{ su_event_headline }}</h3>
+      <h3 class="su-event-schedule__headline">
+        {%- if su_event_url|render|striptags("<drupal-placeholder>") is not empty -%}
+          <a {{ link_attributes }} href="{{ su_event_url|render|striptags }}">
+        {%- endif -%}
+
+        {{ su_event_headline|render|striptags }}
+
+        {%- if su_event_url|render|striptags("<drupal-placeholder>") is not empty -%}
+          </a>
+        {%- endif -%}
+      </h3>
     {%- endif -%}
 
     {%- if su_event_description|render|striptags("<drupal-placeholder>") is not empty -%}

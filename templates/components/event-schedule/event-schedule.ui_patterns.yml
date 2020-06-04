@@ -22,6 +22,11 @@ event-schedule:
       label: "Location"
       description: "Where this thing is."
       preview: "321 University BLVD, Palo Alto, CA, 93256"
+    su_event_url:
+      type: text
+      label: "URL"
+      description: "Link the heading to something."
+      preview: "https://stanford.edu/"
     su_event_speakers:
       type: text
       label: "Speakers"
