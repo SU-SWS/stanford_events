@@ -77,6 +77,7 @@
   .node-stanford-event-su-event-date-time,
   .node-stanford-event-su-event-location,
   .node-stanford-event-su-event-alt-loc,
+  .node-stanford-event-su-event-map-link,
   .node-stanford-event-su-event-telephone,
   .node-stanford-event-su-event-audience {
     @include modular-spacing('margin', null null null 0);
@@ -145,11 +146,22 @@
 
   }
 
-  .su-event-location {
-    @include modular-spacing('margin', null null 2 null);
+  // Need conditions for the map link being included.
+  .node-stanford-event-su-event-location {
+    &+ .node-stanford-event-su-event-map-link {
+      @include modular-spacing('margin', -3 null 2 null);
+    }
 
     p {
       margin-bottom: 0;
+    }
+
+  }
+
+  // Need conditions for the map link being not included.
+  .node-stanford-event-su-event-location {
+    &+ .node-stanford-event-su-event-telephone {
+      @include modular-spacing('margin', 2 null null null);
     }
   }
 
