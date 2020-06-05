@@ -7,10 +7,12 @@
 
 // Changing the layout for the filtered pages.
 @include grid-media-max('lg') {
-  .left-region {
-    &.flex-lg-3-of-12 {
-      flex: auto;
-      max-width: 100%;
+  .section-events-list--content {
+    .left-region {
+      &.flex-lg-3-of-12 {
+        flex: auto;
+        max-width: 100%;
+      }
     }
   }
 }
@@ -49,8 +51,6 @@
       }
     }
   }
-
-
 
   @include modular-spacing('padding', 3);
 

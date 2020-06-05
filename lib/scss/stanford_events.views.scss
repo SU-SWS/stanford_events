@@ -13,6 +13,19 @@
   }
 }
 
+// Header spacing for all Event and Event series
+.section-event-series--header {
+  .node-stanford-event-series-title {
+    @include modular-spacing('margin', 6 null null null);
+  }
+}
+
+.section-event-list--title {
+  .heading-h1 {
+    @include modular-spacing('margin', 7 null null null);
+  }
+}
+
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 3 null);
 
@@ -105,7 +118,8 @@
       }
     }
 
-    .views-field-su-event-subheadline {
+    .views-field-su-event-subheadline,
+    .su-event-series-subheadline {
       @include modular-spacing('margin', null null 1 null);
     }
 
@@ -222,4 +236,27 @@
       @include modular-spacing('margin', null null 1 null);
     }
   }
+}
+
+// Event Series
+// header specific
+.node-stanford-event-series-title {
+  @include modular-spacing('margin', null null -1 null);
+
+}
+
+.node-stanford-event-series-su-event-series-subheadline {
+  @include modular-spacing('margin', null null 2 null);
+
+}
+
+.node-stanford-event-series-su-event-series-dek {
+  @include big-paragraph;
+  @include modular-spacing('padding', null null 3 null);
+  @include modular-spacing('margin', null null 5 null);
+
+}
+
+.su-event-series-items {
+  @include modular-spacing('margin', null null 5 null);
 }
