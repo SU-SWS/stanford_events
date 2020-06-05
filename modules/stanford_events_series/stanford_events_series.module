@@ -10,13 +10,11 @@
 use Drupal\views\ViewExecutable;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\views\Plugin\views\cache\CachePluginBase;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 /**
- * Implements hook_page_attachments.
+ * Implements hook_page_attachments().
  */
 function stanford_events_series_page_attachments(array &$attachments) {
 
@@ -39,7 +37,8 @@ function stanford_events_series_node_presave(EntityInterface $entity) {
     return;
   }
 
-  // If an event series item is being edited or saved, clear out some cache tags.
+  // If an event series item is being edited or saved,
+  // clear out some cache tags.
   Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
 }
 
