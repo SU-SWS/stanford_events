@@ -127,6 +127,10 @@
       @include modular-spacing('margin', null null 0 null);
     }
 
+    .address {
+      @include small-paragraph;
+    }
+
     .views-field-su-event-date-time {
       @include small-paragraph;
       @include modular-spacing('margin', null null -2 null);
@@ -134,18 +138,34 @@
       // Align multirow text with the icon.
       display: flex;
 
+      //Font Awesome Icon setup and spacings
       span {
+        @include modular-spacing('padding', null -2 null null);
+
         &::before {
-          background-color: $su-color-black;
+          color: $su-color-black;
+          font-family: 'Font Awesome 5 Free';
+          // Need this for the new version of FA. Will go away later.
+          font-weight: $su-font-semi-bold;
         }
       }
     }
 
-    .address {
-      @include small-paragraph;
+    // Icon set up.
+    // Calendar icon
+    .views-field-su-event-date-time {
+      span {
+        &::before {
+          // Need to switch to the SU icons.
+          content: "\f073";
+
+          @include grid-media-max('sm') {
+            left: -16px;
+          }
+        }
+      }
     }
 
-    .event-list-item__location,
     .views-field-su-event-location {
       @include small-paragraph;
       @include modular-spacing('margin', null null 3 null);
@@ -154,8 +174,15 @@
       display: flex;
 
       span {
+        @include modular-spacing('padding', null -2 null null);
+
         &::before {
-          background-color: $su-color-black;
+          color: $su-color-black;
+          font-family: 'Font Awesome 5 Free';
+          // Need this for the new version of FA. Will go away later.
+          font-weight: $su-font-semi-bold;
+          // Need to switch to the SU icons.
+          content: "\f3c5";
         }
       }
     }
@@ -163,23 +190,25 @@
 }
 
 // Wrapper spacing
-.views-infinite-scroll-content-wrapper {
-  @include modular-spacing('margin-bottom', 5);
+.stanford-events-list-page {
+  .views-infinite-scroll-content-wrapper {
+    @include modular-spacing('margin-bottom', 5);
 
-  & + .js-pager__items {
-    @include modular-spacing('margin-bottom', 8);
+    & + .js-pager__items {
+      @include modular-spacing('margin-bottom', 8);
+    }
   }
-}
 
-// Load more button.
-.js-pager__items {
-  text-align: center;
+  // Load more button.
+  .js-pager__items {
+    text-align: center;
 
-  .pager__item {
-    display: inline-block;
+    .pager__item {
+      display: inline-block;
 
-    .button {
-      @include button-big;
+      .button {
+        @include button-big;
+      }
     }
   }
 }
