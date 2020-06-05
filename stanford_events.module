@@ -190,7 +190,7 @@ function stanford_events_cron() {
 
   // Fetch.
   $entity_ids = $query->execute();
-  $tags = [ "node_list:stanford_event" ];
+  $tags = ["node_list:stanford_event"];
 
   if (count($entity_ids)) {
 
