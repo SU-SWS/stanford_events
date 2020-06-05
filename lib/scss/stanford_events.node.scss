@@ -42,12 +42,12 @@
 
 .right-region {
   @include small-paragraph;
-  @include modular-spacing('padding', null null null -1);
 
   .jumpstart-ui-page-heading {
     h2 {
       @include modular-typography(1);
       @include modular-spacing('margin', null null 0 null);
+      @include modular-spacing('padding', null null null -1);
     }
   }
 
@@ -62,8 +62,87 @@
     }
   }
 
+  .su-event-cta {
+    a {
+      color: $su-color-white;
+    }
+  }
+
+  //Font Awesome Icon setup and spacings
+  .su-event-email,
+  .node-stanford-event-su-event-cta {
+    @include modular-spacing('margin', null null null 0);
+  }
+
+  .node-stanford-event-su-event-date-time,
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc,
+  .node-stanford-event-su-event-telephone,
+  .node-stanford-event-su-event-audience {
+    @include modular-spacing('margin', null null null 0);
+
+    &::before {
+      @include small-paragraph;
+
+      color: $su-color-black;
+      font-family: 'Font Awesome 5 Free';
+      // Need this for the new version of FA. Will go away later.
+      font-weight: $su-font-semi-bold;
+      left: -15px;
+      position: absolute;
+    }
+  }
+  // Icon set up.
+  .node-stanford-event-su-event-date-time {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f073";
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f3c5";
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-telephone {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f095";
+      transform: scaleX(-1);
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-audience {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f0c0";
+
+      @include grid-media-max('sm') {
+        left: -17px;
+      }
+    }
+  }
+
+
   .node-stanford-event-su-event-date-time {
     @include modular-spacing('margin', null null 2 null);
+
   }
 
   .su-event-location {
@@ -77,6 +156,11 @@
   .node-stanford-event-su-event-email {
     @include modular-spacing('margin', null null 2 null);
   }
+
+  .node-stanford-event-su-event-cta {
+    @include modular-spacing('padding', 3 null 3 null);
+  }
+
 }
 
 .main-region {
@@ -86,8 +170,6 @@
 
   .su-event-cta {
     @include modular-spacing('margin', null null 9 null);
-
-    align-items: center;
 
     a {
       color: $su-color-white;
