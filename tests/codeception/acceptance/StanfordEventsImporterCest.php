@@ -3,9 +3,9 @@
 class StanfordEventsImporterCest {
 
   /**
-   * Events Importer
+   * Events
    */
-  public function testEventImporter(AcceptanceTester $I) {
+  public function testEventNodeForm(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/node/add/stanford_event');
     $I->canSee('Event Title');

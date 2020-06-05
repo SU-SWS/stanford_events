@@ -5,7 +5,7 @@ type: module
 version: 8.x-1.0-dev
 package: 'Stanford'
 dependencies:
-  - stanford_events
-  - stanford_migrate
-  - migrate_tools
-  - migrate_plus
+  - stanford_events:stanford_events
+  - stanford_migrate:stanford_migrate
+  - migrate_tools:migrate_tools
+  - migrate_plus:migrate_plus

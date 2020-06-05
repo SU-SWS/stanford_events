@@ -87,14 +87,17 @@ process:
   su_event_telephone: contact_phone
   su_event_sponsor:
     -
-      plugin: substr
+      plugin: explode
       source: event_sponsor
+      delimiter: ', '
+      limit: 100
+    -
+      plugin: substr
       start: 0
       length: 120
-  su_event_location:
     -
-      plugin: default_value
-      default_value: null
+      plugin: callback
+      callable: trim
   su_event_alt_loc: location
   su_event_map_link/uri: map_link
   su_event_map_link/title: constants/map_title
@@ -120,7 +123,7 @@ process:
       source: event_end
       values:
         - event_start
-  su_event_date_time/timezone: ''
+  su_event_date_time/timezone: 'America/Los_Angeles'
   su_event_type:
     -
       plugin: explode

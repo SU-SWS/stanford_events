@@ -14,10 +14,7 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\field\FieldConfigInterface;
-use Drupal\field\Entity\FieldConfig;
 
 /**
  * Implements hook_theme().
@@ -163,7 +160,7 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
  * @param object $obj
  *   The loaded entity being rendered.
  *
- * @return void|string
+ * @return string|null
  *   The date formatted with stanford_long_day_date_year
  */
 function stanford_events_schedule_format_date($raw, $obj) {
@@ -201,7 +198,7 @@ function stanford_events_cron() {
     // Create an array of "node:{id}".
     array_walk(
       $entity_ids,
-      function(&$item, $key, $prefix) {
+      function (&$item, $key, $prefix) {
         $item = $prefix . $item;
       },
       "node:"
