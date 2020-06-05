@@ -94,7 +94,11 @@
     }
   }
   // Icon set up.
-  .node-stanford-event-su-event-date-time {
+  // Calendar icon
+  & > div:nth-of-type(2) {
+    font-weight: $su-font-bold;
+    margin-bottom: 0;
+
     &::before {
       // Need to switch to the SU icons.
       content: "\f073";
