@@ -166,7 +166,7 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
 function stanford_events_schedule_format_date($raw, $obj) {
   // Expecting a timestamp in this function.
   if (!is_numeric($raw)) {
-    return;
+    return NULL;
   }
   return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
 }
@@ -190,10 +190,9 @@ function stanford_events_cron() {
 
   // Fetch.
   $entity_ids = $query->execute();
+  $tags = [ "node_list:stanford_event" ];
 
   if (count($entity_ids)) {
-    // If we have anything that changed clear all the views.
-    Cache::invalidateTags(["node_list:stanford_event"]);
 
     // Create an array of "node:{id}".
     array_walk(
@@ -204,8 +203,9 @@ function stanford_events_cron() {
       "node:"
     );
 
-    // Then clear the nodes.
-    Cache::invalidateTags($entity_ids);
+    // Clear all the things.
+    $tags = array_merge($tags, $entity_ids);
+    Cache::invalidateTags($tags);
   }
 
 }
