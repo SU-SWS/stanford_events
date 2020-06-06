@@ -5,4 +5,4 @@ type: module
 version: 8.x-1.0-dev
 package: 'Stanford'
 dependencies:
-  - stanford_events
+  - stanford_events:stanford_events
