@@ -26,7 +26,6 @@
 {%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
 
 <div {{ attributes }}>
-  <a href="{{ su_event_source__uri }}">
   <div class="su-event-list-item__date">
     <div class="su-date-stacked su-date-stacked--no-background">
       <span class="su-event-start-month">{{ su_event_start_month }}</span>
@@ -65,5 +64,4 @@
     {%- endif -%}
 
   </div>
-  </a>
 </div>
