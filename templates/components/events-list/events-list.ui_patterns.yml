@@ -56,6 +56,11 @@ events-list:
       label: "Location for event"
       description: "Location for the event."
       preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_address:
+      type: address
+      label: "Formatted location for event"
+      description: "Formatted location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
   use: "@events/events-list/events-list.html.twig"
   libraries:
     - eventslist:

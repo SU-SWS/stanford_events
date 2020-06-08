@@ -87,8 +87,13 @@
     {%- endif -%}
 
     {# Event Location  #}
-    {%- if su_event_location|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</p>
+    {%- if su_event_location|render|striptags|trim is not empty %}
+      <div class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</div>
+    {%- endif -%}
+
+    {# Event Location Addresss  #}
+    {%- if  su_event_address|render|striptags|trim is not empty %}
+      <div class="views-field-su-event-address"><span aria-hidden="true"></span> {{- su_event_address -}}</div>
     {%- endif -%}
 
   </div>
