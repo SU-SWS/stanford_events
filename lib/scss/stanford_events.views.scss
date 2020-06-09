@@ -304,7 +304,6 @@
   }
 
   h2 {
-    @include modular-typography(3);
     @include modular-spacing('margin', -2 null 3 null);
 
   }
@@ -325,12 +324,12 @@
 
     }
 
-    .views-field-title {
-      h2 {
-        @include modular-typography(2);
+    h2 {
+      a {
+        @include type-f;
         @include modular-spacing('margin', -2 null 0 null);
 
-        color: $su-color-bright-red;
+        color: $su-color-black;
         font-weight: $su-font-bold;
       }
     }
