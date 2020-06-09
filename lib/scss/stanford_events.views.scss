@@ -15,6 +15,15 @@
 }
 
 // Header spacing for all Event and Event series
+.section-event-series-list--header {
+  .jumpstart-ui-page-heading {
+    .heading-h1 {
+      @include modular-spacing('margin', 8 null 8 null);
+      @include modular-typography(5);
+    }
+  }
+}
+
 .section-event-series--header {
   .node-stanford-event-series-title {
     @include modular-spacing('margin', 6 null null null);
@@ -27,13 +36,22 @@
   }
 }
 
-.stanford-events-list-page {
+// Removing top padding on first list item.
+.stanford-events-list-page,
+.stanford-events-list-page-filtered,
+.stanford-event-series {
   .views-row:nth-child(1) {
     div {
       padding-top: 0;
     }
   }
 }
+
+// Event series bottom padding
+.stanford-event-series-list-all {
+  @include modular-spacing('margin', null null 5 null);
+}
+
 
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 3 null);
@@ -92,6 +110,10 @@
 
     color: $su-color-black;
     flex-grow: 2;
+
+    .event_list_item__type {
+      @include modular-spacing('margin', null null -2 null);
+    }
 
     .event-list-item__audience {
       @include modular-spacing('margin', null null -2 null);
@@ -221,6 +243,12 @@
 }
 
 // Wrapper spacing
+.section-events-list--content {
+  .main-region {
+    @include modular-spacing('padding-left', 2);
+  }
+}
+
 .stanford-events-list-page {
   .views-infinite-scroll-content-wrapper {
     @include modular-spacing('margin-bottom', 5);
@@ -247,6 +275,20 @@
 // Explore More Block.
 .stanford-events-more-events-block {
 
+  @include grid-media-max('md' ) {
+    .flex-4-of-12 {
+      @include modular-spacing('margin', null null 3 null);
+
+      flex: none;
+      max-width: 980px;
+      width: 100%;
+    }
+  }
+
+  .views-row {
+    align-items: flex-start;
+  }
+
   .su-event-list-item {
     display: unset;
 
@@ -256,7 +298,6 @@
 
     .su-event-list-item__date {
       @include modular-spacing('margin', null null 0 null);
-      background: lime;
       max-width: unset;
     }
   }

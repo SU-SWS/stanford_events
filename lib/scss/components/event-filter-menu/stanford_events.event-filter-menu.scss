@@ -53,6 +53,7 @@
   }
 
   @include modular-spacing('padding', 3);
+  @include modular-spacing('margin', null null 5 null);
 
   border: 1px solid $su-color-cool-grey-25;
 
