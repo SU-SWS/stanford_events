@@ -106,8 +106,8 @@ class StanfordEventsCest {
     $I->canSee("Seminar");
 
     // Events Main Menu Link.
-    $I->amOnPage("/admin/structure/menu/manage/main");
-    $I->canSee("Events");
+    $I->amOnPage("/admin/structure/menu/manage/stanford-event-types");
+    $I->canSee("All Upcoming Events");
   }
 
   /**
