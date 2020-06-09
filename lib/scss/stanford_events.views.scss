@@ -111,8 +111,18 @@
     color: $su-color-black;
     flex-grow: 2;
 
-    .event_list_item__type {
+    .event-list-item__type {
       @include modular-spacing('margin', null null -2 null);
+
+      a {
+        color: $su-color-black;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $su-color-bright-red;
+        }
+      }
     }
 
     .event-list-item__audience {
@@ -294,7 +304,13 @@
     display: unset;
 
     a {
-      text-decoration: none;
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
     }
 
     .su-event-list-item__date {
