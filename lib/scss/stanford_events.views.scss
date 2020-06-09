@@ -249,7 +249,8 @@
   }
 }
 
-.stanford-events-list-page {
+.stanford-events-list-page,
+.stanford-events-list-page--filtered {
   .views-infinite-scroll-content-wrapper {
     @include modular-spacing('margin-bottom', 5);
 

@@ -175,6 +175,8 @@
 
   .node-stanford-event-su-event-cta {
     @include modular-spacing('padding', 3 null 3 null);
+
+    text-align: center;
   }
 
 }
@@ -184,14 +186,17 @@
     @include modular-spacing('margin', null null 5 null);
   }
 
-  .su-event-cta {
-    @include modular-spacing('margin', null null 9 null);
+  .node-stanford-event-su-event-cta {
+    text-align: center;
 
-    a {
-      color: $su-color-white;
+    .su-event-cta {
+      @include modular-spacing('margin', null null 9 null);
+
+      a {
+        color: $su-color-white;
+      }
     }
   }
-
 }
 
 
