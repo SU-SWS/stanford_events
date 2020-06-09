@@ -37,6 +37,10 @@ class StanfordEventsCest {
   public function testCreateNewNode(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $node = $this->createEventNode($I);
+    $path = $node->toUrl()->toString();
+    $I->amOnPage($path);
+    $I->canSee("This is a headline");
+    $I->canSee("More updates to come.");
   }
 
   /**
@@ -92,7 +96,6 @@ class StanfordEventsCest {
     $I->amOnPage("/admin/structure/views");
     $I->canSee("stanford_events_past");
     $I->canSee("stanford_events_schedule");
-    $I->canSee("stanford_event_series");
     $I->canSee("stanford_event_terms_utility");
   }
 
@@ -106,7 +109,6 @@ class StanfordEventsCest {
     // Admin.
     $I->canSee("stanford_events_list");
     $I->canSee("stanford_events_upcoming");
-    $I->canSee("event_series");
     $I->canSee("stanford_events_past");
 
     // Front End.
@@ -115,8 +117,6 @@ class StanfordEventsCest {
     $I->amOnPage("/events/past");
     $I->canSeeResponseCodeIs(200);
     $I->amOnPage("/events/conference-symposium");
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/event-series");
     $I->canSeeResponseCodeIs(200);
   }
 
@@ -220,6 +220,16 @@ class StanfordEventsCest {
   }
 
   /**
+   * Test to ensure new event type terms show up in menu.
+   */
+  public function testForTaxonomyMenuAutoAdd(AcceptanceTester $I) {
+    $this->createEventTypeTerm($I);
+    $I->runDrush("cr");
+    $I->amOnPage("/events");
+    $I->canSeeLink("Foo");
+  }
+
+  /**
    * Create an Event Node.
    *
    * @param AcceptanceTester $I
@@ -249,7 +259,7 @@ class StanfordEventsCest {
       'su_event_date_time' => [
         'value' => time(),
         'end_value' => time() + (60 * 60 * 24),
-        'duration' => (60 * 60 * 24),
+        'duration' => (60 * 24),
         'timezone' => "America/Los_Angeles",
       ],
       'su_event_dek' => 'This is a dek field',
