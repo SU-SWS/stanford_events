@@ -44,6 +44,28 @@ class StanfordEventsCest {
   }
 
   /**
+   * Test to make sure teaser view is set to the list pattern.
+   */
+  public function testViewTeaser(AcceptanceTester $I) {
+    $I->logInWithRole("administrator");
+    $I->amOnPage("/admin/structure/types/manage/stanford_event/display/teaser");
+    $I->canSeeResponseCodeIs(200);
+    $I->seeOptionIsSelected("#edit-ds-layout", "Events List Item");
+  }
+
+  /**
+   * Test for display suite fields.
+   */
+  public function testDSFieldsExist(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage("/admin/structure/ds/fields");
+    $I->canSee("Date - End Day");
+    $I->canSee("Date - End Month");
+    $I->canSee("Date - Start Day");
+    $I->canSee("Date - Start Month");
+  }
+
+  /**
    * Test for pathauto Node
    */
   public function testForPathAutoNode(AcceptanceTester $I) {

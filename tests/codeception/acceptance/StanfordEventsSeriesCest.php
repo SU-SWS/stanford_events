@@ -32,8 +32,9 @@ class StanfordEventsSeriesCest {
     $I->logInWithRole('administrator');
     $node = $this->createEventSeriesNode($I);
     $I->runDrush("cr");
+    $path = $node->toUrl()->toString();
     $I->amOnPage($path);
-    $I->canSee("This is a test event series node.");
+    $I->canSee("This is a test event series node");
     $I->canSee("Series Event Node: 0");
     $I->canSee("Series Event Node: 1");
     $I->canSee("Series Event Node: 2");
@@ -43,28 +44,33 @@ class StanfordEventsSeriesCest {
   }
 
   /**
+   * @depends EnableModule
+   */
+  public function testEventSeriesPathAuto(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $node = $this->createEventSeriesNode($I, "Test Test Test");
+    $I->runDrush("cr");
+    $path = $node->toUrl()->toString();
+    $I->assertEquals($path, "/event/series/test-test-test");
+  }
+
+  /**
    * Creates an event series node.
-   * @var [type]
+   *
+   * @depends EnableModule
    */
   protected function createEventSeriesNode(AcceptanceTester $I, $node_title = NULL) {
     $event_nodes = [];
-    $event_references = [];
     for($i = 0; $i <= 5; $i++) {
       $node = $this->createEventNode($I, "Series Event Node: $i", $i);
-      $event_nodes[$node->id()] = $node;
-    }
-
-    foreach ($event_nodes as $k => $v) {
-      $event_references[] = [
-        'target_id' => $v,
-      ];
+      $event_nodes[] = ['target_id' => $node->id()];
     }
 
     return $I->createEntity([
       'type' => 'stanford_event_series',
       'title' => $node_title ?: 'This is a test event series node',
       'su_event_series_dek' => "This is a dek",
-      'su_event_series_event' => $event_references,
+      'su_event_series_event' => $event_nodes,
       'su_event_series_subheadline' => "This is a subheadline",
     ]);
   }
@@ -73,7 +79,7 @@ class StanfordEventsSeriesCest {
     * [protected description]
     * @var [type]
     */
-   protected function createEventNode(AcceptanceTester $I, $title = null, $time_multiplier = 1) {
+   protected function createEventNode(AcceptanceTester $I, $node_title = null, $time_multiplier = 1) {
      $start = time() - (60 * 60 * 24 * $time_multiplier);
      $end = time() + (60 * 60 * 24 * $time_multiplier);
 
@@ -100,6 +106,8 @@ class StanfordEventsSeriesCest {
 
    /**
     * Test for Views.
+    *
+    * @depends EnableModule
     */
    public function testForViewsExist(AcceptanceTester $I) {
      $I->logInWithRole('administrator');
@@ -109,6 +117,8 @@ class StanfordEventsSeriesCest {
 
    /**
     * Test for Page Manager Pages.
+    *
+    * @depends EnableModule
     */
    public function testForPageManagerPagesExist(AcceptanceTester $I) {
      $I->logInWithRole('administrator');
