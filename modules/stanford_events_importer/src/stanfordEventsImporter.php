@@ -1,18 +1,11 @@
 <?php
 
-/**
- * @file
- * File description.
- *
- * Long description.
- */
-
 namespace Drupal\stanford_events_importer;
 
 use GuzzleHttp\ClientInterface;
 
 /**
- * A static class to do some importery stuff.
+ * A class to do some importery stuff.
  */
 class StanfordEventsImporter {
 
@@ -32,7 +25,7 @@ class StanfordEventsImporter {
   const STATE_KEY_CAT = "stanford_events_importer_cats";
 
   /**
-   * Guzzle client
+   * Guzzle client.
    *
    * @var \GuzzleHttp\ClientInterface
    */
