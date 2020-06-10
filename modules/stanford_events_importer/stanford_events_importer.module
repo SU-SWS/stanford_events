@@ -1,0 +1,185 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\migrate_tools\MigrateBatchExecutable;
+use Drupal\migrate\MigrateMessage;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * URL Endpoint for getting categories.
+ */
+const STANFORD_EVENTS_IMPORTER_XML = "https://events.stanford.edu/xml/drupal/v2.php";
+
+/**
+ * Key used to get/set state for organization information.
+ */
+const STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG = "stanford_events_importer_orgs";
+
+/**
+ * Key used to get/set state for category information.
+ */
+const STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT = "stanford_events_importer_cats";
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the config form to add the migrate_tools UI.
+ */
+function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter(array &$form, FormStateInterface $form_state) {
+
+  $form['actions']['#type'] = 'fieldset';
+
+  $form['actions']['import'] = [
+    '#type' => 'submit',
+    '#value' => t('Save & Import'),
+    '#name' => 'op',
+    '#attributes' => [
+      'class' => [
+        'button--primary',
+      ],
+    ],
+    '#submit' => [ "stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit" ],
+  ];
+
+  $form['actions']['update_opts'] = [
+    '#type' => 'submit',
+    '#value' => t('Update Org & Category Options'),
+    '#name' => 'op',
+    '#submit' => [ "stanford_events_importer_update_opts" ],
+  ];
+
+  return $form;
+}
+
+/**
+ * Submit handler for the config form override.
+ */
+function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit($form, &$form_state) {
+
+  // Reset all static caches as something is getting stuck.
+  drupal_static_reset();
+
+  // Clear all plugin caches.
+  \Drupal::service('plugin.cache_clearer')
+    ->clearCachedDefinitions();
+
+  $migrations = stanford_migrate_migration_list();
+  $migration_plugin = $migrations["stanford_events"]["stanford_events_importer"] ?? FALSE;
+
+  if (!$migration_plugin) {
+    \Drupal::messenger()->addError('Could not find the stanford_events_importer migration!');
+  }
+
+  $migrateMessage = new MigrateMessage();
+  $options = [
+    'update' => TRUE,
+    'force' => TRUE,
+  ];
+  $executable = new MigrateBatchExecutable($migration_plugin, $migrateMessage, $options);
+  $executable->batchImport();
+
+}
+
+/**
+ * Fetch and save to state the org & category data.
+ */
+function stanford_events_importer_update_opts() {
+  \Drupal::messenger()->addStatus('Did the thing you asked for!');
+
+  $options = [
+    'query' => [
+      'category-list' => '',
+    ],
+    'headers' => [
+      'Accept' => 'application/xml',
+    ]
+  ];
+
+  $client = \Drupal::httpClient();
+  $request = $client->get(STANFORD_EVENTS_IMPORTER_XML, $options);
+  $cat_xml_raw = $request->getBody()->getContents();
+
+  try {
+    stanford_events_importer_update_opts_parse_categories($cat_xml_raw);
+  }
+  catch(\Exception $e) {
+    \Drupal::messenger()->addError('Could not parse category information!');
+  }
+
+  $options['query'] = [ 'organization-list' => '' ];
+  $request = $client->get(STANFORD_EVENTS_IMPORTER_XML, $options);
+  $org_xml_raw = $request->getBody()->getContents();
+
+  try {
+    stanford_events_importer_update_opts_parse_organizations($org_xml_raw);
+  }
+  catch(\Exception $e) {
+    \Drupal::messenger()->addError('Could not parse organization information!');
+  }
+}
+
+/**
+ * @param $raw
+ */
+function stanford_events_importer_update_opts_parse_categories($raw) {
+  $xml = new SimpleXMLElement($raw);
+  $guids = $xml->xpath('/CategoryList/Category/guid');
+  $labels = $xml->xpath('/CategoryList/Category/name');
+
+  array_walk($guids, function (&$val) {
+    $val = $val->__toString();
+  });
+
+  array_walk($labels, function (&$val) {
+    $val = $val->__toString();
+  });
+
+  // Do nothing if nothing was found.
+  if (empty($guids) || empty($labels)) {
+    return FALSE;
+  }
+
+  // Create an associative array.
+  $cats = array_combine($guids, $labels);
+
+  // Set the state storage for this site.
+  \Drupal::state()->set(STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT, $cats);
+
+  return TRUE;
+}
+
+/**
+ * @param $raw
+ */
+function stanford_events_importer_update_opts_parse_organizations($raw) {
+  $xml = new SimpleXMLElement($raw);
+  $guids = $xml->xpath('/OrganizationList/Organization/guid');
+  $labels = $xml->xpath('/OrganizationList/Organization/name');
+
+  array_walk($guids, function (&$val) {
+    $val = $val->__toString();
+  });
+
+  array_walk($labels, function (&$val) {
+    $val = $val->__toString();
+  });
+
+  // Do nothing if nothing was found.
+  if (empty($guids) || empty($labels)) {
+    return FALSE;
+  }
+
+  // Create an associative array.
+  $orgs = array_combine($guids, $labels);
+
+  // Set the state storage for this site.
+  \Drupal::state()->set(STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG, $orgs);
+
+  return TRUE;
+}
