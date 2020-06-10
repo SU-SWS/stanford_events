@@ -5,12 +5,13 @@ core_version_requirement: ^8 || ^9
 package: Stanford
 version: 8.x-1.0-dev
 dependencies:
+  - address:address
   - allowed_formats:allowed_formats
   - auto_entitylabel:auto_entitylabel
   - components:components
-  - drual:field
   - drupal:breakpoint
   - drupal:datetime
+  - drual:field
   - drupal:file
   - drupal:image
   - drupal:layout_builder
@@ -25,15 +26,19 @@ dependencies:
   - entity_reference_revisions:entity_reference_revisions
   - field_formatter_class:field_formatter_class
   - field_group:field_group
+  - field_permissions:field_permissions
   - jumpstart_ui:jumpstart_ui
   - layout_builder_restrictions:layout_builder_restrictions
+  - layout_library:layout_library
   - menu_block:menu_block
+  - node_revision_delete:node_revision_delete
   - page_manager:page_manager
   - page_manager:page_manager_ui
   - paragraphs:paragraphs
   - pathauto:pathauto
   - smart_date:smart_date
   - stanford_date_formats:stanford_date_formats
+  - stanford_fields:stanford_fields
   - stanford_media:stanford_media
   - stanford_migrate:stanford_migrate
   - stanford_text_editor:stanford_text_editor
