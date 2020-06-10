@@ -37,6 +37,19 @@
 
       border-top: 1px solid $su-color-cool-grey-15;
     }
+
+    .su-event-type {
+      a {
+        color: $su-color-bright-red;
+        font-weight: $su-font-regular;
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+        }
+      }
+    }
+
   }
 }
 
