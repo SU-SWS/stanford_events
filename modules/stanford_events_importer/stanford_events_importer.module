@@ -10,6 +10,7 @@
 use Drupal\migrate_tools\MigrateBatchExecutable;
 use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
 
 /**
  * URL Endpoint for getting categories.
@@ -32,19 +33,19 @@ const STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT = "stanford_events_importer_cats";
  * Alter the config form to add the migrate_tools UI.
  */
 function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter(array &$form, FormStateInterface $form_state) {
-
+  $user = User::load(\Drupal::currentUser()->id());
   $form['actions']['#type'] = 'fieldset';
 
   $form['actions']['import'] = [
     '#type' => 'submit',
     '#value' => t('Save & Import'),
     '#name' => 'op',
-    '#attributes' => [
-      'class' => [
-        'button--primary',
-      ],
-    ],
-    '#submit' => [ "stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit" ],
+    '#button_type' => "primary",
+    '#submit' => [
+      "::submitForm",
+      "::save",
+      "stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit",
+    ]
   ];
 
   $form['actions']['update_opts'] = [
@@ -52,6 +53,7 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
     '#value' => t('Update Org & Category Options'),
     '#name' => 'op',
     '#submit' => [ "stanford_events_importer_update_opts" ],
+    '#access' => $user->hasPermission("administer migrations"),
   ];
 
   return $form;
@@ -59,6 +61,9 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 
 /**
  * Submit handler for the config form override.
+ *
+ * @param $form
+ * @param $form_state
  */
 function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit($form, &$form_state) {
 
@@ -74,6 +79,7 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 
   if (!$migration_plugin) {
     \Drupal::messenger()->addError('Could not find the stanford_events_importer migration!');
+    return;
   }
 
   $migrateMessage = new MigrateMessage();
@@ -81,8 +87,15 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
     'update' => TRUE,
     'force' => TRUE,
   ];
-  $executable = new MigrateBatchExecutable($migration_plugin, $migrateMessage, $options);
-  $executable->batchImport();
+
+  try {
+    $executable = new MigrateBatchExecutable($migration_plugin, $migrateMessage, $options);
+    $executable->batchImport();
+
+  }
+  catch(Exception $e) {
+    \Drupal::messenger()->addError('Could not run importer!');
+  }
 
 }
 
@@ -90,7 +103,6 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
  * Fetch and save to state the org & category data.
  */
 function stanford_events_importer_update_opts() {
-  \Drupal::messenger()->addStatus('Did the thing you asked for!');
 
   $options = [
     'query' => [
@@ -106,7 +118,12 @@ function stanford_events_importer_update_opts() {
   $cat_xml_raw = $request->getBody()->getContents();
 
   try {
-    stanford_events_importer_update_opts_parse_categories($cat_xml_raw);
+    $args = [
+      'guids' => '/CategoryList/Category/guid',
+      'label' => '/CategoryList/Category/name',
+      'state_key' => STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT,
+    ];
+    stanford_events_importer_update_opts_parse_opts($cat_xml_raw, $args);
   }
   catch(\Exception $e) {
     \Drupal::messenger()->addError('Could not parse category information!');
@@ -117,20 +134,39 @@ function stanford_events_importer_update_opts() {
   $org_xml_raw = $request->getBody()->getContents();
 
   try {
-    stanford_events_importer_update_opts_parse_organizations($org_xml_raw);
+    $args = [
+      'guids' => '/OrganizationList/Organization/guid',
+      'label' => '/OrganizationList/Organization/name',
+      'state_key' => STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG,
+    ];
+    stanford_events_importer_update_opts_parse_opts($org_xml_raw, $args);
   }
   catch(\Exception $e) {
     \Drupal::messenger()->addError('Could not parse organization information!');
   }
+
 }
 
 /**
- * @param $raw
+ * Parses the raw xml return value from the API
+ *
+ * Turns the raw xml return value into a key value pair and saves
+ * it into the state for the site.
+ *
+ * @param string $raw
+ *   Raw XML string.
+ * @param array $options
+ *   A keyed array of options. Expects:
+ *   - guids: An xpath string to the key
+ *   - label: An xpath string to the label
+ *   - state_key: The key in which to save the key/value pair into state.
+ *
+ * @return bool
  */
-function stanford_events_importer_update_opts_parse_categories($raw) {
+function stanford_events_importer_update_opts_parse_opts($raw, array $options) {
   $xml = new SimpleXMLElement($raw);
-  $guids = $xml->xpath('/CategoryList/Category/guid');
-  $labels = $xml->xpath('/CategoryList/Category/name');
+  $guids = $xml->xpath($options['guids']);
+  $labels = $xml->xpath($options['label']);
 
   array_walk($guids, function (&$val) {
     $val = $val->__toString();
@@ -149,37 +185,7 @@ function stanford_events_importer_update_opts_parse_categories($raw) {
   $cats = array_combine($guids, $labels);
 
   // Set the state storage for this site.
-  \Drupal::state()->set(STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT, $cats);
-
-  return TRUE;
-}
-
-/**
- * @param $raw
- */
-function stanford_events_importer_update_opts_parse_organizations($raw) {
-  $xml = new SimpleXMLElement($raw);
-  $guids = $xml->xpath('/OrganizationList/Organization/guid');
-  $labels = $xml->xpath('/OrganizationList/Organization/name');
-
-  array_walk($guids, function (&$val) {
-    $val = $val->__toString();
-  });
-
-  array_walk($labels, function (&$val) {
-    $val = $val->__toString();
-  });
-
-  // Do nothing if nothing was found.
-  if (empty($guids) || empty($labels)) {
-    return FALSE;
-  }
-
-  // Create an associative array.
-  $orgs = array_combine($guids, $labels);
-
-  // Set the state storage for this site.
-  \Drupal::state()->set(STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG, $orgs);
+  \Drupal::state()->set($options['state_key'], $cats);
 
   return TRUE;
 }

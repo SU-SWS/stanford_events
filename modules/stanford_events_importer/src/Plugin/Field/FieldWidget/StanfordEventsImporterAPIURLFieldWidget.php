@@ -106,8 +106,9 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   }
 
   /**
-   * [getOrgOptions description]
-   * @return [type] [description]
+   * Get a key/value list of organizations from the API.
+   *
+   * @return array
    */
   protected function getOrgOptions() {
     $opts = \Drupal::state()->get("stanford_events_importer_orgs");
@@ -123,8 +124,9 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   }
 
   /**
-   * [getCatOptions description]
-   * @return [type] [description]
+   * Get a key/value list of categories from the API.
+   *
+   * @return array
    */
   protected function getCatOptions() {
 
@@ -148,20 +150,28 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
 
     // Parse form options we added into a url for the events.stanford.edu feed.
     array_walk($values, function(&$value) {
+
+      // All our extra form fields are stored in _other.
       $type = $value['_other']['type'] ?? '';
       $val = $value['_other'][$type] ?? '';
       $extra = $value["_other"]['org_status'] ?? '';
       unset($value['_other']);
 
-      // Empty value. Empty out uri and do not parse a url. This is how you get
-      // rid of an option.
-      if ($val === "" || $type === "") {
+      // Empty value. Empty out uri and do not parse a url.
+      // This is how you get rid of an option.
+      if ($type === "") {
         $value['uri'] = "";
         return;
       }
 
       // Valid Data. Create a url for the uri column.
-      $url = static::XML_FEED . "?" . $type . "=" . $val;
+      if ($type == "featured" || $type == "today") {
+        $url = static::XML_FEED . "?" . $type;
+      }
+      // Default to key = value.
+      else {
+        $url = static::XML_FEED . "?" . $type . "=" . $val;
+      }
 
       // Organizations have extra options.
       if ($type == "organization") {
