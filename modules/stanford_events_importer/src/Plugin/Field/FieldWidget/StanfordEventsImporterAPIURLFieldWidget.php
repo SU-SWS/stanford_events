@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 
 /**
- * Plugin implementation of the 'stanford_events_importer_apiurl_field_widget' widget.
+ * Plugin implementation of the 'stanford_events_importer_apiurl_field_widget'.
  *
  * @FieldWidget(
  *   id = "stanford_events_importer_apiurl_field_widget",
@@ -93,7 +93,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
       ],
       '#states' => [
         'visible' => [
-          '#edit-su-event-xml-url-' . $delta . '-other-type' => [ 'value' => 'organization' ],
+          '#edit-su-event-xml-url-' . $delta . '-other-type' => ['value' => 'organization'],
         ],
       ],
       '#default_value' => $defaults['org_status'] ?? '',
@@ -109,6 +109,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    * Get a key/value list of organizations from the API.
    *
    * @return array
+   *   An array of select form options.
    */
   protected function getOrgOptions() {
     $opts = \Drupal::state()->get("stanford_events_importer_orgs");
@@ -127,6 +128,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    * Get a key/value list of categories from the API.
    *
    * @return array
+   *   An array of select form options.
    */
   protected function getCatOptions() {
 
@@ -142,14 +144,13 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
     return $opts;
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
     // Parse form options we added into a url for the events.stanford.edu feed.
-    array_walk($values, function(&$value) {
+    array_walk($values, function (&$value) {
 
       // All our extra form fields are stored in _other.
       $type = $value['_other']['type'] ?? '';
@@ -193,8 +194,11 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    * Parse a link item for XML_FEED values.
    *
    * @param \Drupal\link\LinkItemInterface $item
+   *   The link interface item from the field itself.
    *
    * @return array
+   *   An array of key values.
+   *
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
   protected function parseURLForDefaults(LinkItemInterface $item) {
@@ -226,10 +230,9 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
     // By default, widgets are available for all fields. Limit to just one.
-    $allow = [ 'su_event_xml_url' ];
+    $allow = ['su_event_xml_url'];
     $field_name = $field_definition->getFieldStorageDefinition()->get('field_name');
     return in_array($field_name, $allow);
   }
-
 
 }

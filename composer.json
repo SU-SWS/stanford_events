@@ -113,5 +113,19 @@
               "https://github.com/nuvoleweb/ui_patterns/pull/269": "https://github.com/nuvoleweb/ui_patterns/compare/8.x-1.x...drclaw:detect-live-preview.patch"
             }
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\stanford_events\\": "./src",
+            "Drupal\\stanford_events_series\\": "./modules/stanford_events_series/src",
+            "Drupal\\stanford_events_importer\\": "./modules/stanford_events_importer/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\stanford_events\\": "./tests/src",
+            "Drupal\\Tests\\stanford_events_series\\": "./modules/stanford_events_series/tests/src",
+            "Drupal\\Tests\\stanford_events_importer\\": "./modules/stanford_events_importer/tests/src"
+        }
     }
 }

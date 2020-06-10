@@ -31,14 +31,14 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
       "::submitForm",
       "::save",
       "stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit",
-    ]
+    ],
   ];
 
   $form['actions']['update_opts'] = [
     '#type' => 'submit',
     '#value' => t('Update Org & Category Options'),
     '#name' => 'op',
-    '#submit' => [ "stanford_events_importer_update_opts" ],
+    '#submit' => ["stanford_events_importer_update_opts"],
     '#access' => $user->hasPermission("administer migrations"),
   ];
 
@@ -48,10 +48,12 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 /**
  * Submit handler for the config form override.
  *
- * @param $form
- * @param $form_state
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
  */
-function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit($form, &$form_state) {
+function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit(array &$form, FormStateInterface $form_state) {
 
   // Reset all static caches as something is getting stuck.
   drupal_static_reset();
@@ -60,14 +62,17 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
   \Drupal::service('plugin.cache_clearer')
     ->clearCachedDefinitions();
 
+  // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
   $migration_plugin = $migrations["stanford_events"]["stanford_events_importer"] ?? FALSE;
 
+  // Can't find it.
   if (!$migration_plugin) {
     \Drupal::messenger()->addError('Could not find the stanford_events_importer migration!');
     return;
   }
 
+  // Spin up the things we need and run em.
   $migrateMessage = new MigrateMessage();
   $options = [
     'update' => TRUE,
@@ -79,7 +84,7 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
     $executable->batchImport();
 
   }
-  catch(Exception $e) {
+  catch (Exception $e) {
     \Drupal::messenger()->addError('Could not run importer!');
   }
 
@@ -94,7 +99,7 @@ function stanford_events_importer_update_opts() {
   $importer = new StanfordEventsImporter($client);
 
   // Categories.
-  // ---------------------------------------------------------------------------
+  // --------------------------------------------------------------------------.
   $cat_xml_raw = $importer->fetchXML('category-list');
 
   $args = [
@@ -110,7 +115,7 @@ function stanford_events_importer_update_opts() {
 
 
   // Organizations.
-  // ---------------------------------------------------------------------------
+  // --------------------------------------------------------------------------.
   $org_xml_raw = $importer->fetchXML('organization-list');
 
   $args = [
@@ -124,6 +129,6 @@ function stanford_events_importer_update_opts() {
   // Set the state storage for this site.
   \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_ORG, $key_val);
 
+  // Done.
   \Drupal::messenger()->addStatus('Updated category and organization information.');
 }
-
