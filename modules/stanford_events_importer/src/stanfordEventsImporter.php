@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
 namespace Drupal\stanford_events_importer;
 
 use GuzzleHttp\ClientInterface;
@@ -25,7 +32,9 @@ class StanfordEventsImporter {
   const STATE_KEY_CAT = "stanford_events_importer_cats";
 
   /**
-   * @var \GuzzleHttp\ClientInterface;
+   * Guzzle client
+   *
+   * @var \GuzzleHttp\ClientInterface
    */
   private $client;
 
@@ -68,15 +77,15 @@ class StanfordEventsImporter {
   /**
    * Parses the raw xml return value from the API.
    *
-   * Turns the raw xml return value into a key value pair and saves
-   * it into the state for the site.
+   * Turns the raw xml return value into a key value pair and saves it into the
+   * state for the site.
    *
    * @param string $raw
    *   Raw XML string.
    * @param array $options
    *   A keyed array of options. Expects:
    *   - guids: An xpath string to the key
-   *   - label: An xpath string to the label
+   *   - label: An xpath string to the label.
    *
    * @return array|bool
    *   Success or not.

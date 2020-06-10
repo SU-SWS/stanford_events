@@ -113,7 +113,6 @@ function stanford_events_importer_update_opts() {
   // Set the state storage for this site.
   \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_CAT, $key_val);
 
-
   // Organizations.
   // --------------------------------------------------------------------------.
   $org_xml_raw = $importer->fetchXML('organization-list');
