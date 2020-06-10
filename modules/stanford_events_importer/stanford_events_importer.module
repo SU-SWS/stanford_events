@@ -11,21 +11,7 @@ use Drupal\migrate_tools\MigrateBatchExecutable;
 use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
-
-/**
- * URL Endpoint for getting categories.
- */
-const STANFORD_EVENTS_IMPORTER_XML = "https://events.stanford.edu/xml/drupal/v2.php";
-
-/**
- * Key used to get/set state for organization information.
- */
-const STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG = "stanford_events_importer_orgs";
-
-/**
- * Key used to get/set state for category information.
- */
-const STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT = "stanford_events_importer_cats";
+use Drupal\stanford_events_importer\StanfordEventsImporter;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -104,88 +90,40 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
  */
 function stanford_events_importer_update_opts() {
 
-  $options = [
-    'query' => [
-      'category-list' => '',
-    ],
-    'headers' => [
-      'Accept' => 'application/xml',
-    ]
+  $client = \Drupal::httpClient();
+  $importer = new StanfordEventsImporter($client);
+
+  // Categories.
+  // ---------------------------------------------------------------------------
+  $cat_xml_raw = $importer->fetchXML('category-list');
+
+  $args = [
+    'guids' => '/CategoryList/Category/guid',
+    'label' => '/CategoryList/Category/name',
   ];
 
-  $client = \Drupal::httpClient();
-  $request = $client->get(STANFORD_EVENTS_IMPORTER_XML, $options);
-  $cat_xml_raw = $request->getBody()->getContents();
-
-  try {
-    $args = [
-      'guids' => '/CategoryList/Category/guid',
-      'label' => '/CategoryList/Category/name',
-      'state_key' => STANFORD_EVENTS_IMPORTER_STATE_KEY_CAT,
-    ];
-    stanford_events_importer_update_opts_parse_opts($cat_xml_raw, $args);
-  }
-  catch(\Exception $e) {
-    \Drupal::messenger()->addError('Could not parse category information!');
-  }
-
-  $options['query'] = [ 'organization-list' => '' ];
-  $request = $client->get(STANFORD_EVENTS_IMPORTER_XML, $options);
-  $org_xml_raw = $request->getBody()->getContents();
-
-  try {
-    $args = [
-      'guids' => '/OrganizationList/Organization/guid',
-      'label' => '/OrganizationList/Organization/name',
-      'state_key' => STANFORD_EVENTS_IMPORTER_STATE_KEY_ORG,
-    ];
-    stanford_events_importer_update_opts_parse_opts($org_xml_raw, $args);
-  }
-  catch(\Exception $e) {
-    \Drupal::messenger()->addError('Could not parse organization information!');
-  }
-
-}
-
-/**
- * Parses the raw xml return value from the API
- *
- * Turns the raw xml return value into a key value pair and saves
- * it into the state for the site.
- *
- * @param string $raw
- *   Raw XML string.
- * @param array $options
- *   A keyed array of options. Expects:
- *   - guids: An xpath string to the key
- *   - label: An xpath string to the label
- *   - state_key: The key in which to save the key/value pair into state.
- *
- * @return bool
- */
-function stanford_events_importer_update_opts_parse_opts($raw, array $options) {
-  $xml = new SimpleXMLElement($raw);
-  $guids = $xml->xpath($options['guids']);
-  $labels = $xml->xpath($options['label']);
-
-  array_walk($guids, function (&$val) {
-    $val = $val->__toString();
-  });
-
-  array_walk($labels, function (&$val) {
-    $val = $val->__toString();
-  });
-
-  // Do nothing if nothing was found.
-  if (empty($guids) || empty($labels)) {
-    return FALSE;
-  }
-
-  // Create an associative array.
-  $cats = array_combine($guids, $labels);
+  // Get the formatted key->value pairs.
+  $key_val = $importer->parseXML($cat_xml_raw, $args);
 
   // Set the state storage for this site.
-  \Drupal::state()->set($options['state_key'], $cats);
+  \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_CAT, $key_val);
 
-  return TRUE;
+
+  // Organizations.
+  // ---------------------------------------------------------------------------
+  $org_xml_raw = $importer->fetchXML('organization-list');
+
+  $args = [
+    'guids' => '/OrganizationList/Organization/guid',
+    'label' => '/OrganizationList/Organization/name',
+  ];
+
+  // Get the formatted key->value pairs.
+  $key_val = $importer->parseXML($org_xml_raw, $args);
+
+  // Set the state storage for this site.
+  \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_ORG, $key_val);
+
+  \Drupal::messenger()->addStatus('Updated category and organization information.');
 }
+

@@ -286,7 +286,7 @@
 // Explore More Block.
 .stanford-events-more-events-block {
 
-  @include grid-media-max('md' ) {
+  @include grid-media-max('md') {
     .flex-4-of-12 {
       @include modular-spacing('margin', null null 3 null);
 
