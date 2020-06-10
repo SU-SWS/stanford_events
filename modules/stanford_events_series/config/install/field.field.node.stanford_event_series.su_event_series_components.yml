@@ -6,7 +6,6 @@ dependencies:
     - node.type.stanford_event_series
     - paragraphs.paragraphs_type.stanford_person_cta
     - paragraphs.paragraphs_type.stanford_schedule
-    - paragraphs.paragraphs_type.stanford_spacer
   module:
     - entity_reference_revisions
 id: node.stanford_event_series.su_event_series_components

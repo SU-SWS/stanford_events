@@ -5,6 +5,8 @@ type: module
 version: 8.x-1.0-dev
 package: 'Stanford'
 dependencies:
+  - config_pages:config_pages
+  - config_pages_overrides:config_pages_overrides
   - stanford_events:stanford_events
   - stanford_migrate:stanford_migrate
   - migrate_tools:migrate_tools
