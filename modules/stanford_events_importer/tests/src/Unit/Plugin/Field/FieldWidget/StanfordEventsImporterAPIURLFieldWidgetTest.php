@@ -2,11 +2,13 @@
 
 namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\stanford_events_importer\Plugin\Field\FieldWidget\StanfordEventsImporterAPIURLFieldWidget;
 use Drupal\Tests\UnitTestCase;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\stanford_events_importer\StanfordEventsImporter;
 
 /**
  * Class StanfordEventsImporterAPIURLFieldWidget
@@ -31,6 +33,15 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
    */
   public function setup() {
     $plugin_id = "stanford_events_importer_apiurl_field_widget";
+
+    // Propheize the Cache Backend.
+    $cache = $this->prophesize(CacheBackendInterface::CLASS);
+    $obj = new \StdClass();
+    $obj->data = [
+      19 => "Class",
+      99 => "Gretzky",
+    ];
+    $cache->get('key')->willReturn($obj);
 
     $plugin_definition = [
       "field_types" => ["link"],
@@ -112,7 +123,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
     $third_party_settings = [];
 
     // Make it.
-    $this->plugin = new StanfordEventsImporterAPIURLFieldWidget($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+    $this->plugin = new StanfordEventsImporterAPIURLFieldWidget($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $cache->reveal());
   }
 
   /**
