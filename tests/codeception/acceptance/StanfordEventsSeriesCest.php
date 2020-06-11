@@ -69,10 +69,7 @@ class StanfordEventsSeriesCest {
     return $I->createEntity([
       'type' => 'stanford_event_series',
       'title' => $node_title ?: 'This is a test event series node',
-      'su_event_series_components' => [],
-      'su_event_series_dek' => "This is a dek",
       'su_event_series_event' => $event_nodes,
-      'su_event_series_subheadline' => "This is a subheadline",
     ]);
   }
 
