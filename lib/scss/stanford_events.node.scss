@@ -60,18 +60,19 @@
         }
       }
     }
-  .su-event-type-bottom {
-    a {
-      color: $su-color-bright-red;
-      font-weight: $su-font-regular;
-      text-decoration: none;
 
-      &:hover,
-      &:focus {
-        color: $su-color-black;
+    .su-event-type-bottom {
+      a {
+        color: $su-color-bright-red;
+        font-weight: $su-font-regular;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+        }
       }
     }
-  }
   }
 }
 
@@ -115,12 +116,6 @@
     }
   }
 
-  //Font Awesome Icon setup and spacings
-  .su-event-email,
-  .node-stanford-event-su-event-cta {
-  }
-
-
   .node-stanford-event-su-event-date-time,
   .node-stanford-event-su-event-location,
   .node-stanford-event-su-event-alt-loc,
@@ -137,6 +132,7 @@
       font-weight: $su-font-semi-bold;
       position: absolute;
     }
+
     div {
       @include modular-spacing('padding', null null null 1);
     }
@@ -210,10 +206,8 @@
     }
   }
 
-
   .node-stanford-event-su-event-date-time {
     @include modular-spacing('margin', null null 2 null);
-
   }
 
   // Need conditions for the map link being included.
@@ -225,7 +219,6 @@
     p {
       margin-bottom: 0;
     }
-
   }
 
   // Need conditions for the map link being not included.
