@@ -61,9 +61,14 @@ events-list:
       label: "Formatted location for event"
       description: "Formatted location for the event."
       preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_edit:
+      type: text
+      label: "Edit this Event"
+      description: "Button to edit the content."
+      preview: "http://www.stanford.edu"
   use: "@events/events-list/events-list.html.twig"
   libraries:
     - eventslist:
         css:
           component:
-            ../../../dist/css/stanford_events.views.css: { }
+            ../../../dist/css/stanford_events.event-list.css: { }
