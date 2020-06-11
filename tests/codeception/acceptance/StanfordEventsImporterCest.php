@@ -16,9 +16,10 @@ class StanfordEventsImporterCest {
    */
   public function testForImporterForm(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/config/importer/events-importer");
+    $I->amOnPage("/admin/config/importers/events-importer");
     $I->canSeeResponseCodeIs(200);
-    $I->canSee("Stanford Events Importer");
+    $I->canSee("Events Importer");
+    $I->canSee("EVENTS TO BE IMPORTED");
   }
 
   /**
@@ -29,8 +30,8 @@ class StanfordEventsImporterCest {
   public function testForCronSettings(AcceptanceTester $I) {
     $I->logInWithRole("administrator");
     $I->amOnPage("/admin/config/system/cron/jobs");
-    $I->canSee("Events Migration");
-    $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events");
+    $I->canSee("Importer: Events importer");
+    $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events_importer");
     $I->seeCheckboxIsChecked("#edit-status");
   }
 
