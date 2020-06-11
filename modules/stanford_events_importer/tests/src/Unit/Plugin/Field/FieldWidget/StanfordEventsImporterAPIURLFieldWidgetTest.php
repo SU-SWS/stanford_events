@@ -3,12 +3,14 @@
 namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Form\FormState;
 use Drupal\stanford_events_importer\Plugin\Field\FieldWidget\StanfordEventsImporterAPIURLFieldWidget;
 use Drupal\Tests\UnitTestCase;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\stanford_events_importer\StanfordEventsImporter;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\link\LinkItemInterface;
 
 /**
  * Class StanfordEventsImporterAPIURLFieldWidget
@@ -29,10 +31,43 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
   public $field_definition;
 
   /**
+   * The mocked field type plugin manager.
+   *
+   * @var \Drupal\Core\Field\FieldTypePluginManagerInterface
+   */
+  protected $fieldTypePluginManager;
+
+  /**
+   * Container.
+   *
+   * @var \Drupal\Core\DependencyInjection\ContainerBuilder
+   */
+  public $container;
+
+  /**
    * Test.
    */
   public function setup() {
     $plugin_id = "stanford_events_importer_apiurl_field_widget";
+
+    $this->container = new ContainerBuilder();
+    $this->container->set('string_translation', $this->getStringTranslationStub());
+
+    $this->fieldTypePluginManager = $this
+      ->createMock('Drupal\\Core\\Field\\FieldTypePluginManagerInterface');
+    $this->fieldTypePluginManager
+      ->expects($this
+        ->any())
+      ->method('getDefaultStorageSettings')
+      ->willReturn([]);
+    $this->fieldTypePluginManager
+      ->expects($this
+        ->any())
+      ->method('getDefaultFieldSettings')
+      ->willReturn([]);
+
+    $this->container->set('plugin.manager.field.field_type', $this->fieldTypePluginManager);
+    \Drupal::setContainer($this->container);
 
     // Propheize the Cache Backend.
     $cache = $this->prophesize(CacheBackendInterface::CLASS);
@@ -172,7 +207,31 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
    */
   public function testIsApplicable() {
     $this->assertTrue(StanfordEventsImporterAPIURLFieldWidget::isApplicable($this->field_definition));
+  }
 
+  /**
+   * Test
+   */
+  public function testFormElement() {
+    $form = [];
+    $form_state = new FormState();
+    $element = [];
+    $delta = 0;
+
+    $items = new FieldItemList($this->field_definition);
+
+//    $link = $this->prophesize(LinkItemInterface::CLASS);
+//    $link->getUrl()->willReturn("");
+//    $link->isExternal()->willReturn(true);
+//    $link = $link->reveal();
+
+    $first_field_item = $this->getMockForAbstractClass('Drupal\Core\Field\FieldItemBase', [], '', FALSE);
+    $first_field_item->setValue(['uri' => 'https://events.stanford.edu/xml/drupal/v2.php?organization=19&bookmarked']);
+
+    $items->setValue($first_field_item);
+
+    $result = $this->plugin->formElement($items, $delta, $element, $form, $form_state);
+    $this->assertIsArray($result);
   }
 
 }
