@@ -169,44 +169,50 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
     // Parse form options we added into a url for the events.stanford.edu feed.
-    array_walk($values, function (&$value) {
-
-      // All our extra form fields are stored in _other.
-      $type = $value['_other']['type'] ?? '';
-      $val = $value['_other'][$type] ?? '';
-      $extra = $value["_other"]['org_status'] ?? '';
-      unset($value['_other']);
-
-      // Empty value. Empty out uri and do not parse a url.
-      // This is how you get rid of an option.
-      if ($type === "") {
-        $value['uri'] = "";
-        return;
-      }
-
-      // Valid Data. Create a url for the uri column.
-      if ($type == "featured" || $type == "today") {
-        $url = static::XML_FEED . "?" . $type;
-      }
-      // Default to key = value.
-      else {
-        $url = static::XML_FEED . "?" . $type . "=" . $val;
-      }
-
-      // Organizations have extra options.
-      if ($type == "organization") {
-        $url .= "&" . $extra;
-      }
-
-      // Set the value.
-      $value['uri'] = $url;
-    });
+    array_walk($values, 'self::walkMassagedFormValues');
 
     // Let the parent LinkWidget do its thing.
     $values = parent::massageFormValues($values, $form, $form_state);
 
     // Finish.
     return $values;
+  }
+
+  /**
+   * Callback for array_walk in massageFormValues.
+   *
+   * @param $value
+   */
+  protected static function walkMassagedFormValues(&$value) {
+    // All our extra form fields are stored in _other.
+    $type = $value['_other']['type'] ?? '';
+    $val = $value['_other'][$type] ?? '';
+    $extra = $value["_other"]['org_status'] ?? '';
+    unset($value['_other']);
+
+    // Empty value. Empty out uri and do not parse a url.
+    // This is how you get rid of an option.
+    if ($type === "") {
+      $value['uri'] = "";
+      return;
+    }
+
+    // Valid Data. Create a url for the uri column.
+    if ($type == "featured" || $type == "today") {
+      $url = static::XML_FEED . "?" . $type;
+    }
+    // Default to key = value.
+    else {
+      $url = static::XML_FEED . "?" . $type . "=" . $val;
+    }
+
+    // Organizations have extra options.
+    if ($type == "organization") {
+      $url .= "&" . $extra;
+    }
+
+    // Set the value.
+    $value['uri'] = $url;
   }
 
   /**
