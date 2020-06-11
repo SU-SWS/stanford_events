@@ -12,6 +12,13 @@
     display: inline-block;
     font-weight: $su-font-regular;
   }
+
+  a {
+    &:hover,
+    &:focus  {
+      color: $su-color-black;
+    }
+  }
 }
 
 // Header spacing for all Event and Event series
@@ -319,11 +326,6 @@
     }
   }
 
-  h2 {
-    @include modular-spacing('margin', -2 null 3 null);
-
-  }
-
   .views-col {
     @include modular-spacing('padding', 2 2 3 2);
     @include box-shadow('shallow');
@@ -341,6 +343,8 @@
     }
 
     h2 {
+      @include modular-spacing('margin', -2 null 3 null);
+
       a {
         @include type-f;
         @include modular-spacing('margin', -2 null 0 null);
@@ -349,10 +353,17 @@
         font-weight: $su-font-bold;
       }
     }
+  }
 
-    h3 {
-      @include modular-typography(1);
-      @include modular-spacing('margin', null null 1 null);
+  .event_list_item__type {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
     }
   }
 }

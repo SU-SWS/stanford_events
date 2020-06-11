@@ -14,6 +14,17 @@
 
   .su-event-type {
     @include subheading;
+
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
   }
 
   .su-event-dek {
@@ -26,7 +37,7 @@
   }
 }
 
-.body-region {
+.su-events-type-schedule {
   .node-stanford-event-su-event-type {
     @include modular-spacing('margin', 5 null);
 
@@ -38,7 +49,7 @@
       border-top: 1px solid $su-color-cool-grey-15;
     }
 
-    .su-event-type {
+    .su-event {
       a {
         color: $su-color-bright-red;
         font-weight: $su-font-regular;
@@ -49,18 +60,40 @@
         }
       }
     }
+  .su-event-type-bottom {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
 
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
+  }
   }
 }
 
-.right-region {
+.su-events-details {
   @include small-paragraph;
+
+  .right-region {
+    @include grid-media-min('md') {
+      padding-top: 45px;
+    }
+
+    @include grid-media-max('sm') {
+      &.flex-6-of-12 {
+        flex: unset;
+        max-width: 100%;
+      }
+    }
+  }
 
   .jumpstart-ui-page-heading {
     h2 {
       @include modular-typography(1);
-      @include modular-spacing('margin', null null 0 null);
-      @include modular-spacing('padding', null null null -1);
     }
   }
 
@@ -70,6 +103,7 @@
   .node-stanford-event-su-event-audience {
     h2 {
       @include small-paragraph;
+      @include modular-spacing('padding', null null null 1);
 
       font-weight: $su-font-bold;
     }
@@ -84,8 +118,8 @@
   //Font Awesome Icon setup and spacings
   .su-event-email,
   .node-stanford-event-su-event-cta {
-    @include modular-spacing('margin', null null null 0);
   }
+
 
   .node-stanford-event-su-event-date-time,
   .node-stanford-event-su-event-location,
@@ -93,7 +127,6 @@
   .node-stanford-event-su-event-map-link,
   .node-stanford-event-su-event-telephone,
   .node-stanford-event-su-event-audience {
-    @include modular-spacing('margin', null null null 0);
 
     &::before {
       @include small-paragraph;
@@ -102,15 +135,24 @@
       font-family: 'Font Awesome 5 Free';
       // Need this for the new version of FA. Will go away later.
       font-weight: $su-font-semi-bold;
-      left: -15px;
       position: absolute;
+    }
+    div {
+      @include modular-spacing('padding', null null null 1);
+    }
+  }
+
+  .node-stanford-event-su-event-audience {
+    div {
+      div {
+        padding-left: 0;
+      }
     }
   }
 
   // Icon set up.
   // Calendar icon
-  & > div:nth-of-type(2) {
-    font-weight: $su-font-bold;
+  div.node-stanford-event-su-event-date-time {
     margin-bottom: 0;
 
     &::before {
@@ -119,6 +161,16 @@
 
       @include grid-media-max('sm') {
         left: -16px;
+      }
+    }
+
+    & ~ div.node-stanford-event-su-event-date-time {
+      @include modular-spacing('margin', null null 2 null);
+
+      &::before {
+        // Override icon with blank.
+        content: "";
+
       }
     }
   }
@@ -185,10 +237,12 @@
 
   .node-stanford-event-su-event-email {
     @include modular-spacing('margin', null null 2 null);
+    @include modular-spacing('padding', null null null 1);
+
   }
 
   .node-stanford-event-su-event-cta {
-    @include modular-spacing('padding', 3 null 3 null);
+    @include modular-spacing('padding', 3 null 5 null);
 
     text-align: center;
   }
@@ -204,7 +258,6 @@
     text-align: center;
 
     .su-event-cta {
-      @include modular-spacing('margin', null null 9 null);
 
       a {
         color: $su-color-white;

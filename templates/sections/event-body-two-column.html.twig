@@ -1,18 +1,18 @@
-{% set right_class = 'flex-lg-4-of-12' %}
-{% set left_class = 'flex-lg-7-of-12' %}
+{% set right_class = 'flex-6-of-12' %}
+{% set left_class = 'flex-6-of-12' %}
 
-<div{{ attributes.addClass('flex-container', 'centered-container', 'su-event-content', settings.extra_classes) }}>
+<div{{ attributes.addClass('centered-container', 'su-events-details', 'flex-container', settings.extra_classes) }}>
+   <div{{ attributes.addClass('flex-8-of-12', 'flex-container') }}>
+    {% if content.main|render %}
+      <div {{ region_attributes.main.addClass('body-region', left_class) }}>
+        {{ content.main }}
+      </div>
+    {% endif %}
 
-  {% if content.main|render %}
-    <div {{ region_attributes.main.addClass('body-region', left_class) }}>
-      {{ content.main }}
-    </div>
-  {% endif %}
-
-  {% if content.right|render %}
-    <div {{ region_attributes.right.addClass('right-region', right_class) }}>
+    {% if content.right|render %}
+      <div {{ region_attributes.right.addClass('right-region', right_class) }}>
         {{ content.right }}
-    </div>
-  {% endif %}
-
+      </div>
+    {% endif %}
+   </div>
 </div>

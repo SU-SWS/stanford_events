@@ -1,0 +1,11 @@
+{% set right_class = 'flex-6-of-12' %}
+{% set left_class = 'flex-6-of-12' %}
+
+<div{{ attributes.addClass('centered-container', 'su-events-link', 'flex-container', settings.extra_classes) }}>
+    {% if content.main|render %}
+      <div {{ region_attributes.main.addClass('body-region', left_class) }}>
+        {{ content.main }}
+      </div>
+    {% endif %}
+   </div>
+</div>
