@@ -30,6 +30,19 @@
     .su-person-cta__name {
       @include margin(null null 0 null);
       width: 100%;
+
+      a, a:link, a:visited {
+        color: $su-color-bright-red;
+
+        &::after {
+          background: $su-color-bright-red;
+        }
+      }
+
+      a:hover,
+      a:focus {
+        color: $su-color-black;
+      }
     }
 
     .su-person-cta__title {

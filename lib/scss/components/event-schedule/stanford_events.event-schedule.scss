@@ -2,18 +2,36 @@
 @import '../../stanford_events.config';
 
 .su-event-schedule {
-  display: flex;
+
+  @include grid-media("sm") {
+    display: flex;
+  }
 
   .su-event-schedule__time {
-    max-width: 100px;
-    width: 100px;
-    @include modular-spacing('margin-right', 2);
+    @include grid-media("sm") {
+      max-width: 100px;
+      width: 100px;
+      @include modular-spacing('margin-right', 2);
+    }
   }
 
   // The title of the schedule paragraph.
   .su-event-schedule__headline {
     @include type-c;
     @include modular-spacing('margin-bottom', -1);
+
+    a, a:link, a:visited {
+      color: $su-color-bright-red;
+
+      &::after {
+        background: $su-color-bright-red;
+      }
+    }
+
+    a:hover,
+    a:focus {
+      color: $su-color-black;
+    }
   }
 
   // The description of the schedule paragraph.

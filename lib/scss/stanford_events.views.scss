@@ -377,21 +377,30 @@
 // header specific
 .node-stanford-event-series-title {
   @include modular-spacing('margin', null null -1 null);
-
 }
 
 .node-stanford-event-series-su-event-series-subheadline {
   @include modular-spacing('margin', null null 2 null);
-
 }
 
 .node-stanford-event-series-su-event-series-dek {
   @include big-paragraph;
   @include modular-spacing('padding', null null 3 null);
   @include modular-spacing('margin', null null 5 null);
-
 }
 
 .su-event-series-items {
   @include modular-spacing('margin', null null 5 null);
+}
+
+// Past Event.
+.su-past-event {
+  @include padding(3px 6px);
+  @include credits();
+  @include modular-spacing('margin-left', 0);
+  display: inline-block;
+  background: $su-color-cool-grey-15;
+  color: $su-color-black;
+  font-weight: $su-font-semi-bold;
+  border-radius: 6px;
 }
