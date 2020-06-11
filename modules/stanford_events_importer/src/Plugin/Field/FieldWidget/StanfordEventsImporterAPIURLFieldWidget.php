@@ -8,6 +8,10 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\link\Plugin\Field\FieldWidget\LinkWidget;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\stanford_events_importer\StanfordEventsImporter;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 
 /**
  * Plugin implementation of the 'stanford_events_importer_apiurl_field_widget'.
@@ -29,6 +33,26 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   const XML_FEED = "https://events.stanford.edu/xml/drupal/v2.php";
 
   /**
+   * @var \Drupal\Core\Cache\CacheBackendInterface
+   */
+  protected $cache;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static($plugin_id, $plugin_definition, $configuration['field_definition'], $configuration['settings'], $configuration['third_party_settings'], $container->get('cache.default'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, CacheBackendInterface $cache) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+    $this->cache = $cache;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
@@ -45,8 +69,8 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
     $element['_other']['type'] = [
       '#type' => 'select',
       '#title' => $this->t("Event Group Option"),
+      '#empty_option' => $this->t("- Select Option -"),
       '#options' => [
-        '' => $this->t("- Select Option -"),
         'organization' => $this->t("Organization"),
         'category' => $this->t("Category"),
         'featured' => $this->t('Featured'),
@@ -60,6 +84,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
       '#type' => 'select',
       '#title' => $this->t("Organization"),
       '#field_parents' => ['other'],
+      '#empty_option' => $this->t("- Select Organization -"),
       '#options' => $this->getOrgOptions(),
       '#states' => [
         'visible' => [
@@ -73,6 +98,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
       '#type' => 'select',
       '#title' => $this->t("Category"),
       '#field_parents' => ['other'],
+      '#empty_option' => $this->t("- Select Category -"),
       '#options' => $this->getCatOptions(),
       '#states' => [
         'visible' => [
@@ -112,16 +138,13 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    *   An array of select form options.
    */
   protected function getOrgOptions() {
-    $opts = \Drupal::state()->get("stanford_events_importer_orgs");
-
-    // If state doesn't exist. Try to get it.
-    if (empty($opts)) {
-      stanford_events_importer_update_opts();
-      $opts = \Drupal::state()->get("stanford_events_importer_orgs");
+    if ($cache = $this->cache->get(StanfordEventsImporter::CACHE_KEY_ORG)) {
+      return $cache->data;
     }
 
-    array_unshift($opts, $this->t("- Select Organization -"));
-    return $opts;
+    // If not in cache. Try to get it.
+    stanford_events_importer_update_opts();
+    return $this->cache->get(StanfordEventsImporter::CACHE_KEY_ORG)->data;
   }
 
   /**
@@ -131,17 +154,13 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    *   An array of select form options.
    */
   protected function getCatOptions() {
-
-    $opts = \Drupal::state()->get("stanford_events_importer_cats");
-
-    // If state doesn't exist. Try to get it.
-    if (empty($opts)) {
-      stanford_events_importer_update_opts();
-      $opts = \Drupal::state()->get("stanford_events_importer_cats");
+    if ($cache = $this->cache->get(StanfordEventsImporter::CACHE_KEY_CAT)) {
+      return $cache->data;
     }
 
-    array_unshift($opts, $this->t("- Select Category -"));
-    return $opts;
+    // If not in cache. Try to get it.
+    stanford_events_importer_update_opts();
+    return $this->cache->get(StanfordEventsImporter::CACHE_KEY_CAT)->data;
   }
 
   /**

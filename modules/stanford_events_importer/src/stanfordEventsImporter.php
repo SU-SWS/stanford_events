@@ -15,14 +15,14 @@ class StanfordEventsImporter {
   const STANFORD_EVENTS_IMPORTER_XML = "https://events.stanford.edu/xml/drupal/v2.php";
 
   /**
-   * Key used to get/set state for organization information.
+   * Bin used to get/set cache for organization information.
    */
-  const STATE_KEY_ORG = "stanford_events_importer_orgs";
+  const CACHE_KEY_ORG = "stanford_events_importer_orgs";
 
   /**
-   * Key used to get/set state for category information.
+   * Bin used to get/set cache for category information.
    */
-  const STATE_KEY_CAT = "stanford_events_importer_cats";
+  const CACHE_KEY_CAT = "stanford_events_importer_cats";
 
   /**
    * Guzzle client.

@@ -12,6 +12,7 @@ use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
 use Drupal\stanford_events_importer\StanfordEventsImporter;
+use Drupal\Core\Cache\CacheBackendInterface;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -58,9 +59,6 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
   // Reset all static caches as something is getting stuck.
   drupal_static_reset();
 
-  // Clear all plugin caches.
-  \Drupal::service('plugin.cache_clearer')
-    ->clearCachedDefinitions();
 
   // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
@@ -111,7 +109,8 @@ function stanford_events_importer_update_opts() {
   $key_val = $importer->parseXML($cat_xml_raw, $args);
 
   // Set the state storage for this site.
-  \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_CAT, $key_val);
+  \Drupal::cache()
+    ->set(StanfordEventsImporter::CACHE_KEY_CAT, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
 
   // Organizations.
   // --------------------------------------------------------------------------.
@@ -126,7 +125,8 @@ function stanford_events_importer_update_opts() {
   $key_val = $importer->parseXML($org_xml_raw, $args);
 
   // Set the state storage for this site.
-  \Drupal::state()->set(StanfordEventsImporter::STATE_KEY_ORG, $key_val);
+  \Drupal::cache()
+    ->set(StanfordEventsImporter::CACHE_KEY_ORG, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
 
   // Done.
   \Drupal::messenger()->addStatus('Updated category and organization information.');
