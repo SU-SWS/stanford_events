@@ -47,7 +47,7 @@ class StanfordEventsImporter {
    * @param string $query
    *   The argument to pass to query.
    *
-   * @return string
+   * @return string|bool
    *   Full string of raw xml.
    */
   public function fetchXML($query = "category-list") {
@@ -61,10 +61,15 @@ class StanfordEventsImporter {
       ],
     ];
 
-    $request = $this->client->get(self::STANFORD_EVENTS_IMPORTER_XML, $options);
-    $xml_raw = $request->getBody()->getContents();
+    try {
+      $request = $this->client->get(self::STANFORD_EVENTS_IMPORTER_XML, $options);
+      $xml_raw = $request->getBody()->getContents();
+      return $xml_raw;
+    }
+    catch (\Exception $e) {
+      return FALSE;
+    }
 
-    return $xml_raw;
   }
 
   /**

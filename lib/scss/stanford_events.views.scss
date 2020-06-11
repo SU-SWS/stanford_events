@@ -396,8 +396,8 @@
 // Past Event.
 .su-past-event {
   @include padding(3px 6px);
-  @include credits();
   @include modular-spacing('margin-left', 0);
+  @include credits;
   display: inline-block;
   background: $su-color-cool-grey-15;
   color: $su-color-black;

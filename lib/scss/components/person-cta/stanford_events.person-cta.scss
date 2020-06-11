@@ -31,7 +31,9 @@
       @include margin(null null 0 null);
       width: 100%;
 
-      a, a:link, a:visited {
+      a,
+      a:link,
+      a:visited {
         color: $su-color-bright-red;
 
         &::after {

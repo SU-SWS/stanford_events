@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+@charset "UTF-8";
 @import '../../stanford_events.config';
 
 .su-event-schedule {
@@ -20,7 +20,9 @@
     @include type-c;
     @include modular-spacing('margin-bottom', -1);
 
-    a, a:link, a:visited {
+    a,
+    a:link,
+    a:visited {
       color: $su-color-bright-red;
 
       &::after {

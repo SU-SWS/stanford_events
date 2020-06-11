@@ -12,7 +12,6 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
 /**
  * Plugin implementation of the 'stanford_events_importer_apiurl_field_widget'.
  *
@@ -33,6 +32,8 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   const XML_FEED = "https://events.stanford.edu/xml/drupal/v2.php";
 
   /**
+   * The cache backend service interface.
+   *
    * @var \Drupal\Core\Cache\CacheBackendInterface
    */
   protected $cache;
@@ -181,9 +182,10 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   /**
    * Callback for array_walk in massageFormValues.
    *
-   * @param $value
+   * @param array $value
+   *   The value of the array item being walked through.
    */
-  protected static function walkMassagedFormValues(&$value) {
+  protected static function walkMassagedFormValues(array &$value) {
     // All our extra form fields are stored in _other.
     $type = $value['_other']['type'] ?? '';
     $val = $value['_other'][$type] ?? '';
