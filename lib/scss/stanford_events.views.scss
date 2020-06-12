@@ -318,8 +318,8 @@
   //Back to all events link
   .more-link {
     @include modular-spacing('margin', 5 null 9 null);
-
     text-align: center;
+
     a {
       @include button-primary;
     }

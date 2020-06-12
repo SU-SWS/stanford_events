@@ -62,7 +62,6 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
     $element['#attached']['library'][] = 'core/drupal.states';
 
-
     /** @var \Drupal\link\LinkItemInterface $item */
     $item = $items[$delta];
     $defaults = $this->parseURLForDefaults($item);

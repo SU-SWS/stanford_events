@@ -3,6 +3,9 @@
 namespace Drupal\Tests\stanford_events_importer\Kernel\Plugin\Field\FieldWidget;
 
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Core\Form\FormState;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Class StanfordEventsImporterAPIURLFieldWidgetTest.php
