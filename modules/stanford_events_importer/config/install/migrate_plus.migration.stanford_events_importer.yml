@@ -21,6 +21,10 @@ source:
       label: GUID
       selector: guid
     -
+      name: event_id
+      label: 'Event ID'
+      selector: eventID
+    -
       name: title
       label: 'Event Title'
       selector: title
@@ -69,7 +73,11 @@ source:
       label: 'Contact Phone'
       selector: contactPhone
   ids:
-    guid:
+    event_id:
+      type: string
+    event_start:
+      type: string
+    event_end:
       type: string
   constants:
     status: 1
@@ -77,6 +85,7 @@ source:
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
     map_title: 'Open in map'
+    image_path: 'public://events/'
 process:
   status: constants/status
   type: constants/type
