@@ -21,6 +21,45 @@
   }
 }
 
+// Header spacing for all Event and Event series
+.section-event-series-list--header {
+  .jumpstart-ui-page-heading {
+    .heading-h1 {
+      @include modular-spacing('margin', 5 null 5 null);
+      @include modular-typography(5);
+    }
+  }
+}
+
+.section-event-series--header {
+  .node-stanford-event-series-title {
+    @include modular-spacing('margin', 6 null null null);
+  }
+}
+
+.section-event-list--title {
+  .heading-h1 {
+    @include modular-spacing('margin', 5 null 5 null);
+  }
+}
+
+// Removing top padding on first list item.
+.stanford-events-list-page,
+.stanford-events-list-page-filtered,
+.stanford-event-series {
+  .views-row:nth-child(1) {
+    div {
+      padding-top: 0;
+    }
+  }
+}
+
+// Event series bottom padding
+.stanford-event-series-list-all {
+  @include modular-spacing('margin', null null 5 null);
+}
+
+
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 3 null);
 
@@ -92,7 +131,17 @@
         }
       }
     }
-    
+
+    .event-list-item__audience {
+      @include modular-spacing('margin', null null -2 null);
+
+      a {
+        color: $su-color-black;
+        font-weight: $su-font-regular;
+        text-decoration: none;
+      }
+    }
+
     h2 {
       @include modular-typography(3);
       @include modular-spacing('margin', null null -1 null);
@@ -120,6 +169,14 @@
     .views-field-su-event-subheadline,
     .su-event-series-subheadline {
       @include modular-spacing('margin', null null 1 null);
+    }
+
+    .views-field-su-event-dek {
+      @include modular-spacing('margin', null null 0 null);
+    }
+
+    .address {
+      @include small-paragraph;
     }
 
     .views-field-su-event-date-time {
@@ -314,16 +371,6 @@
       }
     }
   }
-
-  //Back to all events link
-  .more-link {
-    @include modular-spacing('margin', 5 null 9 null);
-
-    text-align: center;
-    a {
-      @include button-primary;
-    }
-  }
 }
 
 // Event Series
@@ -356,4 +403,12 @@
   color: $su-color-black;
   font-weight: $su-font-semi-bold;
   border-radius: 6px;
+}
+
+//Edit event content link
+.views-field-su-event-edit {
+  a {
+    @include button-secondary;
+    text-align: right;
+  }
 }

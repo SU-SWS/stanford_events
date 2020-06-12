@@ -77,7 +77,13 @@
 }
 
 .su-events-details {
-  @include small-paragraph;
+
+  .flex-9-of-12 {
+    @include small-paragraph;
+    @include box-shadow('paper');
+    @include modular-spacing('padding', 2 3);
+    @include modular-spacing('margin', 3 null 3 null);
+  }
 
   .right-region {
     @include grid-media-min('md') {
@@ -242,20 +248,9 @@
 
 }
 
-.main-region {
-  .stanford-events-more-events-block {
+.su-events-body {
+  .main-region {
     @include modular-spacing('margin', null null 5 null);
-  }
-
-  .node-stanford-event-su-event-cta {
-    text-align: center;
-
-    .su-event-cta {
-
-      a {
-        color: $su-color-white;
-      }
-    }
   }
 }
 
