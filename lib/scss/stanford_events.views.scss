@@ -1,0 +1,357 @@
+@charset 'UTF-8';
+@import "./stanford_events.config";
+
+// Filtered list
+.stanford-event-terms-utility-results-for {
+  @include modular-spacing('margin', null null 2 null);
+
+  > div,
+  h2 {
+    @include small-paragraph;
+
+    display: inline-block;
+    font-weight: $su-font-regular;
+  }
+
+  a {
+    &:hover,
+    &:focus  {
+      color: $su-color-black;
+    }
+  }
+}
+
+.su-event-list-item {
+  @include modular-spacing('padding', 2 null 3 null);
+
+  display: flex;
+  border-bottom: 1px solid $su-color-cool-grey-25;
+
+  @include grid-media-max('sm') {
+    display: block;
+  }
+
+  .su-event-list-item__date {
+    @include modular-spacing(margin, null 3 null null);
+
+    @include grid-media-max('sm') {
+      align-items: center;
+      display: flex;
+    }
+
+    max-width: 45px;
+
+    span {
+      display: block;
+    }
+
+    .su-event-start-month,
+    .su-event-end-month {
+      @include modular-typography(0);
+
+      color: $su-color-black;
+      font-weight: $su-font-bold;
+      text-transform: uppercase;
+    }
+
+    .su-event-list-item__date__seperator {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null 0 null);
+      color: $su-color-black;
+
+      @include grid-media-max('sm') {
+        @include modular-spacing(margin, null -1);
+        min-width: 24px;
+      }
+    }
+
+    .su-event-start-date,
+    .su-event-end-date {
+      @include modular-typography(4);
+      color: $su-color-black;
+      font-weight: $su-font-bold;
+    }
+  }
+
+  .su-event-list-item__details {
+    @include big-paragraph;
+
+    color: $su-color-black;
+    flex-grow: 2;
+
+    .event-list-item__type {
+      @include modular-spacing('margin', null null -2 null);
+
+      a {
+        color: $su-color-black;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $su-color-bright-red;
+        }
+      }
+    }
+
+    h2 {
+      @include modular-typography(3);
+      @include modular-spacing('margin', null null -1 null);
+
+      > a {
+        color: $su-color-bright-red;
+        font-weight: $su-font-bold;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $su-color-black;
+        }
+
+        &::after {
+          background-color: $su-color-bright-red;
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+
+    .views-field-su-event-subheadline,
+    .su-event-series-subheadline {
+      @include modular-spacing('margin', null null 1 null);
+    }
+
+    .views-field-su-event-date-time {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null -2 null);
+
+      // Align multirow text with the icon.
+      display: flex;
+
+      //Font Awesome Icon setup and spacings
+      span {
+        @include modular-spacing('padding', null -2 null null);
+
+        &::before {
+          color: $su-color-black;
+          font-family: 'Font Awesome 5 Free';
+          // Need this for the new version of FA. Will go away later.
+          font-weight: $su-font-semi-bold;
+        }
+      }
+    }
+
+    // Icon set up.
+    // Calendar icon
+    .views-field-su-event-date-time {
+      span {
+        &::before {
+          // Need to switch to the SU icons.
+          content: "\f073";
+
+          @include grid-media-max('sm') {
+            left: -16px;
+          }
+        }
+      }
+    }
+
+    .views-field-su-event-location {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null 3 null);
+
+      // Align multirow text with the icon.
+      display: flex;
+
+      > span {
+        @include modular-spacing('padding', null -2 null null);
+
+        &::before {
+          color: $su-color-black;
+          font-family: 'Font Awesome 5 Free';
+          // Need this for the new version of FA. Will go away later.
+          font-weight: $su-font-semi-bold;
+          // Need to switch to the SU icons.
+          content: "\f3c5";
+        }
+      }
+    }
+
+    .views-field-su-event-address {
+      @include small-paragraph;
+      @include modular-spacing('margin', null null 3 null);
+
+      // Align multirow text with the icon.
+      display: flex;
+
+      > span {
+        @include modular-spacing('padding', null -2 null null);
+
+        &::before {
+          color: $su-color-black;
+          font-family: 'Font Awesome 5 Free';
+          // Need this for the new version of FA. Will go away later.
+          font-weight: $su-font-semi-bold;
+          // Need to switch to the SU icons.
+          content: "\f3c5";
+        }
+      }
+    }
+  }
+}
+
+// Wrapper spacing
+.section-events-list--content {
+  .main-region {
+    @include modular-spacing('padding-left', 2);
+  }
+}
+
+.stanford-events-list-page,
+.stanford-events-list-page--filtered {
+  .views-infinite-scroll-content-wrapper {
+    @include modular-spacing('margin-bottom', 5);
+
+    & + .js-pager__items {
+      @include modular-spacing('margin-bottom', 8);
+    }
+  }
+
+  // Load more button.
+  .js-pager__items {
+    text-align: center;
+
+    .pager__item {
+      display: inline-block;
+
+      .button {
+        @include button-big;
+      }
+    }
+  }
+}
+
+// Explore More Block.
+.stanford-events-more-events-block {
+
+  @include grid-media-max('md') {
+    .flex-4-of-12 {
+      @include modular-spacing('margin', null null 3 null);
+
+      flex: none;
+      max-width: 980px;
+      width: 100%;
+    }
+  }
+
+  .views-row {
+    align-items: flex-start;
+  }
+
+  .su-event-list-item {
+    display: unset;
+
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
+
+    .su-event-list-item__date {
+      @include modular-spacing('margin', null null 0 null);
+      max-width: unset;
+    }
+  }
+
+  .views-col {
+    @include modular-spacing('padding', 2 2 3 2);
+    @include box-shadow('shallow');
+
+    border: 1px solid $su-color-cool-grey-15;
+
+    .su-date-stacked {
+      text-align: left;
+
+      .su-event-start-date,
+      .su-event-end-date {
+        font-weight: $su-font-bold;
+      }
+
+    }
+
+    h2 {
+      @include modular-spacing('margin', -2 null 3 null);
+
+      a {
+        @include type-f;
+        @include modular-spacing('margin', -2 null 0 null);
+
+        color: $su-color-black;
+        font-weight: $su-font-bold;
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .event_list_item__type {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
+  }
+
+  //Back to all events link
+  .more-link {
+    @include modular-spacing('margin', 5 null 9 null);
+    text-align: center;
+
+    a {
+      @include button-primary;
+    }
+  }
+}
+
+// Event Series
+// header specific
+.node-stanford-event-series-title {
+  @include modular-spacing('margin', null null -1 null);
+}
+
+.node-stanford-event-series-su-event-series-subheadline {
+  @include modular-spacing('margin', null null 2 null);
+}
+
+.node-stanford-event-series-su-event-series-dek {
+  @include big-paragraph;
+  @include modular-spacing('padding', null null 3 null);
+  @include modular-spacing('margin', null null 5 null);
+}
+
+.su-event-series-items {
+  @include modular-spacing('margin', null null 5 null);
+}
+
+// Past Event.
+.su-past-event {
+  @include padding(3px 6px);
+  @include modular-spacing('margin-left', 0);
+  @include credits;
+  display: inline-block;
+  background: $su-color-cool-grey-15;
+  color: $su-color-black;
+  font-weight: $su-font-semi-bold;
+  border-radius: 6px;
+}

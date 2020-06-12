@@ -1,0 +1,67 @@
+{#
+  Event Cards for Explore More
+
+  Template for an Event List Item.
+
+  * Available variables:
+  * - attributes: For additional HTML attributes not already provided.
+  * - modifier_class: Additional CSS classes to change look and behavior.
+  * - su_event_start_month: Starting month of the event.
+  * - su_event_start_date: Date of the event
+  * - su_event_end_month: Ending month of the event if it spans more than one day.
+  * - su_event_end_date: Ending day of the event if it spans more than one day.
+  * - su_event_audience: Optional audience for the event.
+  * - su_event_headline: Title of the event. Can be a link off to another website.
+  * - su_event_subheadline: Optional subtile for the event.
+  * - su_event_date_time: Date and time for the event.
+#}
+
+{%- set attributes = attributes.addClass(['su-event-list-item', 'su-event-explore-more','su-card--minimal', modifier_class]) -%}
+{%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
+
+{# Clean up the date fields. #}
+{%- set su_event_start_date = su_event_start_date|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_end_date = su_event_end_date|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_start_month = su_event_start_month|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
+
+<div {{ attributes }}>
+  <div class="su-event-list-item__date">
+    <div class="su-date-stacked su-date-stacked--no-background">
+      <span class="su-event-start-month">{{ su_event_start_month }}</span>
+      <span class="su-event-start-date">{{ su_event_start_date }}</span>
+    </div>
+
+    {# Seperator and end date should be conditional #}
+    {%- if su_event_start_date != su_event_end_date or su_event_start_month != su_event_end_month %}
+      <span class="su-event-list-item__date__seperator">&ndash;to&ndash;</span>
+
+      <div class="su-date-stacked su-date-stacked--no-background">
+        <span class="su-event-end-month"> {{ su_event_end_month }}</span>
+        <span class="su-event-end-date">{{ su_event_end_date }}</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="su-event-list-item__details">
+
+    {# Event Type  #}
+    {%- if su_event_type|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <span class="event_list_item__type">{{- su_event_type -}}</span>
+    {%- endif -%}
+
+    {# Event Title  #}
+    {{- su_event_headline -}}
+
+    {# Event Subheadline  #}
+    {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
+      {{- su_event_subheadline -}}
+    {%- endif -%}
+
+    {# Event Date/Time  #}
+    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
+      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
+    {%- endif -%}
+
+  </div>
+</div>
