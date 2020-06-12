@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-@import "./stanford_events.config";
+@import '../../stanford_events.config';
 
 // Filtered list
 .stanford-event-terms-utility-results-for {
@@ -58,7 +58,6 @@
 .stanford-event-series-list-all {
   @include modular-spacing('margin', null null 5 null);
 }
-
 
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 3 null);
@@ -255,7 +254,6 @@
         }
       }
     }
-
   }
 }
 
@@ -339,7 +337,6 @@
       .su-event-end-date {
         font-weight: $su-font-bold;
       }
-
     }
 
     h2 {
