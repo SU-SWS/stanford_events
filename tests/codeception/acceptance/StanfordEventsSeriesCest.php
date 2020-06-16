@@ -76,7 +76,7 @@ class StanfordEventsSeriesCest {
       'su_event_series_dek' => "This is a dek",
       'su_event_series_event' => $event_nodes,
       'su_event_series_subheadline' => "This is a subheadline",
-    ]);
+    ], 'node', FALSE);
   }
 
    /**
