@@ -81,6 +81,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
 
     $widget_value = $form['field_xml_link']['widget'][0];
     $this->assertIsArray($widget_value);
+    $this->assertTrue(True);
   }
 
 }
