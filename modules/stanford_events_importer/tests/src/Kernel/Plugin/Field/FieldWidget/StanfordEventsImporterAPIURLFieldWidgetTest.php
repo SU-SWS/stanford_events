@@ -92,13 +92,13 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
       'three' => 'Three',
     ];
 
-    // Categories.
-    \Drupal::cache()
-      ->set(StanfordEventsImporter::CACHE_KEY_CAT, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
-
-    // Orgs.
-    \Drupal::cache()
-      ->set(StanfordEventsImporter::CACHE_KEY_ORG, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
+    // // Categories.
+    // \Drupal::cache()
+    //   ->set(StanfordEventsImporter::CACHE_KEY_CAT, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
+    //
+    // // Orgs.
+    // \Drupal::cache()
+    //   ->set(StanfordEventsImporter::CACHE_KEY_ORG, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
 
   }
 
@@ -132,6 +132,20 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     $this->assertIsArray($widget_value);
     $this->assertEquals($widget_value['_other']['organization']['#options']['one'], "One");
     $this->assertEquals($widget_value['_other']['category']['#options']['two'], "Two");
+  }
+
+  /**
+   * [getGetOptions description]
+   * @return [type] [description]
+   */
+  public function getGetOptions() {
+    stanford_events_importer_update_opts();
+    $cache = \Drupal::cache()
+      ->get(StanfordEventsImporter::CACHE_KEY_ORG);
+    $this->assertIsArray($cache->data);
+    $cache2 = \Drupal::cache()
+      ->get(StanfordEventsImporter::CACHE_KEY_CAT);
+    $this->assertIsArray($cache2->data);
   }
 
 }

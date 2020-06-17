@@ -9,6 +9,8 @@ use Drupal\Tests\UnitTestCase;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\Core\Url;
+use GuzzleHttp\Client;
 
 /**
  * Class StanfordEventsImporterAPIURLFieldWidget
@@ -22,6 +24,11 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
    * The fieldWidget Plugin.
    */
   public $plugin;
+
+  /**
+   * @var \GuzzleHttp\ClientInterface
+   */
+  public $client;
 
   /**
    * The field def.
@@ -156,6 +163,8 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
 
     // Make it.
     $this->plugin = new StanfordEventsImporterAPIURLFieldWidget($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $cache->reveal());
+    $this->client = new Client();
+
   }
 
   /**
@@ -202,9 +211,21 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
   /**
    * Test
    */
+  public function testParseURLForDefaults() {
+    $url = Url::fromUri('https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked');
+    $parts = $this->plugin->parseURLForDefaults($url);
+
+    $this->assertIsArray($parts);
+    $this->assertEquals($parts['type'], "organization")
+    $this->assertEquals($parts['organization'], "23")
+    $this->assertEquals($parts['org_status'], "bookmarked")
+  }
+
+  /**
+   * Test
+   */
   public function testIsApplicable() {
     $this->assertTrue(StanfordEventsImporterAPIURLFieldWidget::isApplicable($this->field_definition));
   }
 
 }
-
