@@ -105,5 +105,34 @@ EOD;
     $this->assertEquals("Class", $result[19]);
   }
 
+  /**
+   * Make sure exception passes back false.
+   * @return [type] [description]
+   */
+  public function testFetchXMLException() {
+    $client = new BadClient();
+    $plugin = new StanfordEventsImporter($client);
+    $val = $plugin->fetchXML();
+    $this->assertFalse($val);
+  }
+
+  /**
+   * Make sure exception passes back false.
+   * @return [type] [description]
+   */
+  public function testParseXMLException() {
+    $args = [
+      'guids' => '/CategoryList/Category/guid',
+      'label' => '/CategoryList/Category/name',
+    ];
+    $val = $this->plugin->parseXML('<root><item>stuff</item></root>', $args);
+    $this->assertFalse($val);
+  }
+
 }
 
+class BadClient extends Client {
+  public function get($url, $arg) {
+    throw new \Exception("I can do that Dave.");
+  }
+}

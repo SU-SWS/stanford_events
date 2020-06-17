@@ -5,7 +5,6 @@ namespace Drupal\Tests\stanford_events_importer\Kernel\Plugin\Field\FieldWidget;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
-use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\node\Entity\NodeType;
@@ -20,8 +19,6 @@ use Drupal\Core\Cache\CacheBackendInterface;
  * @coversDefaultClass \Drupal\stanford_events_importer\Plugin\Field\FieldWidget\StanfordEventsImporterAPIURLFieldWidget
  */
 class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
-
-  // https://www.drupal.org/project/drupal/issues/3039565
 
   /**
    * {@inheritDoc}
