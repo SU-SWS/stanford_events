@@ -101,8 +101,32 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
       ->removeComponent('created')
       ->save();
 
+    $node->set('su_event_xml_url', [
+      [
+        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?featured',
+        'title' => '',
+        'options' => ''
+      ],
+      [
+        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?today',
+        'title' => '',
+        'options' => ''
+      ],
+      [
+        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked',
+        'title' => '',
+        'options' => ''
+      ],
+      [
+        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?category=23',
+        'title' => '',
+        'options' => ''
+      ],
+    ]);
+
     $form = [];
     $form_state = new FormState();
+
 
     $entity_form_display->buildForm($node, $form, $form_state);
 
