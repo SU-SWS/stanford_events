@@ -214,54 +214,8 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
   /**
    * Test
    */
-  public function testParseURLForDefaults() {
-    $obj = new MockLinkMapClass();
-    $mock = new MockLinkItemInterfaceObject($obj);
-
-    $parts = $this->plugin->parseURLForDefaults($mock);
-
-    $this->assertIsArray($parts);
-    $this->assertEquals($parts['type'], "organization");
-    $this->assertEquals($parts['organization'], "23");
-    $this->assertEquals($parts['org_status'], "bookmarked");
-  }
-
-  /**
-   * Test
-   */
   public function testIsApplicable() {
     $this->assertTrue(StanfordEventsImporterAPIURLFieldWidget::isApplicable($this->field_definition));
-  }
-
-}
-
-/**
- * [MockLinkMapClass description]
- */
-class MockLinkMapClass {
-  public function getValue() {
-    return "https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked";
-  }
-}
-
-/**
- * [MockLinkItemInterfaceObject description]
- */
-class MockLinkItemInterfaceObject extends LinkItem implements LinkItemInterface {
-
-  protected $obj;
-
-  // Nada.
-  public function __construct($obj) {
-    $this->obj = $obj;
-  }
-
-  public function getUrl() {
-    return $this->obj;
-  }
-
-  public function get($key) {
-    return $this->getUrl();
   }
 
 }
