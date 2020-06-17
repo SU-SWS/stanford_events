@@ -5,6 +5,7 @@ dependencies:
     - config_pages.type.stanford_events_importer
     - field.field.config_pages.stanford_events_importer.su_event_xml_url
   module:
+    - link
     - field_group
     - stanford_events_importer
 third_party_settings:
@@ -38,4 +39,3 @@ content:
     region: content
 hidden:
   label: true
-

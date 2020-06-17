@@ -66,8 +66,8 @@ class StanfordEventsSeriesCest {
       $event_nodes[] = ['target_id' => $node->id()];
     }
 
-    // Something sticks.
-    $I->runDrush("cr");
+    drupal_static_reset();
+    drupal_flush_all_caches();
 
     return $I->createEntity([
       'type' => 'stanford_event_series',
