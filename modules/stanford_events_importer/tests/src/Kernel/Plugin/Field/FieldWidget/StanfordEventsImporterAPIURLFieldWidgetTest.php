@@ -135,7 +135,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
    * [getGetOptions description]
    * @return [type] [description]
    */
-  public function getGetOptions() {
+  public function testGetOptions() {
     stanford_events_importer_update_opts();
     $cache = \Drupal::cache()
       ->get(StanfordEventsImporter::CACHE_KEY_ORG);

@@ -4,8 +4,14 @@ namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
 
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Drupal\Tests\UnitTestCase;
-use GuzzleHttp\Client;
 use Drupal\Core\Cache\DatabaseBackend;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
+
 
 /**
  * Class StanfordEventsImporterTest
@@ -31,7 +37,33 @@ class StanfordEventsImporterTest extends UnitTestCase {
   public $xml;
 
   public function setup() {
-    $this->client = new Client();
+    $mock = new MockHandler([
+        new Response(200, [], '<CategoryList>
+        <Category>
+        <guid>0</guid>
+        <categoryID>0</categoryID>
+        <name>Arts</name>
+        <type>3</type>
+        <description>Arts</description>
+        <tag>arts</tag>
+        </Category>
+        </CategoryList>'),
+        new Response(200, [], '<OrganizationList>
+        <Organization>
+        <guid>279</guid>
+        <organizationID>279</organizationID>
+        <name>AASA</name>
+        <type>2</type>
+        <email>eshih@stanford.edu</email>
+        <phone>510-366-6550</phone>
+        <url>https://events.stanford.edu/byOrganization/279/</url>
+        <rssUrl>https://events.stanford.edu/byOrganization/279/</rssUrl>
+        </Organization>
+        </OrganizationList>'),
+    ]);
+    $handlerStack = HandlerStack::create($mock);
+    $client = new Client(['handler' => $handlerStack]);
+    $this->client = $client;
     $this->plugin = new StanfordEventsImporter($this->client);
   }
 
@@ -43,7 +75,7 @@ class StanfordEventsImporterTest extends UnitTestCase {
     $this->assertContains("Arts", $this->xml);
 
     $orgs = $this->plugin->fetchXML('organization-list');
-    $this->assertContains("Bing Overseas Studies Program", $orgs);
+    $this->assertContains("AASA", $orgs);
   }
 
   /**
@@ -110,7 +142,12 @@ EOD;
    * @return [type] [description]
    */
   public function testFetchXMLException() {
-    $client = new BadClient();
+    // Create a mock and queue two responses.
+    $mock = new MockHandler([
+        new RequestException('Error Communicating with Server', new Request('GET', 'test'))
+    ]);
+    $handlerStack = HandlerStack::create($mock);
+    $client = new Client(['handler' => $handlerStack]);
     $plugin = new StanfordEventsImporter($client);
     $val = $plugin->fetchXML();
     $this->assertFalse($val);
@@ -129,10 +166,4 @@ EOD;
     $this->assertFalse($val);
   }
 
-}
-
-class BadClient extends Client {
-  public function get($url, $arg) {
-    throw new \Exception("I can do that Dave.");
-  }
 }
