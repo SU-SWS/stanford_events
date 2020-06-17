@@ -33,9 +33,6 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     'stanford_events_importer',
   ];
 
-  // https://www.drupal.org/project/drupal/issues/3039565
-  protected $strictConfigSchema = FALSE;
-
   /**
    * {@inheritDoc}
    */
@@ -94,10 +91,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
       'mode' => 'default',
       'status' => TRUE,
     ]);
-    $entity_form_display->setComponent(
-      'su_event_xml_url',
-      ['type' => 'stanford_events_importer_apiurl_field_widget']
-      )
+    $entity_form_display->setComponent('su_event_xml_url', ['type' => 'stanford_events_importer_apiurl_field_widget'])
       ->removeComponent('created')
       ->save();
 

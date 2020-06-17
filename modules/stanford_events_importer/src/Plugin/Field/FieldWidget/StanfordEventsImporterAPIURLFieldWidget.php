@@ -41,6 +41,13 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   /**
    * {@inheritdoc}
    */
+  public static function defaultSettings() {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($plugin_id, $plugin_definition, $configuration['field_definition'], $configuration['settings'], $configuration['third_party_settings'], $container->get('cache.default'));
   }
@@ -258,7 +265,8 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
     // By default, widgets are available for all fields. Limit to just one.
     $allow = ['su_event_xml_url'];
-    $field_name = $field_definition->getFieldStorageDefinition()->get('field_name');
+    $field_name = $field_definition->getFieldStorageDefinition()
+      ->get('field_name');
     return in_array($field_name, $allow);
   }
 

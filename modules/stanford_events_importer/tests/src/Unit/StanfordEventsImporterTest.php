@@ -4,10 +4,7 @@ namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
 
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Drupal\Tests\UnitTestCase;
-use Drupal\Core\Cache\DatabaseBackend;
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Exception\RequestException;
@@ -37,8 +34,18 @@ class StanfordEventsImporterTest extends UnitTestCase {
   public $xml;
 
   public function setup() {
-    $mock = new MockHandler([
-        new Response(200, [], '<CategoryList>
+    $this->client = $this->createMock(ClientInterface::class);
+    $this->client->method('request')
+      ->will($this->returnCallback([$this, 'getResponseCallback']));
+
+    $this->plugin = new StanfordEventsImporter($this->client);
+  }
+
+  /**
+   * Guzzle client get request callback.
+   */
+  public function getResponseCallback($method, $url, $options) {
+    $category = '<CategoryList>
         <Category>
         <guid>0</guid>
         <categoryID>0</categoryID>
@@ -47,8 +54,8 @@ class StanfordEventsImporterTest extends UnitTestCase {
         <description>Arts</description>
         <tag>arts</tag>
         </Category>
-        </CategoryList>'),
-        new Response(200, [], '<OrganizationList>
+        </CategoryList>';
+    $orgs = '<OrganizationList>
         <Organization>
         <guid>279</guid>
         <organizationID>279</organizationID>
@@ -59,12 +66,17 @@ class StanfordEventsImporterTest extends UnitTestCase {
         <url>https://events.stanford.edu/byOrganization/279/</url>
         <rssUrl>https://events.stanford.edu/byOrganization/279/</rssUrl>
         </Organization>
-        </OrganizationList>'),
-    ]);
-    $handlerStack = HandlerStack::create($mock);
-    $client = new Client(['handler' => $handlerStack]);
-    $this->client = $client;
-    $this->plugin = new StanfordEventsImporter($this->client);
+        </OrganizationList>';
+
+    $response = $this->createMock(Response::class);
+
+    $body = $orgs;
+    if (isset($options['query']['category-list'])) {
+      $body = $category;
+    }
+    $response->method('getBody')
+      ->willReturn($body);
+    return $response;
   }
 
   /**
@@ -139,15 +151,13 @@ EOD;
 
   /**
    * Make sure exception passes back false.
+   *
    * @return [type] [description]
    */
   public function testFetchXMLException() {
-    // Create a mock and queue two responses.
-    $mock = new MockHandler([
-        new RequestException('Error Communicating with Server', new Request('GET', 'test'))
-    ]);
-    $handlerStack = HandlerStack::create($mock);
-    $client = new Client(['handler' => $handlerStack]);
+    $client = $this->createMock(ClientInterface::class);
+    $client->method('request')
+      ->willThrowException(new RequestException('Failure', new Request('GET', 'test')));
     $plugin = new StanfordEventsImporter($client);
     $val = $plugin->fetchXML();
     $this->assertFalse($val);
@@ -155,6 +165,7 @@ EOD;
 
   /**
    * Make sure exception passes back false.
+   *
    * @return [type] [description]
    */
   public function testParseXMLException() {
