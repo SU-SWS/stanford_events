@@ -1068,7 +1068,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1120,7 +1120,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Day'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1172,7 +1172,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1224,7 +1224,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Day'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1339,7 +1339,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Full Date & Time'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -1372,7 +1372,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
@@ -2329,7 +2329,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2381,7 +2381,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Date'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2414,7 +2414,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -2433,7 +2433,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2466,7 +2466,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -2485,7 +2485,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Date'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2518,7 +2518,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -2855,7 +2855,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2888,7 +2888,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: span
           element_wrapper_class: su-start-month
           element_default_classes: true
@@ -2907,7 +2907,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Start Date'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2940,7 +2940,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: span
           element_wrapper_class: su-start-date
           element_default_classes: true
@@ -2959,7 +2959,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Month'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -2992,7 +2992,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: span
           element_wrapper_class: su-end-month
           element_default_classes: true
@@ -3011,7 +3011,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'End Date'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -3044,7 +3044,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: span
           element_wrapper_class: su-end-date
           element_default_classes: true
@@ -3504,3 +3504,4 @@ display:
         - 'config:field.storage.node.su_event_source'
         - 'config:field.storage.node.su_event_subheadline'
         - 'config:field.storage.node.su_event_type'
+
