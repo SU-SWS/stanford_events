@@ -92,13 +92,13 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
       'three' => 'Three',
     ];
 
-    // // Categories.
-    // \Drupal::cache()
-    //   ->set(StanfordEventsImporter::CACHE_KEY_CAT, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
-    //
-    // // Orgs.
-    // \Drupal::cache()
-    //   ->set(StanfordEventsImporter::CACHE_KEY_ORG, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
+    // Categories.
+    \Drupal::cache()
+      ->set(StanfordEventsImporter::CACHE_KEY_CAT, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
+
+    // Orgs.
+    \Drupal::cache()
+      ->set(StanfordEventsImporter::CACHE_KEY_ORG, $key_val, CacheBackendInterface::CACHE_PERMANENT, ['stanford_events_importer']);
 
   }
 
