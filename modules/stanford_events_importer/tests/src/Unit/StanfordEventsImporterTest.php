@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
+namespace Drupal\Tests\stanford_events_importer\Unit;
 
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Drupal\Tests\UnitTestCase;
