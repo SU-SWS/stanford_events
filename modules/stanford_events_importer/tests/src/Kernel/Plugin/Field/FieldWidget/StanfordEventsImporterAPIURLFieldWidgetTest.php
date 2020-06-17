@@ -131,18 +131,4 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     $this->assertEquals($widget_value['_other']['category']['#options']['two'], "Two");
   }
 
-  /**
-   * [getGetOptions description]
-   * @return [type] [description]
-   */
-  public function testGetOptions() {
-    stanford_events_importer_update_opts();
-    $cache = \Drupal::cache()
-      ->get(StanfordEventsImporter::CACHE_KEY_ORG);
-    $this->assertIsArray($cache->data);
-    $cache2 = \Drupal::cache()
-      ->get(StanfordEventsImporter::CACHE_KEY_CAT);
-    $this->assertIsArray($cache2->data);
-  }
-
 }
