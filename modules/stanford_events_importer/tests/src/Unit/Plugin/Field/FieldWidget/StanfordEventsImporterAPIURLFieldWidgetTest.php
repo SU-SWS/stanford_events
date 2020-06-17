@@ -216,9 +216,9 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
     $parts = $this->plugin->parseURLForDefaults($url);
 
     $this->assertIsArray($parts);
-    $this->assertEquals($parts['type'], "organization")
-    $this->assertEquals($parts['organization'], "23")
-    $this->assertEquals($parts['org_status'], "bookmarked")
+    $this->assertEquals($parts['type'], "organization");
+    $this->assertEquals($parts['organization'], "23");
+    $this->assertEquals($parts['org_status'], "bookmarked");
   }
 
   /**
