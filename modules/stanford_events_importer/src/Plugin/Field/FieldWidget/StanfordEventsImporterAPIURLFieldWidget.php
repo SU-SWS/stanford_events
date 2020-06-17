@@ -228,7 +228,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    *
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  protected function parseURLForDefaults(LinkItemInterface $item) {
+  public function parseURLForDefaults(LinkItemInterface $item) {
     $parsed = [];
     $uri = $item->get('uri')->getValue();
 

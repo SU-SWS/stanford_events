@@ -11,6 +11,9 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Url;
 use GuzzleHttp\Client;
+use Drupal\Core\TypedData\Plugin\DataType\Map;
+use Drupal\link\LinkItemInterface;
+use Drupal\link\Plugin\Field\FieldType\LinkItem;
 
 /**
  * Class StanfordEventsImporterAPIURLFieldWidget
@@ -212,8 +215,10 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
    * Test
    */
   public function testParseURLForDefaults() {
-    $url = Url::fromUri('https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked');
-    $parts = $this->plugin->parseURLForDefaults($url);
+    $obj = new MockLinkMapClass();
+    $mock = new MockLinkItemInterfaceObject($obj);
+
+    $parts = $this->plugin->parseURLForDefaults($mock);
 
     $this->assertIsArray($parts);
     $this->assertEquals($parts['type'], "organization");
@@ -226,6 +231,37 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
    */
   public function testIsApplicable() {
     $this->assertTrue(StanfordEventsImporterAPIURLFieldWidget::isApplicable($this->field_definition));
+  }
+
+}
+
+/**
+ * [MockLinkMapClass description]
+ */
+class MockLinkMapClass {
+  public function getValue() {
+    return "https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked";
+  }
+}
+
+/**
+ * [MockLinkItemInterfaceObject description]
+ */
+class MockLinkItemInterfaceObject extends LinkItem implements LinkItemInterface {
+
+  protected $obj;
+
+  // Nada.
+  public function __construct($obj) {
+    $this->obj = $obj;
+  }
+
+  public function getUrl() {
+    return $this->obj;
+  }
+
+  public function get($key) {
+    return $this->getUrl();
   }
 
 }
