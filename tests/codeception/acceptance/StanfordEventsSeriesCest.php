@@ -5,12 +5,14 @@ class StanfordEventsSeriesCest {
   /**
    * Events Series Module Enable.
    */
-  public function EnableModule(AcceptanceTester $I) {
+  public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_series');
+    drupal_static_reset();
+    drupal_flush_all_caches();
   }
 
   /**
-   * @depends EnableModule
+   * Test admin.
    */
   public function testEventSeriesNodeFieldsAsAdmin(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -25,8 +27,6 @@ class StanfordEventsSeriesCest {
 
   /**
    * Test for create node and view display.
-   *
-   * @depends EnableModule
    */
   public function testCreateNewNode(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -44,7 +44,7 @@ class StanfordEventsSeriesCest {
   }
 
   /**
-   * @depends EnableModule
+   * Test Path Auto Settings.
    */
   public function testEventSeriesPathAuto(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -56,8 +56,6 @@ class StanfordEventsSeriesCest {
 
   /**
    * Creates an event series node.
-   *
-   * @depends EnableModule
    */
   protected function createEventSeriesNode(AcceptanceTester $I, $node_title = NULL) {
     $event_nodes = [];
@@ -66,9 +64,6 @@ class StanfordEventsSeriesCest {
       $event_nodes[] = ['target_id' => $node->id()];
     }
 
-    // Something sticks.
-    $I->runDrush("cr");
-
     return $I->createEntity([
       'type' => 'stanford_event_series',
       'title' => $node_title ?: 'This is a test event series node',
@@ -76,12 +71,11 @@ class StanfordEventsSeriesCest {
       'su_event_series_dek' => "This is a dek",
       'su_event_series_event' => $event_nodes,
       'su_event_series_subheadline' => "This is a subheadline",
-    ]);
+    ], 'node', FALSE);
   }
 
    /**
-    * [protected description]
-    * @var [type]
+    * Create event nodes.
     */
    protected function createEventNode(AcceptanceTester $I, $node_title = null, $time_multiplier = 1) {
      $start = time() - (60 * 60 * 24 * $time_multiplier);
@@ -110,8 +104,6 @@ class StanfordEventsSeriesCest {
 
    /**
     * Test for Views.
-    *
-    * @depends EnableModule
     */
    public function testForViewsExist(AcceptanceTester $I) {
      $I->logInWithRole('administrator');
@@ -121,8 +113,6 @@ class StanfordEventsSeriesCest {
 
    /**
     * Test for Page Manager Pages.
-    *
-    * @depends EnableModule
     */
    public function testForPageManagerPagesExist(AcceptanceTester $I) {
      $I->logInWithRole('administrator');

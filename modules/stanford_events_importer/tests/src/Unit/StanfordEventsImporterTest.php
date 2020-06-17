@@ -4,8 +4,11 @@ namespace Drupal\Tests\stanford_events_importer\Unit\Plugin\Field\FieldWidget;
 
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Drupal\Tests\UnitTestCase;
-use GuzzleHttp\Client;
-use Drupal\Core\Cache\DatabaseBackend;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
+
 
 /**
  * Class StanfordEventsImporterTest
@@ -31,8 +34,49 @@ class StanfordEventsImporterTest extends UnitTestCase {
   public $xml;
 
   public function setup() {
-    $this->client = new Client();
+    $this->client = $this->createMock(ClientInterface::class);
+    $this->client->method('request')
+      ->will($this->returnCallback([$this, 'getResponseCallback']));
+
     $this->plugin = new StanfordEventsImporter($this->client);
+  }
+
+  /**
+   * Guzzle client get request callback.
+   */
+  public function getResponseCallback($method, $url, $options) {
+    $category = '<CategoryList>
+        <Category>
+        <guid>0</guid>
+        <categoryID>0</categoryID>
+        <name>Arts</name>
+        <type>3</type>
+        <description>Arts</description>
+        <tag>arts</tag>
+        </Category>
+        </CategoryList>';
+    $orgs = '<OrganizationList>
+        <Organization>
+        <guid>279</guid>
+        <organizationID>279</organizationID>
+        <name>AASA</name>
+        <type>2</type>
+        <email>eshih@stanford.edu</email>
+        <phone>510-366-6550</phone>
+        <url>https://events.stanford.edu/byOrganization/279/</url>
+        <rssUrl>https://events.stanford.edu/byOrganization/279/</rssUrl>
+        </Organization>
+        </OrganizationList>';
+
+    $response = $this->createMock(Response::class);
+
+    $body = $orgs;
+    if (isset($options['query']['category-list'])) {
+      $body = $category;
+    }
+    $response->method('getBody')
+      ->willReturn($body);
+    return $response;
   }
 
   /**
@@ -43,7 +87,7 @@ class StanfordEventsImporterTest extends UnitTestCase {
     $this->assertContains("Arts", $this->xml);
 
     $orgs = $this->plugin->fetchXML('organization-list');
-    $this->assertContains("Bing Overseas Studies Program", $orgs);
+    $this->assertContains("AASA", $orgs);
   }
 
   /**
@@ -105,5 +149,32 @@ EOD;
     $this->assertEquals("Class", $result[19]);
   }
 
-}
+  /**
+   * Make sure exception passes back false.
+   *
+   * @return [type] [description]
+   */
+  public function testFetchXMLException() {
+    $client = $this->createMock(ClientInterface::class);
+    $client->method('request')
+      ->willThrowException(new RequestException('Failure', new Request('GET', 'test')));
+    $plugin = new StanfordEventsImporter($client);
+    $val = $plugin->fetchXML();
+    $this->assertFalse($val);
+  }
 
+  /**
+   * Make sure exception passes back false.
+   *
+   * @return [type] [description]
+   */
+  public function testParseXMLException() {
+    $args = [
+      'guids' => '/CategoryList/Category/guid',
+      'label' => '/CategoryList/Category/name',
+    ];
+    $val = $this->plugin->parseXML('<root><item>stuff</item></root>', $args);
+    $this->assertFalse($val);
+  }
+
+}

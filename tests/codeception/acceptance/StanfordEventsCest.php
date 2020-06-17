@@ -94,10 +94,10 @@ class StanfordEventsCest {
     // Event Audience.
     $I->amOnPage("/admin/structure/taxonomy/manage/event_audience/overview");
     $I->canSee("Students");
-    $I->canSee("Alumni / Friends");
+    $I->canSee("Alumni/Friends");
     $I->canSee("Members");
     $I->canSee("General Public");
-    $I->canSee("Faculty / Staff");
+    $I->canSee("Faculty/Staff");
 
     // Event Type.
     $I->amOnPage("/admin/structure/taxonomy/manage/stanford_event_types/overview");

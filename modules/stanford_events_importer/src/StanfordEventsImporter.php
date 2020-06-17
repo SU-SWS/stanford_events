@@ -62,8 +62,8 @@ class StanfordEventsImporter {
     ];
 
     try {
-      $request = $this->client->get(self::STANFORD_EVENTS_IMPORTER_XML, $options);
-      $xml_raw = $request->getBody()->getContents();
+      $request = $this->client->request('GET', self::STANFORD_EVENTS_IMPORTER_XML, $options);
+      $xml_raw = (string) $request->getBody();
       return $xml_raw;
     }
     catch (\Exception $e) {

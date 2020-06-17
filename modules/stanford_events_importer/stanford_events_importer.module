@@ -12,6 +12,8 @@ use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\stanford_events_importer\StanfordEventsImporter;
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -46,6 +48,20 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_events_importer_config_pages_presave(EntityInterface $entity) {
+  // Clear out config and migration cache to allow config overrides to take
+  // effect.
+  if ($entity->bundle() == 'stanford_events_importer') {
+    Cache::invalidateTags([
+      'config:migrate_plus.migration.stanford_events_importer',
+      'migration_plugins',
+    ]);
+  }
+}
+
+/**
  * Submit handler for the config form override.
  *
  * @param array $form
@@ -54,10 +70,6 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
  *   The form state.
  */
 function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit(array &$form, FormStateInterface $form_state) {
-
-  // Reset all static caches as something is getting stuck.
-  drupal_static_reset();
-
   // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
   $migration_plugin = $migrations["stanford_events"]["stanford_events_importer"] ?? FALSE;

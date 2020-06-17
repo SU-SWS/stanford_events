@@ -40,15 +40,15 @@
     ],
     "name": [
         {
-            "value": "Faculty \/ Staff",
+            "value": "Faculty\/Staff",
             "lang": "en"
         }
     ],
     "description": [
         {
-            "value": "<p>Faculty \/ Staff<\/p>\r\n",
+            "value": "<p>Faculty\/Staff<\/p>\r\n",
             "format": "stanford_html",
-            "processed": "<p>Faculty \/ Staff<\/p>",
+            "processed": "<p>Faculty\/Staff<\/p>",
             "lang": "en"
         }
     ],
