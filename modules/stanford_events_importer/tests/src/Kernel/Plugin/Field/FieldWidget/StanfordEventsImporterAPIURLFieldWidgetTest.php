@@ -28,12 +28,13 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     'node',
     'user',
     'link',
+    'field',
     'stanford_events',
     'stanford_events_importer',
   ];
 
   // https://www.drupal.org/project/drupal/issues/3039565
-  // protected $strictConfigSchema = FALSE;
+  protected $strictConfigSchema = FALSE;
 
   /**
    * {@inheritDoc}
@@ -42,6 +43,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     parent::setUp();
     $this->installEntitySchema('user');
     $this->installEntitySchema('node');
+    $this->installConfig(['system', 'field', 'link']);
 
     NodeType::create(['type' => 'page'])->save();
 
