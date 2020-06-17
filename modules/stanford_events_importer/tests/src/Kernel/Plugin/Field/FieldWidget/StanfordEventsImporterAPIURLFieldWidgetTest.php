@@ -25,25 +25,15 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
    */
   public static $modules = [
     'system',
-    'path_alias',
     'node',
     'user',
     'link',
-    'datetime',
-    'field',
-    'field_permissions',
-    'migrate',
-    'migrate_tools',
-    'migrate_plus',
-    'field_group',
-    'config_pages',
-    'config_pages_overrides',
     'stanford_events',
     'stanford_events_importer',
   ];
 
   // https://www.drupal.org/project/drupal/issues/3039565
-  protected $strictConfigSchema = FALSE;
+  // protected $strictConfigSchema = FALSE;
 
   /**
    * {@inheritDoc}
@@ -52,17 +42,6 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     parent::setUp();
     $this->installEntitySchema('user');
     $this->installEntitySchema('node');
-    $this->installEntitySchema('field_config');
-    $this->installEntitySchema('config_pages');
-    $this->installConfig([
-      'link',
-      'field_group',
-      'config_pages_overrides',
-      'migrate',
-      'migrate_plus',
-      'migrate_tools',
-      'stanford_events_importer',
-    ]);
 
     NodeType::create(['type' => 'page'])->save();
 

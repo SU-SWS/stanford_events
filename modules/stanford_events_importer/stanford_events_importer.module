@@ -57,6 +57,9 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 
   // Reset all static caches as something is getting stuck.
   drupal_static_reset();
+  // Clear all plugin caches.
+  \Drupal::service('plugin.cache_clearer')
+    ->clearCachedDefinitions();
 
   // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
