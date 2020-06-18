@@ -1,5 +1,5 @@
 # [Stanford Events](https://github.com/SU-SWS/stanford_events)
-##### Version: 8.x-1.x
+##### Version: 8.x-1.0
 
 Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
 

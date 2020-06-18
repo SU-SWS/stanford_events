@@ -1,0 +1,92 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/events\/conference?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/stanford_event_types"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/stanford_event_types\/parent": [
+            null
+        ]
+    },
+    "uuid": [
+        {
+            "value": "bb117bce-7413-4214-9e89-a831d5e8f69c"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "stanford_event_types"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "2020-05-20T23:25:26+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "Conference / Symposium",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "value": "<p>Conference / Symposium<\/p>\r\n",
+            "format": "stanford_html",
+            "processed": "<p>Conference / Symposium<\/p>",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": 0
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/stanford_event_types\/parent": [
+            null
+        ]
+    },
+    "changed": [
+        {
+            "value": "2020-05-22T05:30:04+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/events\/conference-symposium",
+            "pid": null,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ]
+}

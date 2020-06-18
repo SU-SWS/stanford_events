@@ -2,6 +2,6 @@
 
 8.x-1.0
 --------------------------------------------------------------------------------  
-_Release Date: YYYY-MM-DD_
+_Release Date: 2020-06-17_
 
-- Initial Release
+- Initial Release.

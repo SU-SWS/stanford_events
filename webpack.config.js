@@ -29,6 +29,7 @@ const srcSass = path.resolve(srcDir, 'scss');
 const distSass = path.resolve(distDir, 'css');
 const srcJS = path.resolve(srcDir, 'js');
 const distJS = path.resolve(distDir, 'js');
+const seriesSrcSass = path.resolve(__dirname, "modules/stanford_events_series/lib/scss");
 
 // /////////////////////////////////////////////////////////////////////////////
 // Functions ///////////////////////////////////////////////////////////////////
@@ -46,8 +47,16 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_events.script": path.resolve(srcJS, "stanford_events.js"),
-    "stanford_events.styles": path.resolve(srcSass, "stanford_events.scss"),
+    "stanford_events.node.behaviors": path.resolve(srcJS, "stanford_events.js"),
+    "stanford_events.node": path.resolve(srcSass, "stanford_events.node.scss"),
+    "stanford_events.views": path.resolve(srcSass, "stanford_events.views.scss"),
+    "stanford_events.person-cta": path.resolve(srcSass, "components/person-cta/stanford_events.person-cta.scss"),
+    "stanford_events.event-schedule": path.resolve(srcSass, "components/event-schedule/stanford_events.event-schedule.scss"),
+    "stanford_events.event-filter-menu": path.resolve(srcSass, "components/event-filter-menu/stanford_events.event-filter-menu.scss"),
+    "stanford_events.event-list": path.resolve(srcSass, "components/event-list/stanford_events.event-list.scss"),
+    // Event Series.
+    "../../modules/stanford_events_series/dist/css/stanford_events_series.node": path.resolve(seriesSrcSass, "stanford_events_series.node.scss"),
+    "../../modules/stanford_events_series/dist/css/stanford_events_series.views": path.resolve(seriesSrcSass, "stanford_events_series.views.scss")
   },
   // Where put build?
   output: {

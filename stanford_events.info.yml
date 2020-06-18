@@ -1,8 +1,58 @@
 name: 'Stanford Events'
 type: module
 description: 'Event content typem views, and importer.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8.8 || ^9
 package: Stanford
-version: 8.x-1.0-dev
-# dependencies:
-#   - layout_plugin
+version: 8.x-1.0
+dependencies:
+  - address:address
+  - allowed_formats:allowed_formats
+  - auto_entitylabel:auto_entitylabel
+  - components:components
+  - default_content:default_content
+  - drupal:breakpoint
+  - drupal:datetime
+  - drual:field
+  - drupal:file
+  - drupal:image
+  - drupal:layout_builder
+  - drupal:link
+  - drupal:menu_ui
+  - drupal:node
+  - drupal:path
+  - drupal:taxonomy
+  - drupal:telephone
+  - drupal:text
+  - drupal:user
+  - entity_reference_revisions:entity_reference_revisions
+  - field_formatter_class:field_formatter_class
+  - field_group:field_group
+  - field_permissions:field_permissions
+  - jumpstart_ui:jumpstart_ui
+  - layout_builder_restrictions:layout_builder_restrictions
+  - layout_library:layout_library
+  - menu_block:menu_block
+  - node_revision_delete:node_revision_delete
+  - page_manager:page_manager
+  - page_manager:page_manager_ui
+  - paragraphs:paragraphs
+  - pathauto:pathauto
+  - rabbit_hole:rabbit_hole
+  - rabbit_hole:rh_node
+  - smart_date:smart_date
+  - stanford_date_formats:stanford_date_formats
+  - stanford_fields:stanford_fields
+  - stanford_media:stanford_media
+  - stanford_migrate:stanford_migrate
+  - stanford_text_editor:stanford_text_editor
+  - taxonomy_menu:taxonomy_menu
+  - ui_patterns:ui_patterns
+  - ui_patterns:ui_patterns_layouts
+  - ui_patterns:ui_patterns_library
+  - ui_patterns:ui_patterns_views
+  - views_block_filter_block:views_block_filter_block
+  - views_infinite_scroll:views_infinite_scroll
+component-libraries:
+  events:
+    paths:
+      - templates/components

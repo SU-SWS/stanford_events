@@ -1,0 +1,54 @@
+events-explore-more:
+  label: Events Explore More Item
+  description: "Building block component for the events list page."
+  fields:
+    su_event_start_month:
+      type: text
+      label: "Start Month"
+      description: "Event Month"
+      preview: "May"
+    su_event_start_date:
+      type: text
+      label: "Start Date"
+      description: "Event date"
+      preview: "01"
+    su_event_end_month:
+      type: text
+      label: "End Month"
+      description: "Event Month"
+      preview: "May"
+    su_event_end_date:
+      type: text
+      label: "End Date"
+      description: "Event ending date"
+      preview: "14"
+    su_event_type:
+      type: text
+      label: "Event Type"
+      description: "The type of the event."
+    su_event_headline:
+      type: text
+      label: "Headline"
+      description: "Text heading"
+      preview: "This is the headline."
+    su_event_subheadline:
+      type: text
+      label: "Subheadline"
+      description: "Text subheadline."
+      preview: "This is the subheadline."
+    su_event_url:
+      type: text
+      label: "URL for event"
+      description: "URL for event."
+      preview: "http://www.stanford.edu/"
+    su_event_date_time:
+      type: text
+      label: "Date and time for event"
+      description: "Date and time for the event."
+      preview: "Sunday, Aug 30 2020, 12:00 - 2:00pm PST"
+  use: "@events/events-explore-more/events-explore-more.html.twig"
+  libraries:
+    - eventslist:
+        css:
+          component:
+            ../../../dist/css/stanford_events.views.css: { }
