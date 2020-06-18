@@ -203,19 +203,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
-          c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
-            uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
-            region: main
-            configuration:
-              id: jumpstart_ui_page_heading
-              label: 'Heading Block'
-              provider: jumpstart_ui
-              label_display: '0'
-              heading_text: 'Event Details:'
-              wrapper: h2
-              context_mapping: {  }
-            additional: {  }
-            weight: 2
           9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0:
             uuid: 9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0
             region: main
@@ -266,27 +253,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 6
-          72ffb956-3705-4638-a22a-22c5ce31e291:
-            uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_alt_loc'
-              label: Location
-              provider: layout_builder
-              label_display: visible
-              formatter:
-                label: hidden
-                type: string
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-alt-location
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
           0ff08dc5-db6c-413e-b440-8bcabf2911b3:
             uuid: 0ff08dc5-db6c-413e-b440-8bcabf2911b3
             region: main
@@ -311,7 +277,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: 8
           6b731bfb-4a54-43e3-afa5-f60099657490:
             uuid: 6b731bfb-4a54-43e3-afa5-f60099657490
             region: right
@@ -376,6 +342,40 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
+          c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
+            uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
+            region: main
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              provider: jumpstart_ui
+              label_display: '0'
+              heading_text: 'Event Details:'
+              wrapper: h2
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+          72ffb956-3705-4638-a22a-22c5ce31e291:
+            uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_alt_loc'
+              label: Location
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-alt-location
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 7
         third_party_settings: {  }
       -
         layout_id: defaults
@@ -533,9 +533,62 @@ third_party_settings:
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: {  }
+      whitelisted_blocks:
+        'Chaos Tools': {  }
+        'Config Pages': {  }
+        'Content fields':
+          - 'field_block:node:stanford_event:su_event_audience'
+          - 'field_block:node:stanford_event:uid'
+          - 'field_block:node:stanford_event:created'
+          - 'field_block:node:stanford_event:body'
+          - 'field_block:node:stanford_event:su_event_cta'
+          - 'field_block:node:stanford_event:changed'
+          - 'field_block:node:stanford_event:su_event_components'
+          - 'field_block:node:stanford_event:su_event_email'
+          - 'field_block:node:stanford_event:su_event_telephone'
+          - 'field_block:node:stanford_event:su_event_date_time'
+          - 'field_block:node:stanford_event:su_event_dek'
+          - 'field_block:node:stanford_event:su_event_alt_loc'
+          - 'field_block:node:stanford_event:title'
+          - 'field_block:node:stanford_event:su_event_type'
+          - 'field_block:node:stanford_event:su_event_source'
+          - 'field_block:node:stanford_event:nid'
+          - 'extra_field_block:node:stanford_event:links'
+          - 'field_block:node:stanford_event:su_event_location'
+          - 'field_block:node:stanford_event:su_event_map_link'
+          - 'field_block:node:stanford_event:menu_link'
+          - 'field_block:node:stanford_event:status'
+          - 'field_block:node:stanford_event:su_event_schedule'
+          - 'field_block:node:stanford_event:su_event_sponsor'
+          - 'field_block:node:stanford_event:su_event_subheadline'
+        Devel: {  }
+        'Devel PHP': {  }
+        Forms: {  }
+        'Lists (Views)': {  }
+        Menus:
+          - 'menu_block:stanford-event-types'
+          - 'menu_block:main'
+        'News Lists (Views)':
+          - 'views_block:stanford_news-vertical_teaser_term'
+          - 'views_block:stanford_news-vertical_teaser_term_list'
+          - 'views_block:stanford_news-block_1'
+          - 'views_block:stanford_news-term_block'
+        'People Lists (Views)':
+          - 'views_block:stanford_person-grid_list_all'
+          - 'views_block:stanford_person_list_terms_first-person_list_grid'
+        'SimpleSAMLphp Authentication': {  }
+        'Stanford News': {  }
+        'Stanford SimpleSAML PHP': {  }
+        System:
+          - system_messages_block
       blacklisted_blocks: {  }
-      allowed_layouts: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_events_editorial_content
+        - stanford_events_body
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
