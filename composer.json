@@ -115,6 +115,9 @@
             },
             "drupal/menu_link_weight": {
                 "https://www.drupal.org/project/menu_link_weight/issues/2956341": "https://www.drupal.org/files/issues/2018-03-27/menu_link_weight-js_error_on_title_field-2956341-2.patch"
+            },
+            "drupal/ds": {
+                "https://www.drupal.org/project/ds/issues/3154727": "https://www.drupal.org/files/issues/2020-06-24/ds-empty-grouping-title-1.patch"
             }
         }
     },
