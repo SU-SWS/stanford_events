@@ -5,14 +5,14 @@ class StanfordEventsImporterCest {
   /**
    * Events Importer Module Enable.
    */
-  public function EnableModule(AcceptanceTester $I) {
+  public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_importer');
+    drupal_static_reset();
+    drupal_flush_all_caches();
   }
 
   /**
    * Test configuration form.
-   *
-   * @depends EnableModule
    */
   public function testForImporterForm(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -24,8 +24,6 @@ class StanfordEventsImporterCest {
 
   /**
    * Test cron settings.
-   *
-   * @depends EnableModule
    */
   public function testForCronSettings(AcceptanceTester $I) {
     $I->logInWithRole("administrator");
