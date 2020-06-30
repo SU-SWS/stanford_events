@@ -30,8 +30,8 @@ class StanfordEventsImporterCest {
   public function testForCronSettings(AcceptanceTester $I) {
     $I->logInWithRole("administrator");
     $I->amOnPage("/admin/config/system/cron/jobs");
-    $I->canSee("Importer: Events importer");
-    $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events_importer");
+    $I->canSee("Importer: Events");
+    $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events");
     $I->seeCheckboxIsChecked("#edit-status");
   }
 
