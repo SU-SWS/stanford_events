@@ -23,4 +23,6 @@ stanford_events_body:
       label: Main
     right:
       label: Right
+    cta:
+      label: CTA
 
