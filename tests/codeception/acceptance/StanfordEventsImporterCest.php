@@ -30,7 +30,9 @@ class StanfordEventsImporterCest {
     $I->amOnPage("/admin/config/system/cron/jobs");
     $I->canSee("Importer: Events");
     $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events");
-    $I->seeCheckboxIsChecked("Enabled");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("stanford_migrate_ultimate_cron_task");
+    $I->seeCheckboxIsChecked("#edit-status");
   }
 
 }
