@@ -70,7 +70,7 @@ class StanfordEventsCest {
    */
   public function testForPathAutoNode(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $node = $this->createEventNode($I, FALSE, "Stanford Jumpstart");
+    $node = $this->createEventNode($I, FALSE, ['title' => "Stanford Jumpstart"]);
     $path = $node->toUrl()->toString();
     $I->assertEquals("/event/stanford-jumpstart", $path);
   }
@@ -146,7 +146,7 @@ class StanfordEventsCest {
    * Test for Internal Content.
    */
   public function testForInternalEventContent(AcceptanceTester $I) {
-    $node = $this->createEventNode($I, FALSE, "Internal Event");
+    $node = $this->createEventNode($I, FALSE, ['title' => "Internal Event"]);
     $I->runDrush('cr');
     $path = $node->toUrl()->toString();
     $I->amOnPage($path);
@@ -160,7 +160,7 @@ class StanfordEventsCest {
    * Test for External content event.
    */
   public function testforExternalEventContent(AcceptanceTester $I) {
-    $node = $this->createEventNode($I, TRUE, "External Event");
+    $node = $this->createEventNode($I, TRUE, ['title' => "External Event"]);
     $I->runDrush('cr');
     $path = $node->toUrl()->toString();
 
@@ -251,6 +251,27 @@ class StanfordEventsCest {
     $I->canSeeLink("Foo");
   }
 
+/**
+ * Timezone format rendering.
+ *
+ * https://www.drupal.org/project/smart_date/issues/3154741
+ */
+  public function testForDateFormatTimezone(AcceptanceTester $I) {
+    $date = strtotime("Tuesday, July 28, 2020 1:00pm PDT");
+    $vals = ['su_event_date_time' => [
+      'value' => $date,
+      'end_value' => $date + (60 * 60),
+      'duration' => (60),
+      'timezone' => "America/Los_Angeles",
+    ]];
+
+    $node = $this->createEventNode($I, FALSE, $vals);
+    $path = $node->toUrl()->toString();
+    $I->amOnPage($path);
+    $I->canSee("Tuesday, July 28, 2020");
+    $I->canSee("1:00pm - 2:00pm PDT");
+  }
+
   /**
    * Create an Event Node.
    *
@@ -258,16 +279,16 @@ class StanfordEventsCest {
    *   Codeception AcceptanceTester
    * @param bool $external
    *   Wether or not this node should be external.
-   * @param string $node_title
-   *   A title string to call the new node.
+   * @param string $content
+   *   A key/value array for field names and content.
    *
    * @return object
    *   Node Object
    */
-  protected function createEventNode(AcceptanceTester $I, $external = FALSE, $node_title = NULL) {
-    return $I->createEntity([
+  protected function createEventNode(AcceptanceTester $I, $external = FALSE, $content = []) {
+    $values = [
       'type' => 'stanford_event',
-      'title' => $node_title ?: 'This is a headline',
+      'title' => 'This is a headline',
       'body' => [
         "value" => "<p>More updates to come.</p>",
         "summary" => "",
@@ -307,7 +328,9 @@ class StanfordEventsCest {
         'This is 3 sponsor',
       ],
       'su_event_subheadline' => 'This is a sub-headline',
-    ]);
+    ];
+    $values = array_merge($values, $content);
+    return $I->createEntity($values);
   }
 
   /**
