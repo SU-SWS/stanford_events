@@ -107,17 +107,20 @@
     "extra": {
         "enable-patching": true,
         "patches": {
+            "drupal/core": {
+                "https://www.drupal.org/project/drupal/issues/3039185": "https://www.drupal.org/files/issues/2020-04-17/allow-field-blocks-to-display-label-in-layout-builder-3039185-22.patch"
+            },
             "drupal/default_content": {
                 "https://www.drupal.org/project/default_content/issues/2698425": "https://www.drupal.org/files/issues/2020-02-05/2698425--accept-content-updates--122.patch"
             },
-            "drupal/core": {
-                "https://www.drupal.org/project/drupal/issues/3039185": "https://www.drupal.org/files/issues/2020-04-17/allow-field-blocks-to-display-label-in-layout-builder-3039185-22.patch"
+            "drupal/ds": {
+                "https://www.drupal.org/project/ds/issues/3154727": "https://www.drupal.org/files/issues/2020-06-24/ds-empty-grouping-title-1.patch"
             },
             "drupal/menu_link_weight": {
                 "https://www.drupal.org/project/menu_link_weight/issues/2956341": "https://www.drupal.org/files/issues/2018-03-27/menu_link_weight-js_error_on_title_field-2956341-2.patch"
             },
-            "drupal/ds": {
-                "https://www.drupal.org/project/ds/issues/3154727": "https://www.drupal.org/files/issues/2020-06-24/ds-empty-grouping-title-1.patch"
+            "drupal/smart_date": {
+              "https://www.drupal.org/project/smart_date/issues/3154741": "https://www.drupal.org/files/issues/2020-06-24/smart_date-anon-no-timezone-1.patch"
             }
         }
     },

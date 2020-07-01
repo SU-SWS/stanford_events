@@ -5,14 +5,14 @@ class StanfordEventsImporterCest {
   /**
    * Events Importer Module Enable.
    */
-  public function EnableModule(AcceptanceTester $I) {
+  public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_importer');
+    drupal_static_reset();
+    drupal_flush_all_caches();
   }
 
   /**
    * Test configuration form.
-   *
-   * @depends EnableModule
    */
   public function testForImporterForm(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -24,14 +24,14 @@ class StanfordEventsImporterCest {
 
   /**
    * Test cron settings.
-   *
-   * @depends EnableModule
    */
   public function testForCronSettings(AcceptanceTester $I) {
     $I->logInWithRole("administrator");
     $I->amOnPage("/admin/config/system/cron/jobs");
-    $I->canSee("Importer: Events importer");
+    $I->canSee("Importer: Events");
     $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_events_importer");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("stanford_migrate_ultimate_cron_task");
     $I->seeCheckboxIsChecked("#edit-status");
   }
 

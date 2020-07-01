@@ -3,7 +3,8 @@ status: true
 dependencies:
   module:
     - stanford_migrate
-title: 'Importer: Events importer'
+    - ultimate_cron
+title: 'Importer: Events'
 id: stanford_migrate_stanford_events_importer
 weight: 0
 module: stanford_migrate
