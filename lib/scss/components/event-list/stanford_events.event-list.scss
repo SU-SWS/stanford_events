@@ -57,7 +57,7 @@
 }
 
 .su-event-list-item {
-  @include modular-spacing('padding', 2 null 3 null);
+  @include modular-spacing('padding', 2 null 4 null);
 
   display: flex;
   border-bottom: 1px solid $su-color-cool-grey-25;
@@ -212,7 +212,7 @@
 
     .views-field-su-event-location {
       @include small-paragraph;
-      @include modular-spacing('margin', null null 3 null);
+      @include modular-spacing('margin', null null null null);
 
       // Align multirow text with the icon.
       display: flex;
@@ -233,7 +233,7 @@
 
     .views-field-su-event-address {
       @include small-paragraph;
-      @include modular-spacing('margin', null null 3 null);
+      @include modular-spacing('margin', null null null null);
 
       // Align multirow text with the icon.
       display: flex;
