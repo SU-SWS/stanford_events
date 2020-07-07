@@ -272,8 +272,8 @@
         .views-field-su-event-location-administrative-area,
         .views-field-su-event-location-locality,
         .views-field-su-event-location-postal-code {
-          &:after {
-            content: ",",
+          &::after {
+            content: ",";
           }
         }
       }
