@@ -73,7 +73,7 @@
 
     {# Event Subheadline  #}
     {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
-      {{- su_event_subheadline -}}
+      <div class="event-list_item__subheadline">{{- su_event_subheadline -}}</div>
     {%- endif -%}
 
     {# Event Dek  #}

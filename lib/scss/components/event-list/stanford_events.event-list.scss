@@ -251,6 +251,7 @@
         }
       }
     }
+
     .views-field-su-entered-event-address {
 
       .views-field-su-event-location-organization,
@@ -264,7 +265,7 @@
       .views-field-su-event-location-administrative-area,
       .views-field-su-event-location-country-code,
       .views-field-su-event-location-postal-code {
-        &:after {
+        &::after {
           content: ", ";
           white-space: pre;
         }
