@@ -34,8 +34,6 @@
   {%- set is_external = su_event_url|render|striptags|split('//')[1] ? true : false -%}
   {%- if is_external -%}
     {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
-  {%- else -%}
-    {%- set link_attributes = link_attributes.addClass('su-link--action') -%}
   {%- endif %}
 {%- endif -%}
 
