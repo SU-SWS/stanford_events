@@ -83,18 +83,23 @@
 
     {# Event Date/Time  #}
     {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
+      <p class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> {{- su_event_date_time -}}</p>
     {%- endif -%}
 
     {# Event Location  #}
     {%- if su_event_location|render|striptags|trim is not empty %}
-      <div class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</div>
+      <div class="views-field-su-event-location"><span class="map-icon" aria-hidden="true"></span> {{- su_event_location -}}</div>
     {%- endif -%}
 
     {# Event Location Address  #}
     {%- if  su_event_address|render|striptags|trim is not empty %}
-      <div class="views-field-su-event-address"><span aria-hidden="true"></span> {{- su_event_address -}}</div>
+    <div class="views-field-su-event-address"><span class="map-icon" aria-hidden="true"></span> {{- su_event_address -}}</div>
     {%- endif -%}
+
+    {# Manually Entered Event Location Address  #}
+    {%- if su_event_entered_address|render|striptags|trim is not empty %}
+      <div class="views-field-su-event-address views-field-su-entered-event-address"><span class="map-icon" aria-hidden="true"></span>{{- su_event_entered_address -}}</div>
+    {% endif %}
 
     {# Edit this Event  #}
       <div class="views-field-su-event-edit">{{- su_event_edit -}}</div>

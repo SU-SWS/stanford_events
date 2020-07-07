@@ -61,6 +61,11 @@ events-list:
       label: "Formatted location for event"
       description: "Formatted location for the event."
       preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_entered_address:
+      type: address
+      label: "Manually entered address for event"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
     su_event_edit:
       type: text
       label: "Edit this Event"

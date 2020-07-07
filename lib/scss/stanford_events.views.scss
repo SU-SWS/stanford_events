@@ -129,7 +129,7 @@
       display: flex;
 
       //Font Awesome Icon setup and spacings
-      span {
+      .date-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -144,7 +144,7 @@
     // Icon set up.
     // Calendar icon
     .views-field-su-event-date-time {
-      span {
+      .date-icon {
         &::before {
           // Need to switch to the SU icons.
           content: "\f073";
@@ -163,7 +163,7 @@
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -184,7 +184,7 @@
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
