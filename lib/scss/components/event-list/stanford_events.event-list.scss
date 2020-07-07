@@ -253,28 +253,28 @@
     }
 
     .views-field-su-entered-event-address {
+      &.views-field-su-event-address {
+        display: block;
 
-      .views-field-su-event-location-organization,
-      .views-field-su-event-location-locality,
-      .views-field-su-event-location-dependent-locality {
-        padding-right: 5px;
-      }
-
-      .views-field-su-event-location-address-line1,
-      .views-field-su-event-location-address-line2,
-      .views-field-su-event-location-administrative-area,
-      .views-field-su-event-location-country-code,
-      .views-field-su-event-location-postal-code {
-        &::after {
-          content: ", ";
-          white-space: pre;
+        span:nth-child(n+3) {
+          display: block;
+          margin-left: 27px;
         }
-      }
 
-      > span:last-of-type,
-      > span:nth-last-child(2) {
-        &::after {
-          content: "";
+        span:nth-last-of-type(-n+6) {
+          display: inline;
+        }
+
+        span:nth-last-of-type(-n+5) {
+          margin-left: 5px;
+        }
+
+        .views-field-su-event-location-administrative-area,
+        .views-field-su-event-location-locality,
+        .views-field-su-event-location-postal-code {
+          &:after {
+            content: ",",
+          }
         }
       }
     }
