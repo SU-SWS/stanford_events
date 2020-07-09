@@ -256,25 +256,15 @@
       &.views-field-su-event-address {
         display: block;
 
+        .map-icon {
+          &+ span {
+            margin-right: 5px;
+          }
+        }
+
         span:nth-child(n+3) {
           display: block;
           margin-left: 27px;
-        }
-
-        span:nth-last-of-type(-n+6) {
-          display: inline;
-        }
-
-        span:nth-last-of-type(-n+5) {
-          margin-left: 5px;
-        }
-
-        .views-field-su-event-location-administrative-area,
-        .views-field-su-event-location-locality,
-        .views-field-su-event-location-postal-code {
-          &::after {
-            content: ",";
-          }
         }
       }
     }

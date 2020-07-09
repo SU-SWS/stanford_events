@@ -1659,10 +1659,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           plugin_id: standard
-        su_event_location_locality:
-          id: su_event_location_locality
+        su_event_location_administrative_area:
+          id: su_event_location_administrative_area
           table: node__su_event_location
-          field: su_event_location_locality
+          field: su_event_location_administrative_area
           relationship: none
           group_type: group
           admin_label: ''
@@ -1709,10 +1709,10 @@ display:
           hide_alter_empty: true
           display_name: true
           plugin_id: subdivision
-        su_event_location_administrative_area:
-          id: su_event_location_administrative_area
+        su_event_location_locality:
+          id: su_event_location_locality
           table: node__su_event_location
-          field: su_event_location_administrative_area
+          field: su_event_location_locality
           relationship: none
           group_type: group
           admin_label: ''
@@ -1986,17 +1986,14 @@ display:
             su_event_date_time: 0
             su_event_location: 0
             edit_node: 0
+            su_event_location_organization: 0
             su_event_location_address_line1: 0
-            su_event_location_additional_name: 0
             su_event_location_address_line2: 0
             su_event_location_administrative_area: 0
-            su_event_location_country_code: 0
-            su_event_location_dependent_locality: 0
-            su_event_location_family_name: 0
-            su_event_location_given_name: 0
             su_event_location_locality: 0
-            su_event_location_organization: 0
+            su_event_location_dependent_locality: 0
             su_event_location_postal_code: 0
+            su_event_location_country_code: 0
             su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
@@ -2077,63 +2074,48 @@ display:
               plugin: views_row
               source: edit_node
             'views_row:su_event_location_organization':
-              destination: su_event_entered_address
+              destination: su_event_location_organization
               weight: 12
               plugin: views_row
               source: su_event_location_organization
-            'views_row:su_event_location_given_name':
-              destination: su_event_entered_address
-              weight: 13
-              plugin: views_row
-              source: su_event_location_given_name
-            'views_row:su_event_location_family_name':
-              destination: su_event_entered_address
-              weight: 14
-              plugin: views_row
-              source: su_event_location_family_name
-            'views_row:su_event_location_additional_name':
-              destination: su_event_entered_address
-              weight: 15
-              plugin: views_row
-              source: su_event_location_additional_name
             'views_row:su_event_location_locality':
-              destination: su_event_entered_address
-              weight: 16
+              destination: su_event_location_locality
+              weight: 13
               plugin: views_row
               source: su_event_location_locality
             'views_row:su_event_location_administrative_area':
-              destination: su_event_entered_address
-              weight: 17
+              destination: su_event_location_administrative_area
+              weight: 14
               plugin: views_row
               source: su_event_location_administrative_area
             'views_row:su_event_location_address_line1':
-              destination: su_event_entered_address
-              weight: 18
+              destination: su_event_location_address_line1
+              weight: 15
               plugin: views_row
               source: su_event_location_address_line1
             'views_row:su_event_location_address_line2':
-              destination: su_event_entered_address
-              weight: 19
+              destination: su_event_location_address_line2
+              weight: 16
               plugin: views_row
               source: su_event_location_address_line2
             'views_row:su_event_location_postal_code':
-              destination: su_event_entered_address
-              weight: 20
+              destination: su_event_location_postal_code
+              weight: 17
               plugin: views_row
               source: su_event_location_postal_code
             'views_row:su_event_location_sorting_code':
-              destination: su_event_entered_address
-              weight: 21
+              destination: su_event_location_sorting_code
+              weight: 18
               plugin: views_row
               source: su_event_location_sorting_code
             'views_row:su_event_location_country_code':
-              destination: su_event_entered_address
-              weight: 22
+              destination: su_event_location_country_code
+              weight: 19
               plugin: views_row
               source: su_event_location_country_code
             'views_row:su_event_location_dependent_locality':
-              destination: su_event_entered_address
-              weight: 23
+              destination: su_event_location_dependent_locality
+              weight: 20
               plugin: views_row
               source: su_event_location_dependent_locality
     cache_metadata:
@@ -3250,10 +3232,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           plugin_id: standard
-        su_event_location_locality:
-          id: su_event_location_locality
+        su_event_location_administrative_area:
+          id: su_event_location_administrative_area
           table: node__su_event_location
-          field: su_event_location_locality
+          field: su_event_location_administrative_area
           relationship: none
           group_type: group
           admin_label: ''
@@ -3300,10 +3282,10 @@ display:
           hide_alter_empty: true
           display_name: true
           plugin_id: subdivision
-        su_event_location_administrative_area:
-          id: su_event_location_administrative_area
+        su_event_location_locality:
+          id: su_event_location_locality
           table: node__su_event_location
-          field: su_event_location_administrative_area
+          field: su_event_location_locality
           relationship: none
           group_type: group
           admin_label: ''
@@ -3575,13 +3557,13 @@ display:
             su_event_date_time_end_value_1: 0
             edit_node: 0
             su_event_location_organization: 0
-            su_event_location_locality: 0
-            su_event_location_dependent_locality: 0
             su_event_location_address_line1: 0
             su_event_location_address_line2: 0
             su_event_location_administrative_area: 0
-            su_event_location_country_code: 0
+            su_event_location_locality: 0
+            su_event_location_dependent_locality: 0
             su_event_location_postal_code: 0
+            su_event_location_country_code: 0
             su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
@@ -3662,47 +3644,47 @@ display:
               plugin: views_row
               source: su_event_location
             'views_row:su_event_location_locality':
-              destination: su_event_entered_address
+              destination: su_event_location_locality
               weight: 12
               plugin: views_row
               source: su_event_location_locality
             'views_row:su_event_location_organization':
-              destination: su_event_entered_address
+              destination: su_event_location_organization
               weight: 13
               plugin: views_row
               source: su_event_location_organization
             'views_row:su_event_location_dependent_locality':
-              destination: su_event_entered_address
+              destination: su_event_location_dependent_locality
               weight: 14
               plugin: views_row
               source: su_event_location_dependent_locality
             'views_row:su_event_location_administrative_area':
-              destination: su_event_entered_address
+              destination: su_event_location_administrative_area
               weight: 15
               plugin: views_row
               source: su_event_location_administrative_area
             'views_row:su_event_location_address_line1':
-              destination: su_event_entered_address
+              destination: su_event_location_address_line1
               weight: 16
               plugin: views_row
               source: su_event_location_address_line1
             'views_row:su_event_location_address_line2':
-              destination: su_event_entered_address
+              destination: su_event_location_address_line2
               weight: 17
               plugin: views_row
               source: su_event_location_address_line2
             'views_row:su_event_location_postal_code':
-              destination: su_event_entered_address
+              destination: su_event_location_postal_code
               weight: 18
               plugin: views_row
               source: su_event_location_postal_code
             'views_row:su_event_location_sorting_code':
-              destination: su_event_entered_address
+              destination: su_event_location_sorting_code
               weight: 19
               plugin: views_row
               source: su_event_location_sorting_code
             'views_row:su_event_location_country_code':
-              destination: su_event_entered_address
+              destination: su_event_location_country_code
               weight: 20
               plugin: views_row
               source: su_event_location_country_code

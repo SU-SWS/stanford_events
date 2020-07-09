@@ -61,11 +61,51 @@ events-list:
       label: "Formatted location for event"
       description: "Formatted location for the event."
       preview: "1234 Main Street, Stanford, CA 94305, United States"
-    su_event_entered_address:
+    su_event_location_organization:
       type: address
-      label: "Manually entered address for event"
+      label: "Company name"
+      description: "Manually entered address for event"
+      preview: "Company Name"
+    su_event_location_address_line1:
+      type: address
+      label: "Address Line 1"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street"
+    su_event_location_address_line2:
+      type: address
+      label: "Address Line 2"
+      description: "Manually entered address for event"
+      preview: "Suite 10"
+    su_event_location_locality:
+      type: address
+      label: "Locality/City"
+      description: "Manually entered address for event"
+      preview: "Stanford"
+    su_event_location_administrative_area:
+      type: address
+      label: "Adminstrative Area/State"
+      description: "Manually entered address for event"
+      preview: "California"
+    su_event_location_dependent_locality:
+      type: address
+      label: "Dependent Locality"
       description: "Manually entered address for event"
       preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_location_country_code:
+      type: address
+      label: "Country"
+      description: "Manually entered address for event"
+      preview: "United States"
+    su_event_location_postal_code:
+      type: address
+      label: "Postal Code"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_location_sorting_code:
+      type: address
+      label: "Sorting Code"
+      description: "Manually entered address for event"
+      preview: "94305"
     su_event_edit:
       type: text
       label: "Edit this Event"
