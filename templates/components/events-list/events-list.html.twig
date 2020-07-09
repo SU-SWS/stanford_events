@@ -118,16 +118,16 @@
         {{- su_event_location_address_line2 -}}
       {% endif %}
 
-      {# A larger area such as a state #}
-      {%- if su_event_location_administrative_area|render|striptags|trim is not empty %}
-        {{- su_event_location_administrative_area -}}
-      {% endif %}
-
       {# City #}
       {%- if su_event_location_locality|render|striptags|trim is not empty %}
         {{- su_event_location_locality -}}
       {% endif %}
 
+      {# A larger area such as a state #}
+      {%- if su_event_location_administrative_area|render|striptags|trim is not empty %}
+        {{- su_event_location_administrative_area -}}
+      {% endif %}
+      
       {# Dependant Locality #}
       {%- if su_event_location_dependent_locality|render|striptags|trim is not empty %}
         {{- su_event_location_dependent_locality -}}
