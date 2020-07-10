@@ -198,7 +198,7 @@
     // Icon set up.
     // Calendar icon
     .views-field-su-event-date-time {
-      span {
+      .date-icon {
         &::before {
           // Need to switch to the SU icons.
           content: "\f073";
@@ -217,7 +217,7 @@
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -238,7 +238,7 @@
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -248,6 +248,23 @@
           font-weight: $su-font-semi-bold;
           // Need to switch to the SU icons.
           content: "\f3c5";
+        }
+      }
+    }
+
+    .views-field-su-entered-event-address {
+      &.views-field-su-event-address {
+        display: block;
+
+        .map-icon {
+          &+ span {
+            margin-right: 5px;
+          }
+        }
+
+        span:nth-child(n+3) {
+          display: block;
+          margin-left: 27px;
         }
       }
     }
