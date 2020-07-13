@@ -60,7 +60,7 @@
 
     {# Event Date/Time  #}
     {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
+      <p class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> {{- su_event_date_time -}}</p>
     {%- endif -%}
 
   </div>

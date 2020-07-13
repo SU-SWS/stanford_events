@@ -34,8 +34,6 @@
   {%- set is_external = su_event_url|render|striptags|split('//')[1] ? true : false -%}
   {%- if is_external -%}
     {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
-  {%- else -%}
-    {%- set link_attributes = link_attributes.addClass('su-link--action') -%}
   {%- endif %}
 {%- endif -%}
 
@@ -73,7 +71,7 @@
 
     {# Event Subheadline  #}
     {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
-      {{- su_event_subheadline -}}
+      <div class="event-list_item__subheadline">{{- su_event_subheadline -}}</div>
     {%- endif -%}
 
     {# Event Dek  #}
@@ -83,18 +81,72 @@
 
     {# Event Date/Time  #}
     {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
-      <p class="views-field-su-event-date-time"><span aria-hidden="true"></span> {{- su_event_date_time -}}</p>
+      <p class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> {{- su_event_date_time -}}</p>
     {%- endif -%}
 
     {# Event Location  #}
     {%- if su_event_location|render|striptags|trim is not empty %}
-      <div class="views-field-su-event-location"><span aria-hidden="true"></span> {{- su_event_location -}}</div>
+      <div class="views-field-su-event-location"><span class="map-icon" aria-hidden="true"></span> {{- su_event_location -}}</div>
     {%- endif -%}
 
     {# Event Location Address  #}
     {%- if  su_event_address|render|striptags|trim is not empty %}
-      <div class="views-field-su-event-address"><span aria-hidden="true"></span> {{- su_event_address -}}</div>
+    <div class="views-field-su-event-address"><span class="map-icon" aria-hidden="true"></span> {{- su_event_address -}}</div>
     {%- endif -%}
+
+    {# Manually Entered Event Location Address  #}
+    <div class="views-field-su-event-address views-field-su-entered-event-address">
+
+      {% if (su_event_location_organization|render|striptags|trim is not empty) or  (su_event_location_address_line1|render|striptags|trim is not empty) %}
+        <span class="map-icon" aria-hidden="true"></span>
+      {% endif %}
+
+      {# Company name #}
+      {%- if su_event_location_organization|render|striptags|trim is not empty %}
+        {{- su_event_location_organization -}}
+      {% endif %}
+
+      {# Address line 1 #}
+      {%- if su_event_location_address_line1|render|striptags|trim is not empty %}
+        {{- su_event_location_address_line1 -}}
+      {% endif %}
+
+      {# address line 2 #}
+      {%- if su_event_location_address_line2|render|striptags|trim is not empty %}
+        {{- su_event_location_address_line2 -}}
+      {% endif %}
+
+      {# City #}
+      {%- if su_event_location_locality|render|striptags|trim is not empty %}
+        {{- su_event_location_locality -}}
+      {% endif %}
+
+      {# A larger area such as a state #}
+      {%- if su_event_location_administrative_area|render|striptags|trim is not empty %}
+        {{- su_event_location_administrative_area -}}
+      {% endif %}
+      
+      {# Dependant Locality #}
+      {%- if su_event_location_dependent_locality|render|striptags|trim is not empty %}
+        {{- su_event_location_dependent_locality -}}
+      {% endif %}
+
+      {# Postal code #}
+      {%- if su_event_location_postal_code|render|striptags|trim is not empty %}
+        {{- su_event_location_postal_code -}}
+      {% endif %}
+
+      {#  Country #}
+      {%- if su_event_location_country_code|render|striptags|trim is not empty %}
+        {{- su_event_location_country_code -}}
+      {% endif %}
+
+      {# Sorting Code #}
+      {%- if su_event_location_sorting_code|render|striptags|trim is not empty %}
+        {{- su_event_location_sorting_code -}}
+      {% endif %}
+      </div>
+{#    {% endif %}#}
 
     {# Edit this Event  #}
       <div class="views-field-su-event-edit">{{- su_event_edit -}}</div>

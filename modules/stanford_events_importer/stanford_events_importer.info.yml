@@ -2,7 +2,7 @@ name: 'Stanford Events Importer'
 core_version_requirement: ^8.8 || ^9
 description: 'Migrate importer for stanford events.'
 type: module
-version: 8.x-1.0
+version: 8.x-1.1
 package: 'Stanford'
 dependencies:
   - config_pages:config_pages
@@ -11,3 +11,4 @@ dependencies:
   - stanford_migrate:stanford_migrate
   - migrate_tools:migrate_tools
   - migrate_plus:migrate_plus
+  - ultimate_cron:ultimate_cron

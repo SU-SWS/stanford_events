@@ -22,7 +22,7 @@
 }
 
 .su-event-list-item {
-  @include modular-spacing('padding', 2 null 3 null);
+  @include modular-spacing('padding', 2 null 4 null);
 
   display: flex;
   border-bottom: 1px solid $su-color-cool-grey-25;
@@ -129,7 +129,7 @@
       display: flex;
 
       //Font Awesome Icon setup and spacings
-      span {
+      .date-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -144,7 +144,7 @@
     // Icon set up.
     // Calendar icon
     .views-field-su-event-date-time {
-      span {
+      .date-icon {
         &::before {
           // Need to switch to the SU icons.
           content: "\f073";
@@ -158,12 +158,12 @@
 
     .views-field-su-event-location {
       @include small-paragraph;
-      @include modular-spacing('margin', null null 3 null);
+      @include modular-spacing('margin', null null null null);
 
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -179,12 +179,12 @@
 
     .views-field-su-event-address {
       @include small-paragraph;
-      @include modular-spacing('margin', null null 3 null);
+      @include modular-spacing('margin', null null null null);
 
       // Align multirow text with the icon.
       display: flex;
 
-      > span {
+      > .map-icon {
         @include modular-spacing('padding', null -2 null null);
 
         &::before {
@@ -208,7 +208,8 @@
 }
 
 .stanford-events-list-page,
-.stanford-events-list-page--filtered {
+.stanford-events-list-page--filtered,
+.stanford-events-past {
   .views-infinite-scroll-content-wrapper {
     @include modular-spacing('margin-bottom', 5);
 

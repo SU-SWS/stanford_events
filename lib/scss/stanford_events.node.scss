@@ -47,6 +47,7 @@
       @include modular-spacing('padding', 0 null null null);
 
       border-top: 1px solid $su-color-cool-grey-15;
+      font-weight: $su-font-semi-bold;
     }
 
     .su-event {
@@ -78,7 +79,7 @@
 
 .su-events-details {
 
-  .flex-9-of-12 {
+  .details-wrapper {
     @include small-paragraph;
     @include box-shadow('paper');
     @include modular-spacing('padding', 2 3);
