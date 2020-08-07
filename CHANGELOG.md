@@ -1,5 +1,12 @@
 # Stanford Events
 
+8.x-1.2
+--------------------------------------------------------------------------------
+_Release Date: 2020-08-07_
+
+- DEVOPS-000: https://www.drupal.org/project/ds/issues/3154727 Patch merged in (#21) (8ae5226)
+- Removed views_taxonomy_term_name_depth thats not used (#20) (738af45)
+
 8.x-1.1
 --------------------------------------------------------------------------------
 _Release Date: 2020-07-13_
