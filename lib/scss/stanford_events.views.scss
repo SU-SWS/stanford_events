@@ -58,6 +58,7 @@
       @include small-paragraph;
       @include modular-spacing('margin', null null 0 null);
       color: $su-color-black;
+      text-align: center;
 
       @include grid-media-max('sm') {
         @include modular-spacing(margin, null -1);
