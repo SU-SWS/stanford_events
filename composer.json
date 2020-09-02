@@ -101,7 +101,7 @@
         "su-sws/stanford_date_formats": "dev-8.x-1.x",
         "su-sws/stanford_fields": "dev-8.x-1.x",
         "su-sws/stanford_migrate": "dev-8.x-1.x",
-        "su-sws/stanford_text_editor": "dev-8.x-1.x"
+        "su-sws/stanford_text_editor": "dev-D8CORE-2521"
     },
     "extra": {
         "enable-patching": true,
