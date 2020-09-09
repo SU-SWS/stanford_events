@@ -1,5 +1,16 @@
 # Stanford Events
 
+8.x-1.3
+--------------------------------------------------------------------------------
+_Release Date: 2020-09-09_
+
+- Merge pull request #25 from SU-SWS/D8CORE-2499 (124293f)
+- D8CORE-2499 Updated composer license (d618682)
+- Merge pull request #24 from SU-SWS/D8CORE-2337 (817179d)
+- D8CORE-2337 D8CORE-2370: changing col with to 8 from 9 (da9df14)
+- Merge pull request #23 from SU-SWS/D8CORE-2327 (c267116)
+- D8CORE-2327: fixed the date alignment (28600c6)
+
 8.x-1.2
 --------------------------------------------------------------------------------
 _Release Date: 2020-08-07_
