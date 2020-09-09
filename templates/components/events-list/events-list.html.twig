@@ -46,7 +46,7 @@
 
     {# Seperator and end date should be conditional #}
     {%- if su_event_start_date != su_event_end_date or su_event_start_month != su_event_end_month %}
-      <span class="su-event-list-item__date__seperator">&ndash;to&ndash;</span>
+      <span class="su-event-list-item__date__seperator">&ndash; to &ndash;</span>
 
       <div class="su-date-stacked su-date-stacked--no-background">
         <span class="su-event-end-month"> {{ su_event_end_month }}</span>
@@ -125,7 +125,7 @@
       {%- if su_event_location_administrative_area|render|striptags|trim is not empty %}
         {{- su_event_location_administrative_area -}}
       {% endif %}
-      
+
       {# Dependant Locality #}
       {%- if su_event_location_dependent_locality|render|striptags|trim is not empty %}
         {{- su_event_location_dependent_locality -}}
