@@ -83,7 +83,7 @@ events-card:
       preview: "Stanford"
     su_event_location_administrative_area:
       type: address
-      label: "Adminstrative Area/State"
+      label: "Administrative Area/State"
       description: "Manually entered address for event"
       preview: "California"
     su_event_location_dependent_locality:
