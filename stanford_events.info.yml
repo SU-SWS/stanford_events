@@ -1,6 +1,6 @@
 name: 'Stanford Events'
 type: module
-description: 'Event content typem views, and importer.'
+description: 'Event content type, views, and importer.'
 core_version_requirement: ^8.8 || ^9
 package: Stanford
 version: 8.x-1.5-dev
