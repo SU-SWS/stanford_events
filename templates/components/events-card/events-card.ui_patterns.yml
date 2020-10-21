@@ -1,0 +1,120 @@
+events-card:
+  label: Events Card Item
+  description: "Building block component for the events list page."
+  fields:
+    su_event_start_month:
+      type: text
+      label: "Start Month"
+      description: "Event Month"
+      preview: "May"
+    su_event_start_date:
+      type: text
+      label: "Start Date"
+      description: "Event date"
+      preview: "01"
+    su_event_end_month:
+      type: text
+      label: "End Month"
+      description: "Event Month"
+      preview: "May"
+    su_event_end_date:
+      type: text
+      label: "End Date"
+      description: "Event ending date"
+      preview: "14"
+    su_event_type:
+      type: text
+      label: "Event Type"
+      description: "The type of the event."
+    su_event_headline:
+      type: text
+      label: "Headline"
+      description: "Text heading"
+      preview: "This is the headline."
+    su_event_subheadline:
+      type: text
+      label: "Subheadline"
+      description: "Text subheadline."
+      preview: "This is the subheadline."
+    su_event_dek:
+      type: text
+      label: "Dek"
+      description: "This is the dek specific to news items."
+      preview: "<p>Sample text goes here and this list should be able to handle a few lines.</p>"
+    su_event_url:
+      type: text
+      label: "URL for event"
+      description: "URL for event."
+      preview: "http://www.stanford.edu/"
+    su_event_date_time:
+      type: text
+      label: "Date and time for event"
+      description: "Date and time for the event."
+      preview: "Sunday, Aug 30 2020, 12:00 - 2:00pm PST"
+    su_event_location:
+      type: text
+      label: "Location for event"
+      description: "Location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_address:
+      type: address
+      label: "Formatted location for event"
+      description: "Formatted location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_location_organization:
+      type: address
+      label: "Company name"
+      description: "Manually entered address for event"
+      preview: "Company Name"
+    su_event_location_address_line1:
+      type: address
+      label: "Address Line 1"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street"
+    su_event_location_address_line2:
+      type: address
+      label: "Address Line 2"
+      description: "Manually entered address for event"
+      preview: "Suite 10"
+    su_event_location_locality:
+      type: address
+      label: "Locality/City"
+      description: "Manually entered address for event"
+      preview: "Stanford"
+    su_event_location_administrative_area:
+      type: address
+      label: "Adminstrative Area/State"
+      description: "Manually entered address for event"
+      preview: "California"
+    su_event_location_dependent_locality:
+      type: address
+      label: "Dependent Locality"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_location_country_code:
+      type: address
+      label: "Country"
+      description: "Manually entered address for event"
+      preview: "United States"
+    su_event_location_postal_code:
+      type: address
+      label: "Postal Code"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    su_event_location_sorting_code:
+      type: address
+      label: "Sorting Code"
+      description: "Manually entered address for event"
+      preview: "94305"
+    su_event_edit:
+      type: text
+      label: "Edit this Event"
+      description: "Button to edit the content."
+      preview: "http://www.stanford.edu"
+  use: "@events/events-card/events-card.html.twig"
+  libraries:
+    - eventslist:
+        css:
+          component:
+            ../../../dist/css/stanford_events.event-list.css: { }
+            ../../../dist/css/stanford_events.event-card.css: { }
