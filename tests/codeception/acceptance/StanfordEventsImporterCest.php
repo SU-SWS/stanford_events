@@ -6,8 +6,8 @@ class StanfordEventsImporterCest {
    * Events Importer Module Enable.
    */
   public function _before(AcceptanceTester $I) {
+    $I->runDrush('pm:enable config_pages');
     $I->runDrush('pm:enable stanford_events_importer');
-    $I->runDrush('cache:rebuild');
   }
 
   /**
