@@ -7,8 +7,7 @@ class StanfordEventsImporterCest {
    */
   public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_importer');
-    drupal_static_reset();
-    drupal_flush_all_caches();
+    $I->runDrush('cache:rebuild');
   }
 
   /**
