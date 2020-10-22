@@ -13,6 +13,7 @@ class StanfordEventsImporterCest {
    */
   public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_importer -y');
+    $I->runDrush('cache:rebuild');
   }
 
   /**
