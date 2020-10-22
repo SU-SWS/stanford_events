@@ -1,10 +1,10 @@
 <?php
-/**
- * @file
- *
- * Tests for all of the events functionality.
- */
 
+/**
+ * Class StanfordEventsCest.
+ *
+ * @group stanford_events
+ */
 class StanfordEventsCest {
 
   /**

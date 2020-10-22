@@ -1,4 +1,4 @@
-name: 'Stanford Events test'
+name: 'Stanford Events'
 type: module
 description: 'Event content typem views, and importer.'
 core_version_requirement: ^8.8 || ^9

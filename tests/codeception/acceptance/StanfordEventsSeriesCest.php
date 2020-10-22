@@ -1,14 +1,18 @@
 <?php
 
+/**
+ * Class StanfordEventsSeriesCest.
+ *
+ * @group stanford_events
+ * @group stanford_events_series
+ */
 class StanfordEventsSeriesCest {
 
   /**
    * Events Series Module Enable.
    */
   public function _before(AcceptanceTester $I) {
-    $I->runDrush('pm:enable stanford_events_series');
-    drupal_static_reset();
-    drupal_flush_all_caches();
+    $I->runDrush('pm:enable stanford_events_series -y');
   }
 
   /**
