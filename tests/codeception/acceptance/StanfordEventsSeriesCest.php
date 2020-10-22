@@ -36,9 +36,7 @@ class StanfordEventsSeriesCest {
   public function testCreateNewNode(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $node = $this->createEventSeriesNode($I);
-    $I->runDrush("cr");
-    $path = $node->toUrl()->toString();
-    $I->amOnPage($path);
+    $I->amOnPage($node->toUrl()->toString());
     $I->canSee("This is a test event series node");
     $I->canSee("Series Event Node: 0");
     $I->canSee("Series Event Node: 1");
@@ -54,9 +52,8 @@ class StanfordEventsSeriesCest {
   public function testEventSeriesPathAuto(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $node = $this->createEventSeriesNode($I, "Test Test Test");
-    $I->runDrush("cr");
-    $path = $node->toUrl()->toString();
-    $I->assertEquals($path, "/event/series/test-test-test");
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSeeInCurrentUrl('/event/series/test-test-test');
   }
 
   /**
