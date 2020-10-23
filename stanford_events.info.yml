@@ -9,7 +9,6 @@ dependencies:
   - allowed_formats:allowed_formats
   - auto_entitylabel:auto_entitylabel
   - components:components
-  - config_pages:config_pages
   - default_content:default_content
   - drupal:breakpoint
   - drupal:datetime
