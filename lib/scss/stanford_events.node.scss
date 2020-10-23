@@ -13,7 +13,6 @@
   }
 
   .su-event-type {
-    @include subheading;
 
     a {
       color: $su-color-bright-red;
@@ -23,6 +22,16 @@
       &:hover,
       &:focus {
         color: $su-color-black;
+      }
+    }
+
+    .su-event-label-past {
+      color: #7F7776; //$su-color-accent-stone
+      text-transform: uppercase;
+
+      .divider {
+        @include margin(null 5px);
+
       }
     }
   }
@@ -146,6 +155,13 @@
     div {
       @include modular-spacing('padding', null null null 1);
     }
+  }
+
+  .su-event-text-past {
+    @include caption;
+
+    color: #7F7776; //$su-color-accent-stone
+    padding-top: 5px;
   }
 
   .node-stanford-event-su-event-audience {
