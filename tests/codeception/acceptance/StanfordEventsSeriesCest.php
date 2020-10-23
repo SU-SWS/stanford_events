@@ -12,7 +12,8 @@ class StanfordEventsSeriesCest {
    * Events Series Module Enable.
    */
   public function _before(AcceptanceTester $I) {
-    $I->runDrush('pm:enable stanford_events_series -y --no-interaction');
+    $I->runDrush('pm:enable stanford_events_series -y');
+    sleep(5);
     drupal_flush_all_caches();
   }
 
