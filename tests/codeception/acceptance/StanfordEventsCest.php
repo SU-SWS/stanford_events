@@ -330,7 +330,9 @@ class StanfordEventsCest {
       'su_event_subheadline' => 'This is a sub-headline',
     ];
     $values = array_merge($values, $content);
-    return $I->createEntity($values);
+    $e = $I->createEntity($values);
+    $I->runDrush('cache:rebuild');
+    return $e;
   }
 
   /**
@@ -345,10 +347,12 @@ class StanfordEventsCest {
    *   A taxonomy term.
    */
   protected function createEventTypeTerm(AcceptanceTester $I, $name = NULL) {
-    return $I->createEntity([
+    $e = $I->createEntity([
       'name' => $name ?: 'Foo',
       'vid' => 'stanford_event_types',
     ], 'taxonomy_term');
+    $I->runDrush('cache:rebuild');
+    return $e;
   }
 
   /**
@@ -363,10 +367,12 @@ class StanfordEventsCest {
    *   A taxonomy term.
    */
   protected function createEventAudienceTerm(AcceptanceTester $I, $name = NULL) {
-    return $I->createEntity([
+    $e = $I->createEntity([
       'name' => $name ?: 'Foo',
       'vid' => 'stanford_event_audience',
     ], 'taxonomy_term');
+    $I->runDrush('cache:rebuild');
+    return $e;
   }
 
 }

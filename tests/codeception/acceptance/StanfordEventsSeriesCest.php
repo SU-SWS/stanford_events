@@ -65,7 +65,7 @@ class StanfordEventsSeriesCest {
       $event_nodes[] = ['target_id' => $node->id()];
     }
 
-    return $I->createEntity([
+    $e = $I->createEntity([
       'type' => 'stanford_event_series',
       'title' => $node_title ?: 'This is a test event series node',
       'su_event_series_components' => [],
@@ -73,6 +73,8 @@ class StanfordEventsSeriesCest {
       'su_event_series_event' => $event_nodes,
       'su_event_series_subheadline' => "This is a subheadline",
     ], 'node', FALSE);
+    $I->runDrush('cache:rebuild');
+    return $e;
   }
 
    /**
@@ -82,7 +84,7 @@ class StanfordEventsSeriesCest {
      $start = time() - (60 * 60 * 24 * $time_multiplier);
      $end = time() + (60 * 60 * 24 * $time_multiplier);
 
-     return $I->createEntity([
+     $e = $I->createEntity([
        'type' => 'stanford_event',
        'title' => $node_title ?: 'This is a test event node',
        'body' => [
@@ -101,6 +103,8 @@ class StanfordEventsSeriesCest {
        ],
        'su_event_subheadline' => 'This is a sub-headline',
      ]);
+     $I->runDrush('cache:rebuild');
+     return $e;
    }
 
    /**
