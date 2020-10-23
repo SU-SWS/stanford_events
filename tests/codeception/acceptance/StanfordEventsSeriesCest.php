@@ -13,9 +13,6 @@ class StanfordEventsSeriesCest {
    */
   public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_series -y');
-    sleep(5);
-    drupal_flush_all_caches();
-    drupal_static_reset();
   }
 
   /**

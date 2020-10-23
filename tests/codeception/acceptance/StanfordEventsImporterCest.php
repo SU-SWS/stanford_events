@@ -13,11 +13,6 @@ class StanfordEventsImporterCest {
    */
   public function _before(AcceptanceTester $I) {
     $I->runDrush('pm:enable stanford_events_importer -y');
-    drupal_flush_all_caches();
-    $config_pages_def = \Drupal::entityTypeManager()
-      ->getDefinition('config_pages');
-    \Drupal::entityDefinitionUpdateManager()
-      ->installEntityType($config_pages_def);
   }
 
   /**
