@@ -150,6 +150,13 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
       ->addWarning(t('This page will redirect to @url for other visitors.', ['@url' => $rh_redirect]));
   }
 
+  if ($entity->hasField('su_event_date_time')) {
+    $date_time = $entity->get('su_event_date_time')->getValue();
+    if (!empty($date_time[0]['end_value'])) {
+      $build['#attributes']['data-end-date'] = $date_time[0]['end_value'];
+    }
+  }
+
 }
 
 /**
