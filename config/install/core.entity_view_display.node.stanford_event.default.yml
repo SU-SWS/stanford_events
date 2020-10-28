@@ -1,3 +1,4 @@
+uuid: 5b1e2890-2f35-4623-940a-cb7785f1e804
 langcode: en
 status: true
 dependencies:
@@ -185,7 +186,7 @@ third_party_settings:
                 label: hidden
                 type: smartdate_custom
                 settings:
-                  date_format: 'l, F j, Y'
+                  date_format: 'l, F j, Y '
                   custom_date_format: ''
                   timezone: ''
                   separator: ''
