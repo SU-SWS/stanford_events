@@ -1,5 +1,5 @@
-events-list:
-  label: Events List Item
+events-card:
+  label: Events Card Item
   description: "Building block component for the events list page."
   fields:
     su_event_start_month:
@@ -111,9 +111,10 @@ events-list:
       label: "Edit this Event"
       description: "Button to edit the content."
       preview: "http://www.stanford.edu"
-  use: "@events/events-list/events-list.html.twig"
+  use: "@events/events-card/events-card.html.twig"
   libraries:
     - eventslist:
         css:
           component:
             ../../../dist/css/stanford_events.event-list.css: { }
+            ../../../dist/css/stanford_events.event-card.css: { }
