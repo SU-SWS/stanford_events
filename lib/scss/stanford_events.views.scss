@@ -233,6 +233,23 @@
   }
 }
 
+// Card view block.
+.view {
+  &.stanford-events {
+    &.cards {
+      @include grid-media-max('md') {
+        .views-col {
+          @include modular-spacing('margin', null null 4 null);
+
+          flex: none;
+          max-width: 980px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 // Explore More Block.
 .stanford-events-more-events-block {
 
