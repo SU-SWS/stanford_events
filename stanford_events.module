@@ -218,6 +218,22 @@ function stanford_events_cron() {
  * to use that.
  */
 function stanford_events_preprocess_field_multiple_value_form(&$variables) {
+  if ($variables["element"]["#field_name"] == 'su_event_schedule') {
+    unset($variables['table']['#header']);
+    unset($variables['table']['#tabledrag']);
+    foreach ($variables['table']['#rows'] as &$row) {
+      foreach (array_keys($row['data']) as $key) {
+        if (!empty($row['data'][$key]['class'])
+          && array_intersect($row['data'][$key]['class'], [
+            'field-multiple-drag',
+            'delta-order',
+          ])) {
+          unset($row['data'][$key]);
+        }
+      }
+    }
+  }
+
   foreach (Element::children($variables['element']) as $child) {
     $child_element = &$variables['element'][$child];
 
