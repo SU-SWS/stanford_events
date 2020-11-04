@@ -12,6 +12,7 @@
       white-space: nowrap;
     }
   }
+
   .su-event-list-item__details {
     .event-list-item__type {
       a {
@@ -47,7 +48,7 @@
       }
     }
 
-    .event-list_item__subheadline {
+    .event-list-item__subheadline {
       @include modular-typography(0);
       @include modular-spacing('margin', null null 2 null);
 
