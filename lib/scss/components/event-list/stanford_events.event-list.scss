@@ -5,8 +5,7 @@
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
 
-  > div,
-  h2 {
+  > div {
     @include small-paragraph;
 
     display: inline-block;
@@ -139,7 +138,7 @@
     }
 
     h2 {
-      @include modular-typography(3);
+      @include modular-typography(2);
       @include modular-spacing('margin', null null -1 null);
 
       > a {

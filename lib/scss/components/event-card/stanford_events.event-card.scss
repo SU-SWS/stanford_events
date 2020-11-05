@@ -2,56 +2,58 @@
 @import '../../stanford_events.config';
 
 .su-event-card {
-  @include padding(3.8rem);
+  &.su-event-list-item {
+    @include padding(3.8rem);
 
-  .su-event-list-item__date {
-    display: flex;
-    align-items: center;
+    .su-event-list-item__date {
+      display: flex;
+      align-items: center;
 
-    .su-event-list-item__date__seperator {
-      white-space: nowrap;
-    }
-  }
-
-  .su-event-list-item__details {
-    .event-list-item__type {
-      a {
-        @include small-paragraph;
-
-        color: $su-color-bright-red;
-        font-weight: $su-font-regular;
-        text-decoration: none;
-
-        &:hover,
-        &:focus,
-        &:active {
-          color: $su-color-black;
-          text-decoration: underline;
-        }
+      .su-event-list-item__date__seperator {
+        white-space: nowrap;
       }
     }
 
-    h2 {
-      @include modular-typography(2);
+    .su-event-list-item__details {
+      .event-list-item__type {
+        a {
+          @include small-paragraph;
 
-      > a {
-        color: $su-color-black;
-        font-weight: $su-font-bold;
-        text-decoration: none;
-
-        &:hover,
-        &:focus,
-        &:active {
           color: $su-color-bright-red;
-          text-decoration: underline;
+          font-weight: $su-font-regular;
+          text-decoration: none;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-black;
+            text-decoration: underline;
+          }
         }
       }
-    }
 
-    .event-list-item__subheadline {
-      @include modular-typography(0);
-      @include modular-spacing('margin', null null 2 null);
+      h2 {
+        @include modular-typography(2);
 
+        > a {
+          color: $su-color-black;
+          font-weight: $su-font-bold;
+          text-decoration: none;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-bright-red;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .event-list-item__subheadline {
+        @include modular-typography(0);
+        @include modular-spacing('margin', null null 2 null);
+
+      }
     }
   }
 }

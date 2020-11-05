@@ -36,11 +36,6 @@ events-card:
       label: "Subheadline"
       description: "Text subheadline."
       preview: "This is the subheadline."
-    su_event_dek:
-      type: text
-      label: "Dek"
-      description: "This is the dek specific to news items."
-      preview: "<p>Sample text goes here and this list should be able to handle a few lines.</p>"
     su_event_url:
       type: text
       label: "URL for event"
