@@ -1,6 +1,6 @@
 name: 'Stanford Events'
 type: module
-description: 'Event content typem views, and importer.'
+description: 'Event content type, views, and importer.'
 core_version_requirement: ^8.8 || ^9
 package: Stanford
 version: 8.x-1.5-dev
@@ -52,6 +52,7 @@ dependencies:
   - ui_patterns:ui_patterns_views
   - views_block_filter_block:views_block_filter_block
   - views_infinite_scroll:views_infinite_scroll
+  - views_taxonomy_term_name_depth:views_taxonomy_term_name_depth
 component-libraries:
   events:
     paths:

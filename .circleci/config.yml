@@ -53,7 +53,7 @@ codeception: &codeception
         name: Run Acceptance Tests
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test --modules=stanford_events,stanford_events_importer,stanford_events_series
     - store_test_results:
         path: /var/www/html/artifacts/behat
     - store_artifacts:

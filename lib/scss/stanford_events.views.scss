@@ -94,9 +94,10 @@
       }
     }
 
+    // Events list heading
     h2 {
       @include modular-typography(3);
-      @include modular-spacing('margin', null null -1 null);
+      @include modular-spacing('margin', null null -3 null);
 
       > a {
         color: $su-color-bright-red;
@@ -115,6 +116,12 @@
           width: 20px;
         }
       }
+    }
+
+    // Events list subheading
+    h3 {
+      @include modular-typography(1);
+      @include modular-spacing('margin', null null 2 null);
     }
 
     .views-field-su-event-subheadline,
@@ -233,7 +240,25 @@
   }
 }
 
+// Card view block.
+.view {
+  &.stanford-events {
+    &.cards {
+      @include grid-media-max('md') {
+        .views-col {
+          @include modular-spacing('margin', null null 4 null);
+
+          flex: none;
+          max-width: 980px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 // Explore More Block.
+// Event cards
 .stanford-events-more-events-block {
 
   @include grid-media-max('md') {
@@ -256,16 +281,25 @@
     a {
       color: $su-color-bright-red;
       font-weight: $su-font-regular;
+      text-decoration: none;
 
       &:hover,
       &:focus {
         color: $su-color-black;
+        text-decoration: underline;
       }
     }
 
     .su-event-list-item__date {
       @include modular-spacing('margin', null null 0 null);
+
+      display: flex;
+      align-items: center;
       max-width: unset;
+
+      .su-event-list-item__date__seperator {
+        white-space: nowrap;
+      }
     }
   }
 
@@ -286,7 +320,7 @@
     }
 
     h2 {
-      @include modular-spacing('margin', -2 null 3 null);
+      @include modular-spacing('margin', -2 null -1 null);
 
       a {
         @include type-f;
@@ -297,6 +331,7 @@
 
         &:hover,
         &:focus {
+          color: $su-color-bright-red;
           text-decoration: underline;
         }
       }
