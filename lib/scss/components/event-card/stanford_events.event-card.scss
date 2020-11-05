@@ -1,6 +1,16 @@
 @charset 'UTF-8';
 @import '../../stanford_events.config';
 
+.stanford-events {
+  &.cards {
+    @include grid-media-min('lg') {
+      .views-row:not(:first-of-type) {
+        @include modular-spacing('padding', 4 null null null);
+      }
+    }
+  }
+}
+
 .su-event-card {
   &.su-event-list-item {
     @include padding(3.8rem);
