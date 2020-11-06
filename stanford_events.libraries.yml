@@ -60,5 +60,5 @@ event_views:
       dist/css/stanford_events.event-filter-menu.css: {}
   js:
     dist/js/stanford_events.node.behaviors.js: {}
-    dependencies:
-      - core/jquery
+  dependencies:
+    - core/jquery
