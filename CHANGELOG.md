@@ -1,5 +1,16 @@
 # Stanford Events
 
+8.x-1.5
+--------------------------------------------------------------------------------
+_Release Date: 2020-11-06_
+
+- D8CORE-2306: removed sorting controls in the event schedule entity reference field. (#35) (7933170)
+- D8CORE-2873: Adding the Past label (#32) (01cac10)
+- D8CORE-2930 D8CORE-2924: fixing the event card display and removing duplicate code (#36) (4bbaf9b)
+- D8CORE-000 Event card views stack on smaller screens. (#34) (781dea5)
+- D8CORE-2737 Event card display mode and view list. (#29) (15df9b3)
+- Fixing the tests: enabling modules we have to pass the `-y` so drush doesn't get stuck. (#31) (a8abd13)
+
 8.x-1.3
 --------------------------------------------------------------------------------
 _Release Date: 2020-09-09_
