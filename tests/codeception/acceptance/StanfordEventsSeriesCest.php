@@ -1,14 +1,18 @@
 <?php
 
+/**
+ * Class StanfordEventsSeriesCest.
+ *
+ * @group stanford_events
+ * @group stanford_events_series
+ */
 class StanfordEventsSeriesCest {
 
   /**
    * Events Series Module Enable.
    */
   public function _before(AcceptanceTester $I) {
-    $I->runDrush('pm:enable stanford_events_series');
-    drupal_static_reset();
-    drupal_flush_all_caches();
+    $I->runDrush('pm:enable stanford_events_series -y');
   }
 
   /**
@@ -31,9 +35,7 @@ class StanfordEventsSeriesCest {
   public function testCreateNewNode(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $node = $this->createEventSeriesNode($I);
-    $I->runDrush("cr");
-    $path = $node->toUrl()->toString();
-    $I->amOnPage($path);
+    $I->amOnPage($node->toUrl()->toString());
     $I->canSee("This is a test event series node");
     $I->canSee("Series Event Node: 0");
     $I->canSee("Series Event Node: 1");
@@ -49,9 +51,8 @@ class StanfordEventsSeriesCest {
   public function testEventSeriesPathAuto(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $node = $this->createEventSeriesNode($I, "Test Test Test");
-    $I->runDrush("cr");
-    $path = $node->toUrl()->toString();
-    $I->assertEquals($path, "/event/series/test-test-test");
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSeeInCurrentUrl('/event/series/test-test-test');
   }
 
   /**
@@ -64,7 +65,7 @@ class StanfordEventsSeriesCest {
       $event_nodes[] = ['target_id' => $node->id()];
     }
 
-    return $I->createEntity([
+    $e = $I->createEntity([
       'type' => 'stanford_event_series',
       'title' => $node_title ?: 'This is a test event series node',
       'su_event_series_components' => [],
@@ -72,6 +73,8 @@ class StanfordEventsSeriesCest {
       'su_event_series_event' => $event_nodes,
       'su_event_series_subheadline' => "This is a subheadline",
     ], 'node', FALSE);
+    $I->runDrush('cache:rebuild');
+    return $e;
   }
 
    /**
@@ -81,7 +84,7 @@ class StanfordEventsSeriesCest {
      $start = time() - (60 * 60 * 24 * $time_multiplier);
      $end = time() + (60 * 60 * 24 * $time_multiplier);
 
-     return $I->createEntity([
+     $e = $I->createEntity([
        'type' => 'stanford_event',
        'title' => $node_title ?: 'This is a test event node',
        'body' => [
@@ -100,6 +103,8 @@ class StanfordEventsSeriesCest {
        ],
        'su_event_subheadline' => 'This is a sub-headline',
      ]);
+     $I->runDrush('cache:rebuild');
+     return $e;
    }
 
    /**

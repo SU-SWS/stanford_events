@@ -150,6 +150,13 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
       ->addWarning(t('This page will redirect to @url for other visitors.', ['@url' => $rh_redirect]));
   }
 
+  if ($entity->hasField('su_event_date_time')) {
+    $date_time = $entity->get('su_event_date_time')->getValue();
+    if (!empty($date_time[0]['end_value'])) {
+      $build['#attributes']['data-end-date'] = $date_time[0]['end_value'];
+    }
+  }
+
 }
 
 /**
@@ -218,6 +225,22 @@ function stanford_events_cron() {
  * to use that.
  */
 function stanford_events_preprocess_field_multiple_value_form(&$variables) {
+  if ($variables["element"]["#field_name"] == 'su_event_schedule') {
+    unset($variables['table']['#header']);
+    unset($variables['table']['#tabledrag']);
+    foreach ($variables['table']['#rows'] as &$row) {
+      foreach (array_keys($row['data']) as $key) {
+        if (!empty($row['data'][$key]['class'])
+          && array_intersect($row['data'][$key]['class'], [
+            'field-multiple-drag',
+            'delta-order',
+          ])) {
+          unset($row['data'][$key]);
+        }
+      }
+    }
+  }
+
   foreach (Element::children($variables['element']) as $child) {
     $child_element = &$variables['element'][$child];
 

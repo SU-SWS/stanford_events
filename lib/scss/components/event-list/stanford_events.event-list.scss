@@ -5,8 +5,7 @@
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
 
-  > div,
-  h2 {
+  > div {
     @include small-paragraph;
 
     display: inline-block;
@@ -139,7 +138,7 @@
     }
 
     h2 {
-      @include modular-typography(3);
+      @include modular-typography(2);
       @include modular-spacing('margin', null null -1 null);
 
       > a {
@@ -158,7 +157,6 @@
           height: 20px;
           width: 20px;
         }
-
       }
     }
 
@@ -297,88 +295,6 @@
 
       .button {
         @include button-big;
-      }
-    }
-  }
-}
-
-// Explore More Block.
-.stanford-events-more-events-block {
-
-  @include grid-media-max('md') {
-    .flex-4-of-12 {
-      @include modular-spacing('margin', null null 3 null);
-
-      flex: none;
-      max-width: 980px;
-      width: 100%;
-    }
-  }
-
-  .views-row {
-    align-items: flex-start;
-  }
-
-  .su-event-list-item {
-    display: unset;
-
-    a {
-      color: $su-color-bright-red;
-      font-weight: $su-font-regular;
-
-      &:hover,
-      &:focus {
-        color: $su-color-black;
-      }
-    }
-
-    .su-event-list-item__date {
-      @include modular-spacing('margin', null null 0 null);
-      max-width: unset;
-    }
-  }
-
-  .views-col {
-    @include modular-spacing('padding', 2 2 3 2);
-    @include box-shadow('shallow');
-
-    border: 1px solid $su-color-cool-grey-15;
-
-    .su-date-stacked {
-      text-align: left;
-
-      .su-event-start-date,
-      .su-event-end-date {
-        font-weight: $su-font-bold;
-      }
-    }
-
-    h2 {
-      @include modular-spacing('margin', -2 null 3 null);
-
-      a {
-        @include type-f;
-        @include modular-spacing('margin', -2 null 0 null);
-
-        color: $su-color-black;
-        font-weight: $su-font-bold;
-
-        &:hover,
-        &:focus {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .event_list_item__type {
-    a {
-      color: $su-color-bright-red;
-      font-weight: $su-font-regular;
-
-      &:hover,
-      &:focus {
-        color: $su-color-black;
       }
     }
   }

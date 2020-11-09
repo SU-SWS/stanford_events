@@ -97,6 +97,7 @@
         "drupal/taxonomy_menu": "dev-3.x",
         "drupal/views_block_filter_block": "^1.0",
         "drupal/views_infinite_scroll": "^1.6",
+        "drupal/views_taxonomy_term_name_depth": "^7.0",
         "su-sws/jumpstart_ui": "^8.1.0",
         "su-sws/stanford_date_formats": "^8.1.0",
         "su-sws/stanford_fields": "^8.1.0",
@@ -117,6 +118,9 @@
             },
             "drupal/smart_date": {
               "https://www.drupal.org/project/smart_date/issues/3154741": "https://www.drupal.org/files/issues/2020-06-24/smart_date-anon-no-timezone-1.patch"
+            },
+            "drupal/views_taxonomy_term_name_depth": {
+                "https://www.drupal.org/project/views_taxonomy_term_name_depth/issues/2877249": "https://www.drupal.org/files/issues/2020-05-01/2877249_21.patch"
             }
         }
     },
