@@ -1,5 +1,22 @@
 # Stanford Events
 
+8.x-1.5
+--------------------------------------------------------------------------------
+_Release Date: 2020-10-09_
+
+- D8CORE-2873-v2: fixing the date format (#39)
+- D8CORE-2306: removed sorting controls in the event schedule entity reference field. (#35)
+- D8CORE-2873: Adding the Past label (#32)
+- D8CORE-2930 D8CORE-2924: fixing the event card display and removing duplicate code (#36)
+- D8CORE-000 Event card views stack on smaller screens. (#34)
+- D8CORE-2737 Event card display mode and view list. (#29)
+
+8.x-1.4
+--------------------------------------------------------------------------------
+_Release Date: 2020-09-14_
+
+- Fixed composer dependencies.
+
 8.x-1.3
 --------------------------------------------------------------------------------
 _Release Date: 2020-09-09_
@@ -33,7 +50,7 @@ _Release Date: 2020-07-13_
 - D8CORE-2265: adding styles for past events scroll button (#9) (8bc9bfb)
 
 8.x-1.0
---------------------------------------------------------------------------------  
+--------------------------------------------------------------------------------
 _Release Date: 2020-06-17_
 
 - Initial Release.
