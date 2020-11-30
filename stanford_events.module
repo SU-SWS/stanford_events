@@ -171,11 +171,23 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
  *   The date formatted with stanford_long_day_date_year
  */
 function stanford_events_schedule_format_date($raw, $obj) {
-  // Expecting a timestamp in this function.
   if (!is_numeric($raw)) {
     return NULL;
   }
-  return \Drupal::service('date.formatter')->format($raw, 'stanford_long_day_date_year');
+
+  // We are going to use the passed object to determine if we are looking
+  // at an event that spans multiple days.
+  $schedule_date_time = $obj->su_schedule_date_time->get(0)->getValue();
+  $start_date_day = date('m-d', $schedule_date_time['value']);
+  $end_date_day = date('m-d', $schedule_date_time['end_value']);
+  $different_days = $start_date_day == $end_date_day ? FALSE : TRUE;
+
+  $timestring = \Drupal::service('date.formatter')->format($schedule_date_time['value'], 'stanford_long_day_date_year');
+  if ($different_days) {
+    $timestring .= ' - ' . \Drupal::service('date.formatter')->format($schedule_date_time['end_value'], 'stanford_long_day_date_year');
+  }
+
+  return $timestring;
 }
 
 /**
