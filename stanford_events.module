@@ -10,6 +10,7 @@
 use Drupal\views\ViewExecutable;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
 use Drupal\views\Plugin\views\cache\CachePluginBase;
@@ -164,21 +165,20 @@ function stanford_events_node_view(array &$build, EntityInterface $entity, Entit
  *
  * @param string $raw
  *   The raw string from a views grouping column.
- * @param object $obj
+ * @param Drupal\Core\Entity\ContentEntityInterface $entity
  *   The loaded entity being rendered.
  *
  * @return string|null
  *   The date formatted with stanford_long_day_date_year
  */
-function stanford_events_schedule_format_date($raw, $obj) {
-  if (!is_numeric($raw) || empty($obj->get('su_schedule_date_time')->getValue())) {
+function stanford_events_schedule_format_date($raw, ContentEntityInterface $entity) {
+  if (!is_numeric($raw) || empty($entity->get('su_schedule_date_time')->getValue())) {
     return NULL;
   }
 
   // We are going to use the passed object to determine if we are looking
   // at an event that spans multiple days.
-  //$schedule_date_time = $obj->su_schedule_date_time->get(0)->getValue();
-  $schedule_date_time = $obj->get('su_schedule_date_time')->getValue();
+  $schedule_date_time = $entity->get('su_schedule_date_time')->getValue();
   $start_date_day = date('m-d-y', $schedule_date_time[0]['value']);
   $end_date_day = date('m-d-y', $schedule_date_time[0]['end_value']);
   $same_days = $start_date_day == $end_date_day;
