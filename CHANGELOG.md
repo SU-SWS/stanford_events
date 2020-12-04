@@ -1,5 +1,16 @@
 # Stanford Events
 
+8.x-1.6
+--------------------------------------------------------------------------------
+_Release Date: 2020-12-04_
+
+- D8CORE-2326: Modified the event schedule date formatting to account for multiple days. (#45) (e47d913)
+- D8CORE-2325: Added separator for date field. (#44) (104cea1)
+- D8CORE-2967: fixing the past event label to work with articles without type (#41) (2dab23a)
+- Updated default content module (#43) (6002147)
+- Update tests for D9 phpunit (#42) (bf71a36)
+- phpunit void return annoation (ed55621)
+
 8.x-1.5
 --------------------------------------------------------------------------------
 _Release Date: 2020-10-09_
