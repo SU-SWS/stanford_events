@@ -12,6 +12,16 @@
     @include modular-typography(5);
   }
 
+  .su-event-label-past {
+    color: #7f7776; //change to the variable with decanter update $su-color-accent-stone
+    text-transform: uppercase;
+
+    .divider {
+      @include margin(null 5px);
+
+    }
+  }
+
   .su-event-type {
 
     a {
@@ -22,16 +32,6 @@
       &:hover,
       &:focus {
         color: $su-color-black;
-      }
-    }
-
-    .su-event-label-past {
-      color: #7f7776; //$su-color-accent-stone
-      text-transform: uppercase;
-
-      .divider {
-        @include margin(null 5px);
-
       }
     }
   }

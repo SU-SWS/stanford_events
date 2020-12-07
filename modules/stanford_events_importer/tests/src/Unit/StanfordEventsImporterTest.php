@@ -84,10 +84,10 @@ class StanfordEventsImporterTest extends UnitTestCase {
    */
   public function testFetchXML() {
     $this->xml = $this->plugin->fetchXML();
-    $this->assertContains("Arts", $this->xml);
+    $this->assertStringContainsString("Arts", $this->xml);
 
     $orgs = $this->plugin->fetchXML('organization-list');
-    $this->assertContains("AASA", $orgs);
+    $this->assertStringContainsString("AASA", $orgs);
   }
 
   /**
