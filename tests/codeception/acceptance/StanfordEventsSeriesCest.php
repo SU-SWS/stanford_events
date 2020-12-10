@@ -19,7 +19,9 @@ class StanfordEventsSeriesCest {
     if (!$enabled) {
       $I->checkOption('Stanford Events Series');
       $I->click('Install', '.form-actions');
-      $I->click('Continue');
+      if ($I->grabMultiple('input[value="Continue"]')) {
+        $I->click('Continue');
+      }
     }
     $I->amOnPage('/admin/structure/types/manage/stanford_event_series/fields');
     $I->canSeeResponseCodeIs(200);
