@@ -18,7 +18,7 @@ class StanfordEventsSeriesCest {
     $enabled = $I->grabAttributeFrom('input[name="modules[stanford_events_series][enable]"]', 'checked');
     if (!$enabled) {
       $I->checkOption('Stanford Events Series');
-      $I->click('Install');
+      $I->click('Install', '.form-actions');
       $I->click('Continue');
     }
     $I->amOnPage('/admin/structure/types/manage/stanford_event_series/fields');
