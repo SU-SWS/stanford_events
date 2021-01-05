@@ -1,6 +1,11 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
+// Header spacing for Person
+.heading-h1 {
+  @include modular-spacing('margin', 7 null 7 null);
+}
+
 // Filtered list
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
