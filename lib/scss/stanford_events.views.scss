@@ -3,7 +3,7 @@
 
 // Header spacing for Person
 .heading-h1 {
-  @include modular-spacing('margin', 6 null);
+  @include modular-spacing('margin', 6 null 5);
 }
 
 // Filtered list
