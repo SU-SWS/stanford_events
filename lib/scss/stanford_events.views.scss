@@ -368,10 +368,6 @@
 
 // Event Series
 // header specific
-.node-stanford-event-series-title {
-  @include modular-spacing('margin', null null -1 null);
-}
-
 .node-stanford-event-series-su-event-series-subheadline {
   @include modular-spacing('margin', null null 2 null);
 }
