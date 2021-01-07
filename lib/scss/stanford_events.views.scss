@@ -6,6 +6,24 @@
   @include modular-spacing('margin', 6 null 5);
 }
 
+// Header spacing for all Event, Event series and Past Events
+.section-event-series-list--header,
+.section-event-list--title,
+.section-events-past--header {
+  .jumpstart-ui-page-heading {
+    .heading-h1 {
+      @include modular-spacing('margin', 7 null 7 null);
+      @include modular-typography(5);
+    }
+  }
+}
+
+.section-event-series--header {
+  .node-stanford-event-series-title {
+    @include modular-spacing('margin', 6 null null null);
+  }
+}
+
 // Filtered list
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
