@@ -44,6 +44,17 @@
   }
 }
 
+.paragraph {
+  .su-event-list-item__date {
+    display: flex;
+    align-items: center;
+
+    .su-event-list-item__date__seperator {
+      white-space: nowrap;
+    }
+  }
+}
+
 .su-event-list-item {
   @include modular-spacing('padding', 2 null 4 null);
 
