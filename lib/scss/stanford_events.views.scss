@@ -44,13 +44,17 @@
   }
 }
 
-.paragraph {
-  .su-event-list-item__date {
-    display: flex;
-    align-items: center;
+.ptype-stanford-lists {
+  &:not(.flex-12-of-12) {
+    .paragraph {
+      .su-event-list-item__date {
+        display: flex;
+        align-items: center;
 
-    .su-event-list-item__date__seperator {
-      white-space: nowrap;
+        .su-event-list-item__date__seperator {
+          white-space: nowrap;
+        }
+      }
     }
   }
 }
