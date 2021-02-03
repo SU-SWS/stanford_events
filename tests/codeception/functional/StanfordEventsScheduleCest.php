@@ -2,6 +2,8 @@
 
 class StanfordEventsScheduleCest {
 
+    protected $node;
+
     public function _before(FunctionalTester $I) {
         $values = [
             'type' => 'stanford_event',
@@ -33,7 +35,7 @@ class StanfordEventsScheduleCest {
           ];
           $e = $I->createEntity($values);
           $I->runDrush('cache:rebuild');
-          return $e;
+          $this->node = $e;
     }
 
     public function _after(FunctionalTester $I) {
@@ -41,10 +43,10 @@ class StanfordEventsScheduleCest {
     }
 
     public function testEventSchedule(FunctionalTester $I) {
-        $I->logInWithRole('administrator');
-        $node = $this->createEventNode($I);
-        $path = $node->toUrl()->toString();
-        $id = $node->id();
+
+      $I->logInWithRole('administrator');
+        $path = $this->node->toUrl()->toString();
+        $id = $this->node->id();
 
         $I->amOnPage("node/$id/edit");
         $I->canSee("Schedule Details");
