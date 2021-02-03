@@ -23,21 +23,6 @@ class StanfordEventsScheduleCest {
               'timezone' => "America/Los_Angeles",
             ],
             'su_event_dek' => 'This is a dek field',
-            'su_event_alt_loc' => $external ? "https://events.stanford.edu/" : "",
-            'su_event_source' => $external ? [
-              "uri" => "http://events.stanford.edu/events/880/88074",
-              "title" => "",
-            ] : "",
-            'su_event_location' => $external ?: [
-              "langcode" => "",
-              "country_code" => "US",
-              "administrative_area" => "CA",
-              "locality" => "San Francisco",
-              "postal_code" => "94123-2806",
-              "address_line1" => "1901 Lombard St",
-              "address_line2" => "",
-              "organization" => "Asfdasdfa sdfasd fasf",
-            ],
             'su_event_map_link' => 'https://stanford.edu/',
             'su_event_sponsor' => [
               'This is a sponsor',
