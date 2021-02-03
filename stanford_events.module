@@ -131,6 +131,23 @@ function stanford_events_views_post_render(ViewExecutable $view, &$output, Cache
 
 }
 
+
+/**
+ * Implements hook_views_PRE_EXECUTE()
+ */
+function stanford_events_views_pre_execute(ViewExecutable $view) {
+
+  // Here, we perform an inner join on the events schedule view.
+  // This excludes revisions for items which have been deleted, but
+  // for which revisions still exist in the db.
+  if ($view->id() == 'stanford_events_schedule') {
+    $q = &$view->build_info['query'];
+    $q->innerJoin('node__su_event_schedule', 'node__su_event_schedule', 'node__su_event_schedule.su_event_schedule_target_id = paragraphs_item_field_data.id');
+    $q->fields('node__su_event_schedule');
+  }
+
+}
+
 /**
  * Implements hook_ENTITY_TYPE_view().
  */

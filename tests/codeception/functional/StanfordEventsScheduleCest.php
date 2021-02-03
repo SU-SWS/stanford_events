@@ -1,0 +1,90 @@
+<?php
+
+class StanfordEventsScheduleCest {
+
+    public function _before(FunctionalTester $I) {
+        $values = [
+            'type' => 'stanford_event',
+            'title' => 'This is a headline',
+            'body' => [
+              "value" => "<p>More updates to come.</p>",
+              "summary" => "",
+            ],
+            'su_event_cta' => [
+              "uri" => "https://google.com/",
+              "title" => "This is cta link text",
+            ],
+            'su_event_email' => 'noreply@stanford.edu',
+            'su_event_telephone' => '555-555-5645',
+            'su_event_date_time' => [
+              'value' => time(),
+              'end_value' => time() + (60 * 60 * 24),
+              'duration' => (60 * 24),
+              'timezone' => "America/Los_Angeles",
+            ],
+            'su_event_dek' => 'This is a dek field',
+            'su_event_alt_loc' => $external ? "https://events.stanford.edu/" : "",
+            'su_event_source' => $external ? [
+              "uri" => "http://events.stanford.edu/events/880/88074",
+              "title" => "",
+            ] : "",
+            'su_event_location' => $external ?: [
+              "langcode" => "",
+              "country_code" => "US",
+              "administrative_area" => "CA",
+              "locality" => "San Francisco",
+              "postal_code" => "94123-2806",
+              "address_line1" => "1901 Lombard St",
+              "address_line2" => "",
+              "organization" => "Asfdasdfa sdfasd fasf",
+            ],
+            'su_event_map_link' => 'https://stanford.edu/',
+            'su_event_sponsor' => [
+              'This is a sponsor',
+              'This is two sponsor',
+              'This is 3 sponsor',
+            ],
+            'su_event_subheadline' => 'This is a sub-headline',
+          ];
+          $values = array_merge($values, $content);
+          $e = $I->createEntity($values);
+          $I->runDrush('cache:rebuild');
+          return $e;
+    }
+
+    public function _after(FunctionalTester $I) {
+        return;
+    }
+
+    public function testEventSchedule(FunctionalTester $I) {
+        $I->logInWithRole('administrator');
+        $node = $this->createEventNode($I);
+        $path = $node->toUrl()->toString();
+        $id = $node->id();
+
+        $I->amOnPage("node/$id/edit");
+        $I->canSee("Schedule Details");
+        $I->click("Add Schedule");
+        $I->wait(3);
+        $I->seeElement('input', ['name' =>  'su_event_schedule[0][subform][su_schedule_headline][0][value]']);
+        $I->fillField(['name' => 'su_event_schedule[0][subform][su_schedule_date_time][0][value][date]'], '12012021');
+        $I->fillField(['name' => 'su_event_schedule[0][subform][su_schedule_date_time][0][value][time]'], '120101');
+        $I->fillField(['name' => 'su_event_schedule[3][subform][su_schedule_headline][0][value]'], 'Scheduled Event Headline');
+        $I->click('Save');
+        $I->amOnPage($path);
+        $I->canSee("Scheduled Event Headline");
+        $I->canSee("Wednesday, December 1, 2021");
+        $I->amOnPage("node/$id/edit");
+        $I->click(['name' => 'su_event_schedule_0_remove']);
+        $I->wait(3);
+        $I->click('Confirm removal');
+        $I->wait(1);
+        $I->canSee('No Paragraph added yet');
+        $I->click('Save');
+        $I->runDrush('cache:rebuild');
+        $I->amOnPage($path);
+        $I->dontSee("Scheduled Event Headline");
+
+    }
+
+}
