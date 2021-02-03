@@ -31,7 +31,6 @@ class StanfordEventsScheduleCest {
             ],
             'su_event_subheadline' => 'This is a sub-headline',
           ];
-          $values = array_merge($values, $content);
           $e = $I->createEntity($values);
           $I->runDrush('cache:rebuild');
           return $e;
