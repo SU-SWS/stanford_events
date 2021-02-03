@@ -131,9 +131,8 @@ function stanford_events_views_post_render(ViewExecutable $view, &$output, Cache
 
 }
 
-
 /**
- * Implements hook_views_PRE_EXECUTE()
+ * Implements hook_views_pre_execute().
  */
 function stanford_events_views_pre_execute(ViewExecutable $view) {
 
