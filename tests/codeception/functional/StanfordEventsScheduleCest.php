@@ -61,7 +61,7 @@ class StanfordEventsScheduleCest {
         $I->canSee("Scheduled Event Headline");
         $I->canSee("Wednesday, December 1, 2021");
         $I->amOnPage("node/$id/edit");
-        $I->click(['name' => 'su_event_schedule_0_remove']);
+        $I->click('Remove');
         $I->wait(3);
         $I->click('Confirm removal');
         $I->wait(1);
