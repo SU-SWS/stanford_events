@@ -61,7 +61,7 @@ class StanfordEventsScheduleCest {
         $I->canSee("Scheduled Event Headline");
         $I->canSee("Wednesday, December 1, 2021");
         $I->amOnPage("node/$id/edit");
-        $I->click(['xpath' => "//*[@id="edit-su-event-schedule-0-top"]/div[3]/div/div/ul/li[2]/button"]);
+        $I->click(['xpath' => '//*[@id="edit-su-event-schedule-0-top"]/div[3]/div/div/ul/li[2]/button']);
         $I->wait(3);
         $I->click('Remove');
         $I->wait(3);
