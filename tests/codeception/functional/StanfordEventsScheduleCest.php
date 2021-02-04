@@ -55,7 +55,7 @@ class StanfordEventsScheduleCest {
         $I->seeElement('input', ['name' =>  'su_event_schedule[0][subform][su_schedule_headline][0][value]']);
         $I->fillField(['name' => 'su_event_schedule[0][subform][su_schedule_date_time][0][value][date]'], '12012021');
         $I->fillField(['name' => 'su_event_schedule[0][subform][su_schedule_date_time][0][value][time]'], '120101');
-        $I->fillField(['name' => 'su_event_schedule[3][subform][su_schedule_headline][0][value]'], 'Scheduled Event Headline');
+        $I->fillField(['name' => 'su_event_schedule[0][subform][su_schedule_headline][0][value]'], 'Scheduled Event Headline');
         $I->click('Save');
         $I->amOnPage($path);
         $I->canSee("Scheduled Event Headline");
