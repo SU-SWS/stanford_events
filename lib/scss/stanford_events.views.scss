@@ -1,6 +1,29 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
+// Header spacing for Person
+.heading-h1 {
+  @include modular-spacing('margin', 6 null 5);
+}
+
+// Header spacing for all Event, Event series and Past Events
+.section-event-series-list--header,
+.section-event-list--title,
+.section-events-past--header {
+  .jumpstart-ui-page-heading {
+    .heading-h1 {
+      @include modular-spacing('margin', 6 null 5 null);
+      @include modular-typography(5);
+    }
+  }
+}
+
+.section-event-series--header {
+  .node-stanford-event-series-title {
+    @include modular-spacing('margin', 6 null null null);
+  }
+}
+
 // Filtered list
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
@@ -17,6 +40,21 @@
     &:hover,
     &:focus  {
       color: $su-color-black;
+    }
+  }
+}
+
+.ptype-stanford-lists {
+  &:not(.flex-12-of-12) {
+    .paragraph {
+      .su-event-list-item__date {
+        display: flex;
+        align-items: center;
+
+        .su-event-list-item__date__seperator {
+          white-space: nowrap;
+        }
+      }
     }
   }
 }
@@ -363,10 +401,6 @@
 
 // Event Series
 // header specific
-.node-stanford-event-series-title {
-  @include modular-spacing('margin', null null -1 null);
-}
-
 .node-stanford-event-series-su-event-series-subheadline {
   @include modular-spacing('margin', null null 2 null);
 }

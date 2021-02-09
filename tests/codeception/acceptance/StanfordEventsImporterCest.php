@@ -12,7 +12,17 @@ class StanfordEventsImporterCest {
    * Events Importer Module Enable.
    */
   public function _before(AcceptanceTester $I) {
-    $I->runDrush('pm:enable stanford_events_importer -y');
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/modules');
+    $enabled = $I->grabAttributeFrom('input[name="modules[stanford_events_importer][enable]"]', 'checked');
+    if (!$enabled) {
+      $I->checkOption('Stanford Events Importer');
+      $I->click('Install', '.form-actions');
+      if ($I->grabMultiple('input[value="Continue"]')) {
+        $I->click('Continue');
+      }
+    }
+    $I->amOnPage('/user/logout');
   }
 
   /**

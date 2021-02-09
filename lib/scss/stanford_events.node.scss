@@ -132,6 +132,18 @@
 
     a {
       color: $su-color-white;
+
+      &.su-link--external {
+        &::after {
+          background-color: $su-color-white;
+        }
+      }
+
+      &.mailto {
+        svg {
+          fill: $su-color-white;
+        }
+      }
     }
   }
 
