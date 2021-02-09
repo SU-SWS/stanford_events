@@ -1,5 +1,15 @@
 # Stanford Events
 
+8.x-1.7
+--------------------------------------------------------------------------------
+_Release Date: 2021-02-08_
+
+- D8CORE-2968: Fix for deleted schedule items still appearing (#50) (efcfae0)
+- D8CORE-3451: fixing the date aligment for events on lists (#51) (7816cd4)
+- D8CORE-3182: change the mailto and extlink icons to match text (#49) (65898f8)
+- D8CORE-2750: fixing the heading spacing (#48) (e079e8b)
+- Updated circleci testing (#47) (cacaf5f)
+
 8.x-1.6
 --------------------------------------------------------------------------------
 _Release Date: 2020-12-04_
