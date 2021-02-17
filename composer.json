@@ -80,6 +80,7 @@
         "drupal/address": "~1.2",
         "drupal/allowed_formats": "^1.2",
         "drupal/auto_entitylabel": "^3.0",
+        "drupal/components": "^2.0",
         "drupal/config_pages_overrides": "^1.0-alpha4",
         "drupal/ctools": "^3.4",
         "drupal/default_content": "^2.0",
