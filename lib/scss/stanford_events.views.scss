@@ -1,11 +1,8 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
 
-
 // Explore More Block.
-// Event cards
 .view.stanford-events {
-
   //Back to all events link
   .more-link {
     @include modular-spacing('margin', 5 null 9 null);
@@ -13,6 +10,22 @@
 
     a {
       @include button-primary;
+    }
+  }
+}
+
+.stanford-events-more-events-block {
+  .event_list_item__type {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
+
+      &:hover,
+      &:focus  {
+        text-decoration: underline;
+      }
+
     }
   }
 }

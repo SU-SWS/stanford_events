@@ -13,6 +13,7 @@
 
 .su-event-card {
   &.su-event-list-item {
+
     @include padding(3.8rem);
 
     .su-event-list-item__date {
