@@ -1,5 +1,10 @@
 @charset 'UTF-8';
 @import "./stanford_events.config";
+@import 'components/event-list/event-date-time-icons';
+@import 'components/event-card/event-stacked-date--card';
+@import 'components/event-card/event-spacing-explore-more--card';
+@import 'components/event-card/event-card--heading-link';
+@import 'components/event-card/event-card--item-type-link';
 
 .section-editorial-content {
   @include modular-spacing('padding', 6 null 3 null);

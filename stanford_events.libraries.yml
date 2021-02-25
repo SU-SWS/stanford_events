@@ -46,9 +46,6 @@ event_node:
   css:
     component:
       dist/css/stanford_events.node.css: {}
-      dist/css/stanford_events.event-list.css: {}
-      dist/css/stanford_events.event-card.css: {}
-
 
   js:
     dist/js/stanford_events.node.behaviors.js: {}
