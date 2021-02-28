@@ -303,14 +303,30 @@
 
 // Past Event.
 .su-past-event {
-  @include padding(3px 6px);
-  @include modular-spacing('margin-left', 0);
-  @include credits;
-  display: inline-block;
-  background: $su-color-cool-grey-15;
-  color: $su-color-black;
-  font-weight: $su-font-semi-bold;
-  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  background: none;
+  font-weight: 600;
+  font-style: normal;
+  border-radius: 0;
+  color: #7f7776; //change to the variable with decanter update $su-color-accent-stone
+  text-transform: uppercase;
+
+  &::after {
+    content: " | ";
+  }
+
+}
+
+// Past Event text
+.su-event--past-events-text {
+  @include caption;
+  font-weight: 600;
+  color: #766253;
+  font-style: italic;
+  line-height: 0;
+  margin-left: 1.4em;
 }
 
 //Edit event content link
