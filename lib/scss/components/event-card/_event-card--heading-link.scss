@@ -25,16 +25,16 @@
   h2 {
     @include modular-typography(3);
 
-     a {
-       color: $su-color-black;
-       font-weight: $su-font-bold;
-       text-decoration: none;
+    a {
+      color: $su-color-black;
+      font-weight: $su-font-bold;
+      text-decoration: none;
 
-       &:hover,
-       &:focus,
-       &:active {
-         color: $su-color-bright-red;
-         text-decoration: underline;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $su-color-bright-red;
+        text-decoration: underline;
 
         &::after {
           background-color: $su-color-bright-red;
