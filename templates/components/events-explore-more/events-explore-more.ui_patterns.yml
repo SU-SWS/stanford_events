@@ -51,4 +51,4 @@ events-explore-more:
     - eventslist:
         css:
           component:
-            ../../../dist/css/stanford_events.views.css: { }
+            ../../../dist/css/stanford_events.event-card.css: { }

@@ -111,5 +111,4 @@ events-card:
     - eventslist:
         css:
           component:
-            ../../../dist/css/stanford_events.event-list.css: { }
             ../../../dist/css/stanford_events.event-card.css: { }
