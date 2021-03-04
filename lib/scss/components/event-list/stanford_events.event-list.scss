@@ -1,5 +1,19 @@
 @charset 'UTF-8';
 @import '../../stanford_events.config';
+@import 'event-date-time-icons';
+@import '../event-card/event-stacked-date--card';
+
+
+// Heading spacing
+.section-event-series-list--header,
+.section-event-list--title,
+.su-event-series-title {
+  .heading-h1,
+  .page-title,
+  h1 {
+    @include modular-spacing('margin', 6 null 5);
+  }
+}
 
 // Filtered list
 .stanford-event-terms-utility-results-for {
@@ -44,48 +58,6 @@
 
   @include grid-media-max('sm') {
     display: block;
-  }
-
-  .su-event-list-item__date {
-    @include modular-spacing(margin, null 3 null null);
-
-    @include grid-media-max('sm') {
-      align-items: center;
-      display: flex;
-    }
-
-    max-width: 45px;
-
-    span {
-      display: block;
-    }
-
-    .su-event-start-month,
-    .su-event-end-month {
-      @include modular-typography(0);
-
-      color: $su-color-black;
-      font-weight: $su-font-bold;
-      text-transform: uppercase;
-    }
-
-    .su-event-list-item__date__seperator {
-      @include small-paragraph;
-      @include modular-spacing('margin', null null 0 null);
-      color: $su-color-black;
-
-      @include grid-media-max('sm') {
-        @include modular-spacing(margin, null -1);
-        min-width: 24px;
-      }
-    }
-
-    .su-event-start-date,
-    .su-event-end-date {
-      @include modular-typography(4);
-      color: $su-color-black;
-      font-weight: $su-font-bold;
-    }
   }
 
   .su-event-list-item__details {
@@ -152,41 +124,6 @@
 
     .address {
       @include small-paragraph;
-    }
-
-    .views-field-su-event-date-time {
-      @include small-paragraph;
-      @include modular-spacing('margin', null null -2 null);
-
-      // Align multirow text with the icon.
-      display: flex;
-
-      //Font Awesome Icon setup and spacings
-      span {
-        @include modular-spacing('padding', null -2 null null);
-
-        &::before {
-          color: $su-color-black;
-          font-family: 'Font Awesome 5 Free';
-          // Need this for the new version of FA. Will go away later.
-          font-weight: $su-font-semi-bold;
-        }
-      }
-    }
-
-    // Icon set up.
-    // Calendar icon
-    .views-field-su-event-date-time {
-      .date-icon {
-        &::before {
-          // Need to switch to the SU icons.
-          content: "\f073";
-
-          @include grid-media-max('sm') {
-            left: -16px;
-          }
-        }
-      }
     }
 
     .views-field-su-event-location {
