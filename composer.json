@@ -7,6 +7,9 @@
     "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "repositories": [
         {
             "type": "composer",
@@ -77,6 +80,7 @@
         "drupal/address": "~1.2",
         "drupal/allowed_formats": "^1.2",
         "drupal/auto_entitylabel": "^3.0",
+        "drupal/components": "^2.0",
         "drupal/config_pages_overrides": "^1.0-alpha4",
         "drupal/ctools": "^3.4",
         "drupal/default_content": "^2.0",
@@ -99,31 +103,12 @@
         "drupal/views_block_filter_block": "^1.0",
         "drupal/views_infinite_scroll": "^1.6",
         "drupal/views_taxonomy_term_name_depth": "^7.0",
+        "su-sws/drupal-patches": "^8.0",
         "su-sws/jumpstart_ui": "^8.1.0",
         "su-sws/stanford_date_formats": "^8.1.0",
         "su-sws/stanford_fields": "^8.1.0",
         "su-sws/stanford_migrate": "^8.1.0",
         "su-sws/stanford_text_editor": "^8.1.0"
-    },
-    "extra": {
-        "enable-patching": true,
-        "patches": {
-            "drupal/core": {
-                "https://www.drupal.org/project/drupal/issues/3039185": "https://www.drupal.org/files/issues/2020-04-17/allow-field-blocks-to-display-label-in-layout-builder-3039185-22.patch"
-            },
-            "drupal/default_content": {
-                "https://www.drupal.org/project/default_content/issues/2698425": "https://www.drupal.org/files/issues/2020-09-02/default_content-integrity_constrait_violation-3162987-2.patch"
-            },
-            "drupal/menu_link_weight": {
-                "https://www.drupal.org/project/menu_link_weight/issues/2956341": "https://www.drupal.org/files/issues/2018-03-27/menu_link_weight-js_error_on_title_field-2956341-2.patch"
-            },
-            "drupal/smart_date": {
-                "https://www.drupal.org/project/smart_date/issues/3154741": "https://www.drupal.org/files/issues/2020-06-24/smart_date-anon-no-timezone-1.patch"
-            },
-            "drupal/views_taxonomy_term_name_depth": {
-                "https://www.drupal.org/project/views_taxonomy_term_name_depth/issues/2877249": "https://www.drupal.org/files/issues/2021-02-11/2877249-26.patch"
-            }
-        }
     },
     "autoload": {
         "psr-4": {

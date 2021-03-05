@@ -1,5 +1,13 @@
 # Stanford Events
 
+8.x-1.9
+--------------------------------------------------------------------------------
+_Release Date: 2021-03-05_
+
+- D8CORE-3352: styles for past events page (#58) (5749d96)
+- D8CORE-3463 Adjust the list and cards displays (#54) (5305ad0)
+- Move patches to shared package (#56) (31b138a)
+
 8.x-1.8
 --------------------------------------------------------------------------------
 _Release Date: 2021-02-16_

@@ -3,7 +3,7 @@ type: module
 description: 'Event content type, views, and importer.'
 core_version_requirement: ^8.8 || ^9
 package: Stanford
-version: 8.x-1.8
+version: 8.x-1.9
 dependencies:
   - address:address
   - allowed_formats:allowed_formats
@@ -53,10 +53,9 @@ dependencies:
   - views_block_filter_block:views_block_filter_block
   - views_infinite_scroll:views_infinite_scroll
   - views_taxonomy_term_name_depth:views_taxonomy_term_name_depth
-component-libraries:
-  events:
-    paths:
-      - templates/components
+components:
+  namespaces:
+    events: templates/components
 default_content:
   menu_link_content:
     - d91b714a-4609-41c5-a9c4-d8140ed3a764

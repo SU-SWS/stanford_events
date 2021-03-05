@@ -46,6 +46,7 @@ event_node:
   css:
     component:
       dist/css/stanford_events.node.css: {}
+
   js:
     dist/js/stanford_events.node.behaviors.js: {}
   dependencies:

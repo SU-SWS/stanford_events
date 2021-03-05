@@ -28,6 +28,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - smart_date
     - user
 third_party_settings:
@@ -119,8 +120,8 @@ third_party_settings:
         - node_title
       su_event_subheadline:
         - su_event_subheadline
-      su_event_dek:
-        - su_event_dek
+      su_event_url:
+        - su_event_source
       su_event_date_time:
         - su_event_date_time
       su_event_location:
@@ -128,6 +129,15 @@ third_party_settings:
       su_event_address:
         - su_event_location
     fields:
+      node_title:
+        plugin_id: node_title
+        weight: 5
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
       'dynamic_token_field:node-date_end_day':
         plugin_id: 'dynamic_token_field:node-date_end_day'
         weight: 3
@@ -148,15 +158,6 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
-      node_title:
-        plugin_id: node_title
-        weight: 5
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          wrapper: h2
-          class: ''
 id: node.stanford_event.stanford_card
 targetEntityType: node
 bundle: stanford_event
@@ -183,14 +184,6 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-  su_event_dek:
-    type: string
-    weight: 7
-    region: su_event_dek
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   su_event_location:
     type: address_default
     weight: 10
@@ -198,6 +191,20 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  su_event_source:
+    type: link
+    weight: 7
+    region: su_event_url
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   su_event_subheadline:
     type: string
     weight: 6
@@ -221,9 +228,9 @@ hidden:
   su_event_audience: true
   su_event_components: true
   su_event_cta: true
+  su_event_dek: true
   su_event_email: true
   su_event_map_link: true
   su_event_schedule: true
-  su_event_source: true
   su_event_sponsor: true
   su_event_telephone: true
