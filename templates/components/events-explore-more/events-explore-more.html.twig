@@ -17,13 +17,13 @@
 #}
 
 {%- set attributes = attributes.addClass(['su-event-list-item', 'su-event-explore-more','su-card', 'su-event-card', modifier_class]) -%}
-{%- set event_url = event_url|render|striptags("<drupal-render-placeholder>")|trim -%}
+{%- set event_url = event_url|render_clean -%}
 
 {# Clean up the date fields. #}
-{%- set su_event_start_date = su_event_start_date|render|striptags('<drupal-render-placeholder>') -%}
-{%- set su_event_end_date = su_event_end_date|render|striptags('<drupal-render-placeholder>') -%}
-{%- set su_event_start_month = su_event_start_month|render|striptags('<drupal-render-placeholder>') -%}
-{%- set su_event_end_month = su_event_end_month|render|striptags('<drupal-render-placeholder>') -%}
+{%- set su_event_start_date = su_event_start_date|render_clean -%}
+{%- set su_event_end_date = su_event_end_date|render_clean -%}
+{%- set su_event_start_month = su_event_start_month|render_clean -%}
+{%- set su_event_end_month = su_event_end_month|render_clean -%}
 
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
@@ -46,7 +46,7 @@
   <div class="su-event-list-item__details">
 
     {# Event Type  #}
-    {%- if su_event_type|render|striptags('<drupal-render-placeholder>') is not empty %}
+    {%- if su_event_type|render_clean is not empty %}
       <span class="event_list_item__type">{{- su_event_type -}}</span>
     {%- endif -%}
 
@@ -54,12 +54,12 @@
     {{- su_event_headline -}}
 
     {# Event Subheadline  #}
-    {%- if su_event_subheadline|render|striptags('<drupal-render-placeholder>') is not empty %}
+    {%- if su_event_subheadline|render_clean is not empty %}
       {{- su_event_subheadline -}}
     {%- endif -%}
 
     {# Event Date/Time  #}
-    {%- if su_event_date_time|render|striptags('<drupal-render-placeholder>') is not empty %}
+    {%- if su_event_date_time|render_clean is not empty %}
       <p class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> {{- su_event_date_time -}}</p>
     {%- endif -%}
 
