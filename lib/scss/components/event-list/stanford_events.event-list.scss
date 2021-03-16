@@ -113,9 +113,12 @@
       }
     }
 
-    .views-field-su-event-subheadline,
-    .su-event-series-subheadline {
+    .event-list-item__subheadline {
       @include modular-spacing('margin', null null 1 null);
+
+      h3 {
+        @include modular-typography(1);
+      }
     }
 
     .views-field-su-event-dek {
