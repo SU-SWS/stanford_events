@@ -15,26 +15,6 @@
   }
 }
 
-// Filtered list
-.stanford-event-terms-utility-results-for {
-  @include modular-spacing('margin', null null 2 null);
-
-  h2,
-  div {
-    @include small-paragraph;
-
-    display: inline-block;
-    font-weight: $su-font-regular;
-  }
-
-  a {
-    &:hover,
-    &:focus  {
-      color: $su-color-black;
-    }
-  }
-}
-
 // Removing top padding on first list item.
 .stanford-events-list-page,
 .stanford-events-list-page-filtered,
