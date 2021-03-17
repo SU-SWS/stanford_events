@@ -1,5 +1,11 @@
 # Stanford Events
 
+8.x-1.11
+--------------------------------------------------------------------------------
+_Release Date: 2021-03-17_
+
+- Make sure the padding-right only appears on the cards when in lg breakpoint. This comes from the events card css.
+
 8.x-1.10
 --------------------------------------------------------------------------------
 _Release Date: 2021-03-15_

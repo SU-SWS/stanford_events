@@ -57,3 +57,20 @@
     }
   }
 }
+
+// Fixing the alignment of the events when in a large grid.
+@include grid-media-min('lg') {
+  .stanford-events {
+    &.cards {
+      .views-view-grid {
+        > .flex-container {
+          justify-content: left;
+
+          > div:not(:last-of-type) {
+            @include responsive-spacing('padding-right', 1);
+          }
+        }
+      }
+    }
+  }
+}
