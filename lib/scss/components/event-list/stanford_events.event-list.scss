@@ -15,25 +15,6 @@
   }
 }
 
-// Filtered list
-.stanford-event-terms-utility-results-for {
-  @include modular-spacing('margin', null null 2 null);
-
-  > div {
-    @include small-paragraph;
-
-    display: inline-block;
-    font-weight: $su-font-regular;
-  }
-
-  a {
-    &:hover,
-    &:focus  {
-      color: $su-color-black;
-    }
-  }
-}
-
 // Removing top padding on first list item.
 .stanford-events-list-page,
 .stanford-events-list-page-filtered,
@@ -113,9 +94,12 @@
       }
     }
 
-    .views-field-su-event-subheadline,
-    .su-event-series-subheadline {
+    .event-list-item__subheadline {
       @include modular-spacing('margin', null null 1 null);
+
+      h3 {
+        @include modular-typography(1);
+      }
     }
 
     .views-field-su-event-dek {
