@@ -1,5 +1,12 @@
 # Stanford Events
 
+8.x-1.12
+--------------------------------------------------------------------------------
+_Release Date: 2021-04-09_
+
+- D8CORE-4033: Added past events viewfield with filters (#64) (5a65de6)
+- D8CORE-3938: styling the subhead on the list of events (#62) (c46a0cb)
+
 8.x-1.11
 --------------------------------------------------------------------------------
 _Release Date: 2021-03-17_
