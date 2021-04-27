@@ -231,7 +231,7 @@
   font-weight: 600;
   font-style: normal;
   border-radius: 0;
-  color: #7f7776; //change to the variable with decanter update $su-color-accent-stone
+  color: #6D6C69;
   text-transform: uppercase;
 
   &::after {
@@ -244,7 +244,7 @@
 .su-event--past-events-text {
   @include caption;
   font-weight: 600;
-  color: #766253;
+  color: #544948;
   font-style: italic;
   line-height: 0;
   margin-left: 1.4em;

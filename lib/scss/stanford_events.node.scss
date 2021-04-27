@@ -13,7 +13,7 @@
   }
 
   .su-event-label-past {
-    color: #7f7776; //change to the variable with decanter update $su-color-accent-stone
+    color: #6D6C69;
     text-transform: uppercase;
 
     .divider {
@@ -172,7 +172,7 @@
   .su-event-text-past {
     @include caption;
 
-    color: #7f7776; //$su-color-accent-stone
+    color: #544948;
     padding-top: 5px;
   }
 
