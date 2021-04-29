@@ -3,6 +3,11 @@
 @import 'components/event-card/event-card--item-type-link';
 
 
+// Heading spacing, here so it covers lists when it is empty or not.
+.heading-h1 {
+  @include modular-spacing('margin', 6 null 5);
+}
+
 // Filtered list
 .stanford-event-terms-utility-results-for {
   @include modular-spacing('margin', null null 2 null);
