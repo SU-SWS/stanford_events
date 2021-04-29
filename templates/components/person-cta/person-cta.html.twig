@@ -15,7 +15,7 @@
 {%- endif -%}
 
 <div{{ attributes.addClass('su-person-cta') }}>
-  {%- if su_person_cta_image|render_clean is not empty -%}
+  {%- if su_person_cta_image|render_clean('<img> <picture>') is not empty -%}
   <div {{ image_attributes.addClass('su-person-cta__image') }}>
     {{ su_person_cta_image }}
   </div>

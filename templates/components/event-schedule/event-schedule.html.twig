@@ -60,7 +60,7 @@
       </div>
     {%- endif -%}
 
-    {%- if su_event_speakers|render_clean is not empty -%}
+    {%- if su_event_speakers|render_clean('<img> <picture> <p> <a> <div>') is not empty -%}
       <div class="su-event-schedule__speakers">
         {{ su_event_speakers}}
       </div>
