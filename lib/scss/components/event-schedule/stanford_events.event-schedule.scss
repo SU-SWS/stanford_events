@@ -8,9 +8,10 @@
   }
 
   .su-event-schedule__time {
+    min-width: 100px;
+    width: 100px;
+
     @include grid-media("sm") {
-      max-width: 100px;
-      width: 100px;
       @include modular-spacing('margin-right', 2);
     }
   }

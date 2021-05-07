@@ -1,5 +1,13 @@
 # Stanford Events
 
+8.x-1.13
+--------------------------------------------------------------------------------
+_Release Date: 2021-05-07_
+
+- D8CORE-3991: Fixing the grey on the Past events to be accessible. (#67) (0116955)
+- D8CORE-3984 Display the speaker image if available (#68) (84829b7)
+- D8CORE-3950: correcting the title spacing (#66) (beba945)
+
 8.x-1.12
 --------------------------------------------------------------------------------
 _Release Date: 2021-04-09_
