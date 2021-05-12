@@ -1,4 +1,4 @@
-event_schedule:
+events_schedule:
   label: Event Schedule
   description: "A place time and people paragraph."
   fields:
@@ -31,7 +31,7 @@ event_schedule:
       type: text
       label: "Speakers"
       description: "A rendered list of speakers."
-  use: "@stanford_events/components/event-schedule/event-schedule.html.twig"
+  use: "@stanford_events/components/schedule/schedule.html.twig"
   libraries:
     - personcta:
         css:
