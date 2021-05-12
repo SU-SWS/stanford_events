@@ -236,7 +236,6 @@ class StanfordEventsCest {
     $I->amOnPage("/patterns");
 
     $I->canSee("Event Schedule");
-    $I->canSee("Events Explore More Item");
     $I->canSee("Events List Item");
     $I->canSee("Person CTA");
   }
