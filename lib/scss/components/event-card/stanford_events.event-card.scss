@@ -41,20 +41,23 @@
 
         }
       }
+    }
 
-      h2 {
-        > a {
-          color: $su-color-black;
-          text-decoration: none;
+    h2 {
+      @include modular-typography(2);
 
-          &:hover,
-          &:focus  {
-            color: $su-color-bright-red;
-            text-decoration: underline;
-          }
+      > a {
+        color: $su-color-black;
+        text-decoration: none;
+
+        &:hover,
+        &:focus  {
+          color: $su-color-bright-red;
+          text-decoration: underline;
         }
       }
     }
+
   }
 }
 
