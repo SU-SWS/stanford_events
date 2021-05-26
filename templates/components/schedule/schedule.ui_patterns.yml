@@ -1,37 +1,37 @@
-event-schedule:
+events_schedule:
   label: Event Schedule
   description: "A place time and people paragraph."
   fields:
-    su_event_time:
+    time:
       type: text
       label: "Time"
       description: "The events time span"
       preview: "2:00pm - 3:00pm"
-    su_event_headline:
+    headline:
       type: text
       label: "Headline"
       description: "The schedule item headline"
       preview: "Lightning talks"
-    su_event_description:
+    description:
       type: text
       label: "Description"
       description: "A description of the schedule item"
       preview: "Director of the department of redundancy department will begin a speach about speaches."
-    su_event_location:
+    location:
       type: text
       label: "Location"
       description: "Where this thing is."
       preview: "321 University BLVD, Palo Alto, CA, 93256"
-    su_event_url:
+    url:
       type: text
       label: "URL"
       description: "Link the heading to something."
       preview: "https://stanford.edu/"
-    su_event_speakers:
+    speakers:
       type: text
       label: "Speakers"
       description: "A rendered list of speakers."
-  use: "@stanford_events/components/event-schedule/event-schedule.html.twig"
+  use: "@stanford_events/components/schedule/schedule.html.twig"
   libraries:
     - personcta:
         css:
