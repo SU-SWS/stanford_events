@@ -38,8 +38,6 @@ h1 {
   }
 
   .su-event-list-item__details {
-    @include big-paragraph;
-
     color: $su-color-black;
     flex-grow: 2;
 
