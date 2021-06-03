@@ -66,11 +66,15 @@
   .stanford-events {
     &.cards {
       .views-view-grid {
-        > .flex-container {
+        .flex-container {
           justify-content: left;
 
-          > div:not(:last-of-type) {
-            @include responsive-spacing('padding-right', 1);
+          div {
+            @include responsive-spacing('margin-right', 1);
+          }
+
+          div:last-of-type {
+            margin-right: 0;
           }
         }
       }
