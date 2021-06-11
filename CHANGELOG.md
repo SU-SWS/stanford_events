@@ -1,5 +1,13 @@
 # Stanford Events
 
+8.x-1.14
+--------------------------------------------------------------------------------
+_Release Date: 2021-06-11_
+
+- D8CORE-4173: changed from padding to margin to fix up the event cards (#71) (e380d0f)
+- D8CORE-3162: Changing the headline text size for events in cards and lists (#72) (a79fd98)
+- D8CORE-2520 Refactored templates and use full month for screen readers (#70) (821ccd3)
+
 8.x-1.13
 --------------------------------------------------------------------------------
 _Release Date: 2021-05-07_
