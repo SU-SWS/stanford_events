@@ -1,5 +1,11 @@
 # Stanford Events
 
+8.x-1.15
+--------------------------------------------------------------------------------
+_Release Date: 2021-06-15_
+
+- Fixed event card pattern by passing all available variables to the list pattern
+
 8.x-1.14
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-11_
