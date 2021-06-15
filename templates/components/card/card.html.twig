@@ -19,16 +19,29 @@
 
 {%- set attributes = attributes.addClass(['su-card', 'su-event-card']) -%}
 
+
 {{ pattern('events_list', {
   attributes: attributes,
   modifier_class: modifier_class,
-  start_month: start_month,
-  start_date: start_date,
-  end_month: end_month,
-  end_date: end_date,
-  audience: audience,
-  headline: headline,
-  subheadline: subheadline,
+  address: address,
   date_time: date_time,
-  location: location
+  edit: edit,
+  end_date: end_date,
+  end_month: end_month,
+  event_type: event_type,
+  headline: headline,
+  location: location,
+  location_address_line1: location_address_line1,
+  location_address_line2: location_address_line2,
+  location_administrative_area: location_administrative_area,
+  location_country_code: location_country_code,
+  location_dependent_locality: location_dependent_locality,
+  location_locality: location_locality,
+  location_organization: location_organization,
+  location_postal_code: location_postal_code,
+  location_sorting_code: location_sorting_code,
+  start_date: start_date,
+  start_month: start_month,
+  subheadline: subheadline,
+  url: url
 }) }}
