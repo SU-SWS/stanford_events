@@ -1,5 +1,14 @@
 # Stanford Events
 
+8.x-1.16
+--------------------------------------------------------------------------------
+_Release Date: 2021-07-09_
+
+- D8CORE-4508: adding skip to main on the topic menu (#77) (486bad9)
+- D8CORE-4236: fixing the event date aligment on cards and lists of card or default list (#76) (e5da211)
+- D8CORE-3984 Fixed the person CTA template (7e707a1)
+- D8CORE-4378: Adding the skip to secondary nav link (#75) (db902bd)
+
 8.x-1.15
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-15_
