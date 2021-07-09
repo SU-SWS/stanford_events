@@ -69,7 +69,7 @@
         .flex-container {
           justify-content: left;
 
-          div {
+          > div {
             @include responsive-spacing('margin-right', 1);
           }
 

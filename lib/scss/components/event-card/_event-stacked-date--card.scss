@@ -1,5 +1,12 @@
 @charset 'UTF-8';
 
+.su-card {
+  .su-event-list-item__date {
+    align-items: center;
+    display: flex;
+  }
+}
+
 .su-event-list-item__date {
   @include modular-spacing(margin, null 3 0 null);
 
@@ -27,10 +34,10 @@
     @include small-paragraph;
     @include modular-spacing('margin', null null 0 null);
     color: $su-color-black;
+    white-space: nowrap;
 
     @include grid-media-max('sm') {
-      @include modular-spacing(margin, null -1);
-      min-width: 24px;
+      min-width: 45px;
     }
   }
 

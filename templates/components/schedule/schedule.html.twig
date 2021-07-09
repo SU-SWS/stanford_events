@@ -11,8 +11,7 @@
     {
       info: a_info,
       time: a_time,
-    }
-  %}
+    } %}
 {% endif %}
 
 {# Separate URL and title #}
@@ -28,22 +27,22 @@
 <div{{ attributes.addClass('su-event-schedule') }}>
 
   {%- if time|render_clean is not empty -%}
-  <div {{ region_attributes.time.addClass("su-event-schedule__time") }}>
-    {{ time }}
-  </div>
+    <div {{ region_attributes.time.addClass("su-event-schedule__time") }}>
+      {{ time }}
+    </div>
   {%- endif -%}
 
   <div {{ region_attributes.info.addClass("su-event-schedule__info") }}>
     {%- if headline|render_clean is not empty -%}
       <h3 class="su-event-schedule__headline">
         {%- if url|render_clean is not empty -%}
-          <a {{ link_attributes }} href="{{ url|render_clean }}">
-        {%- endif -%}
+        <a {{ link_attributes }} href="{{ url|render_clean }}">
+          {%- endif -%}
 
-        {{ headline|render_clean }}
+          {{ headline|render_clean }}
 
-        {%- if url|render_clean is not empty -%}
-          </a>
+          {%- if url|render_clean is not empty -%}
+        </a>
         {%- endif -%}
       </h3>
     {%- endif -%}
@@ -62,7 +61,7 @@
 
     {%- if speakers|render_clean('<img> <picture> <p> <a> <div>') is not empty -%}
       <div class="su-event-schedule__speakers">
-        {{ speakers}}
+        {{ speakers }}
       </div>
     {%- endif -%}
   </div>
