@@ -22,10 +22,10 @@ use Drupal\Core\Render\Element;
  */
 function stanford_events_theme() {
   return [
-    'block__menu_block__stanford_event_types' => [
-      'template' => 'block/block--menu-block--stanford-event-types',
-      'base hook' => 'block',
-    ],
+    // 'block__menu_block__stanford_event_types' => [
+    //   'template' => 'block/block--menu-block--stanford-event-types',
+    //   'base hook' => 'block',
+    // ],
   ];
 }
 
