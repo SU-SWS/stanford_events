@@ -228,8 +228,11 @@ h1 {
   color: #6d6c69;
   text-transform: uppercase;
 
-  &::after {
-    content: " | ";
+  // The | should only appear when there is a type assigned to it.
+  &:not(:only-child) {
+    &::after {
+      content: " | ";
+    }
   }
 
 }
