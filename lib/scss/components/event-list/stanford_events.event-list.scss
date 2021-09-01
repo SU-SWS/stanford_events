@@ -190,7 +190,7 @@ h1 {
       display: inline-block;
 
       .button {
-        @include button-big;
+        @include button-primary;
       }
     }
   }
