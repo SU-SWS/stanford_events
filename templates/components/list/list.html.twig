@@ -39,7 +39,6 @@
 
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
-    <div class="sr-only">{{ start_month }} {{ start_date }}{%- if start_date != end_date or start_month != end_month %} to {{ end_month }} {{ end_date }}{% endif %}</div>
       <div class="su-date-stacked su-date-stacked--no-background" aria-hidden="true">
         <span class="su-event-start-month">{{ start_month }}</span>
         <span class="su-event-start-date">{{ start_date }}</span>
