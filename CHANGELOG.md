@@ -1,5 +1,16 @@
 # Stanford Events
 
+
+8.x-1.17
+--------------------------------------------------------------------------------
+_Release Date: 2021-09-03
+
+- D8CORE-3161: reduce load more button size (#83)
+- D8CORE-4643: updating the skip links and moving to one filter by menu (#80)
+- D8CORE-4667: Removed duplicate date read out for screen readers.  (#82)
+- D8CORE-4186: removing pipe if not neeeded (#81)
+- D8CORE-2520: date labeling for Events (#79)
+
 8.x-1.16
 --------------------------------------------------------------------------------
 _Release Date: 2021-07-09_
