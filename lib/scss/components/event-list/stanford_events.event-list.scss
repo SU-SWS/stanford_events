@@ -181,19 +181,6 @@ h1 {
       @include modular-spacing('margin-bottom', 8);
     }
   }
-
-  // Load more button.
-  .js-pager__items {
-    text-align: center;
-
-    .pager__item {
-      display: inline-block;
-
-      .button {
-        @include button-big;
-      }
-    }
-  }
 }
 
 // Event Series
@@ -228,8 +215,11 @@ h1 {
   color: #6d6c69;
   text-transform: uppercase;
 
-  &::after {
-    content: " | ";
+  // The | should only appear when there is a type assigned to it.
+  &:not(:only-child) {
+    &::after {
+      content: " | ";
+    }
   }
 
 }

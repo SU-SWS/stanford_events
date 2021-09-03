@@ -39,17 +39,17 @@
 
 <div {{ attributes }}>
   <div class="su-event-list-item__date">
-    <div class="su-date-stacked su-date-stacked--no-background">
-      <span class="su-event-start-month"{% if start_month_full %} aria-label="{{ start_month_full }}"{% endif %}>{{ start_month }}</span>
-      <span class="su-event-start-date">{{ start_date }}</span>
+      <div class="su-date-stacked su-date-stacked--no-background" aria-hidden="true">
+        <span class="su-event-start-month">{{ start_month }}</span>
+        <span class="su-event-start-date">{{ start_date }}</span>
     </div>
 
     {# Seperator and end date should be conditional #}
     {%- if start_date != end_date or start_month != end_month %}
-      <span class="su-event-list-item__date__seperator">&ndash; to &ndash;</span>
+      <span class="su-event-list-item__date__seperator" aria-hidden="true">&ndash; to &ndash;</span>
 
-      <div class="su-date-stacked su-date-stacked--no-background">
-        <span class="su-event-end-month"{% if end_month_full %} aria-label="{{ end_month_full }}"{% endif %}> {{ end_month }}</span>
+      <div class="su-date-stacked su-date-stacked--no-background" aria-hidden="true">
+        <span class="su-event-end-month">{{ end_month }}</span>
         <span class="su-event-end-date">{{ end_date }}</span>
       </div>
     {% endif %}
