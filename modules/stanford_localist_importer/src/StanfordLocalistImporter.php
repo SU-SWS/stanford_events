@@ -7,7 +7,7 @@ use GuzzleHttp\ClientInterface;
 /**
  * A class to do some importery stuff.
  */
-class StanfordEventsImporter {
+class StanfordLocalistImporter {
 
   /**
    * URL Endpoint for getting categories.
