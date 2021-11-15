@@ -11,6 +11,7 @@ use Drupal\migrate_tools\MigrateBatchExecutable;
 use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\stanford_events_importer\StanfordEventsImporter;
+use Drupal\stanford_localist_importer\StanfordLocalistImporter;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\EntityInterface;
@@ -94,6 +95,39 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
   }
   catch (Exception $e) {
     \Drupal::messenger()->addError('Could not run importer!');
+  }
+
+
+  // Handle any Localist feeds which are specified
+  $localist_plugin = $migrations["stanford_events"]["stanford_localist_importer"] ?? FALSE;
+  if ($localist_plugin) {
+
+    $client = \Drupal::httpClient();
+    $config_pages = \Drupal::service('config_pages.loader');
+    $field_value = $config_pages->getValue('stanford_events_importer', 'su_localist_url');
+    foreach ($field_value as $feed) {
+      $feed_url = $feed['uri'];
+      $localist_importer = new StanfordLocalistImporter($client, $feed_url);
+      $feed_json = $localist_importer->fetchFeedJson();
+    }
+
+
+    // Spin up the things we need and run em.
+    $migrateMessage = new MigrateMessage();
+    $options = [
+      'update' => TRUE,
+      'force' => TRUE,
+    ];
+
+    try {
+      $executable = new MigrateBatchExecutable($localist_plugin, $migrateMessage, $options);
+      $executable->batchImport();
+
+    }
+    catch (Exception $e) {
+      \Drupal::messenger()->addError('Could not run importer!');
+    }
+
   }
 
 }

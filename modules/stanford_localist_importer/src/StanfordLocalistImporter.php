@@ -3,26 +3,18 @@
 namespace Drupal\stanford_localist_importer;
 
 use GuzzleHttp\ClientInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * A class to do some importery stuff.
  */
 class StanfordLocalistImporter {
 
-  /**
-   * URL Endpoint for getting categories.
-   */
-  const STANFORD_LOCALIST_IMPORTER_XML = "https://events.stanford.edu/xml/drupal/v2.php";
 
   /**
-   * Bin used to get/set cache for organization information.
+   * @var string
    */
-  const CACHE_KEY_ORG = "stanford_localist_importer_orgs";
-
-  /**
-   * Bin used to get/set cache for category information.
-   */
-  const CACHE_KEY_CAT = "stanford_localist_importer_cats";
+  protected $apiUrl;
 
   /**
    * Guzzle client.
@@ -37,34 +29,28 @@ class StanfordLocalistImporter {
    * @param \GuzzleHttp\ClientInterface $http_client
    *   A Guzzle Like HTTP client.
    */
-  public function __construct(ClientInterface $http_client) {
+  public function __construct(ClientInterface $http_client, string $api_url) {
     $this->client = $http_client;
+    $this->apiUrl = $api_url;
   }
 
   /**
-   * Get xml from the API.
-   *
-   * @param string $query
-   *   The argument to pass to query.
+   * Get JSON from the API for a feed.
    *
    * @return string|bool
    *   Full string of raw xml.
    */
-  public function fetchXML($query = "category-list") {
+  public function fetchFeedJson() {
 
     $options = [
-      'query' => [
-        $query => '',
-      ],
       'headers' => [
-        'Accept' => 'application/xml',
+        'Accept' => 'application/json',
       ],
     ];
 
     try {
-      $request = $this->client->request('GET', self::STANFORD_LOCALIST_IMPORTER_XML, $options);
-      $xml_raw = (string) $request->getBody();
-      return $xml_raw;
+      $request = $this->client->request('GET', $this->apiUrl, $options);
+      return (string) $request->getBody();
     }
     catch (\Exception $e) {
       return FALSE;
@@ -73,22 +59,19 @@ class StanfordLocalistImporter {
   }
 
   /**
-   * Parses the raw xml return value from the API.
+   * Parses the raw JSON feed return value from the API.
    *
    * Turns the raw xml return value into a key value pair and saves it into the
    * state for the site.
    *
-   * @param string $raw
-   *   Raw XML string.
-   * @param array $options
-   *   A keyed array of options. Expects:
-   *   - guids: An xpath string to the key
-   *   - label: An xpath string to the label.
-   *
    * @return array|bool
    *   Success or not.
    */
-  public function parseXML($raw, array $options) {
+  public function parseFeed($raw) {
+
+    // Do we need to parse this here?
+
+    /*
     $xml = new \SimpleXMLElement($raw);
     $guids = $xml->xpath($options['guids']);
     $labels = $xml->xpath($options['label']);
@@ -108,6 +91,7 @@ class StanfordLocalistImporter {
 
     // Create an associative array.
     return array_combine($guids, $labels);
+    */
   }
 
 }

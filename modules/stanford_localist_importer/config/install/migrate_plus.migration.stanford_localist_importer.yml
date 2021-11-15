@@ -244,13 +244,12 @@ source:
       name: event_instances
       label: 'Event Instances Array'
       selector: event_instances
-
   ids:
-    event_id:
+    id:
       type: string
-    event_start:
+    first_date:
       type: string
-    event_end:
+    last_date:
       type: string
   constants:
     status: 1
@@ -263,27 +262,13 @@ process:
   status: constants/status
   type: constants/type
   title: title
-  body/value: body
+  body/value: description
   body/format: constants/stanford_html
-  su_event_email: contact_email
-  su_event_telephone: contact_phone
-  su_event_sponsor:
-    -
-      plugin: explode
-      source: event_sponsor
-      delimiter: ', '
-      limit: 100
-    -
-      plugin: substr
-      start: 0
-      length: 120
-    -
-      plugin: callback
-      callable: trim
-  su_event_alt_loc: location
+
+  su_event_alt_loc: stream_url
   su_event_map_link/uri: map_link
   su_event_map_link/title: constants/map_title
-  su_event_source/uri: link
+  su_event_source/uri: localist_url
   su_event_date_time/value:
     -
       plugin: format_date
