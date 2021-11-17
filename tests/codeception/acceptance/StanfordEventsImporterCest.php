@@ -34,6 +34,7 @@ class StanfordEventsImporterCest {
     $I->canSeeResponseCodeIs(200);
     $I->canSee("Events Importer");
     $I->canSee("EVENTS TO BE IMPORTED");
+    $I->canSee("LOCALIST URL");
   }
 
   /**
