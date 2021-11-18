@@ -1,4 +1,3 @@
-uuid: 640d3919-ab6d-428f-b75c-49ecff050a85
 langcode: en
 status: true
 dependencies: {  }
@@ -284,6 +283,7 @@ source:
     image_path: 'public://events/'
     cta_text: 'View this event on Localist'
     plus: '+'
+    timezone: 'America/Los_Angeles'
 process:
   status: constants/status
   type: constants/type
@@ -323,7 +323,7 @@ process:
       source: event_instance_end
       values:
         - event_instance_start
-  su_event_date_time/timezone: America/Los_Angeles
+  su_event_date_time/timezone: constants/timezone
   su_event_audience:
     -
       plugin: skip_on_empty
