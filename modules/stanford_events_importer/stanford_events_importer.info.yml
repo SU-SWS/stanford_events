@@ -12,3 +12,4 @@ dependencies:
   - migrate_tools:migrate_tools
   - migrate_plus:migrate_plus
   - ultimate_cron:ultimate_cron
+  - stanford_fields:stanford_fields
