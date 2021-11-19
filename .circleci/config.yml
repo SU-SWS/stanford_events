@@ -83,8 +83,6 @@ jobs:
     <<: *code_coverage
   run-back-to-dev:
     <<: *back_to_dev
-  run-d8-codeception:
-    <<: *d8_codeception
   run-d9-codeception:
     <<: *d9_codeception
 
@@ -104,7 +102,6 @@ workflows:
   tests:
     jobs:
       - run-coverage
-      - run-d8-codeception
       - run-d9-codeception
   # Re-test every sunday in case this code becomes stale.
   sundays:

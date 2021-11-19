@@ -93,7 +93,29 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
 
   }
   catch (Exception $e) {
-    \Drupal::messenger()->addError('Could not run importer!');
+    \Drupal::messenger()->addError('Could not run events importer!');
+  }
+
+  // Handle any Localist feeds which are specified.
+  $localist_plugin = $migrations["stanford_events"]["stanford_localist_importer"] ?? FALSE;
+  if ($localist_plugin) {
+
+    // Spin up the things we need and run em.
+    $migrateMessage = new MigrateMessage();
+    $options = [
+      'update' => TRUE,
+      'force' => TRUE,
+    ];
+
+    try {
+      $executable = new MigrateBatchExecutable($localist_plugin, $migrateMessage, $options);
+      $executable->batchImport();
+
+    }
+    catch (Exception $e) {
+      \Drupal::messenger()->addError('Could not run Localist importer!');
+    }
+
   }
 
 }
