@@ -20,7 +20,7 @@ third_party_settings:
       format_type: details
       region: content
       format_settings:
-        description: 'Use the following options to import events from https://events.stanford.edu/. Go to https://events.stanford.edu/ to browse the events that would be included in each of the options below. For example, you can go to https://events.stanford.edu/byOrganization/ to see a list of all the organizations that have events and to preview them. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately. '
+        description: 'Use the following options to import events from https://events-legacy.stanford.edu/. Go to https://events-legacy.stanford.edu/ to browse the events that would be included in each of the options below. For example, you can go to https://events-legacy.stanford.edu/byOrganization/ to see a list of all the organizations that have events and to preview them. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately. '
         open: true
         id: ''
         classes: ''
@@ -40,7 +40,7 @@ content:
   su_localist_url:
     weight: 2
     settings:
-      base_url: 'https://stanford.enterprise.localist.com'
+      base_url: 'https://events.stanford.edu'
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }

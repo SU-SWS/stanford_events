@@ -97,22 +97,22 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
 
     $node->set('su_event_xml_url', [
       [
-        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?featured',
+        'uri' => 'https://events-legacy.stanford.edu/xml/drupal/v2.php?featured',
         'title' => '',
         'options' => ''
       ],
       [
-        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?today',
+        'uri' => 'https://events-legacy.stanford.edu/xml/drupal/v2.php?today',
         'title' => '',
         'options' => ''
       ],
       [
-        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked',
+        'uri' => 'https://events-legacy.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked',
         'title' => '',
         'options' => ''
       ],
       [
-        'uri' => 'https://events.stanford.edu/xml/drupal/v2.php?category=23',
+        'uri' => 'https://events-legacy.stanford.edu/xml/drupal/v2.php?category=23',
         'title' => '',
         'options' => ''
       ],

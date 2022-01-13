@@ -29,7 +29,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
   /**
    * Path to feed xml.
    */
-  const XML_FEED = "https://events.stanford.edu/xml/drupal/v2.php";
+  const XML_FEED = "https://events-legacy.stanford.edu/xml/drupal/v2.php";
 
   /**
    * The cache backend service interface.
@@ -176,7 +176,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
-    // Parse form options we added into a url for the events.stanford.edu feed.
+    // Parse form options we added into a url for the events-legacy.stanford.edu feed.
     array_walk($values, 'self::walkMassagedFormValues');
 
     // Let the parent LinkWidget do its thing.
