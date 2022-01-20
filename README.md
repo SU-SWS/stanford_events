@@ -1,7 +1,7 @@
 # [Stanford Events](https://github.com/SU-SWS/stanford_events)
 ##### Version: 8.x-1.0
 
-Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
+Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)
 
 Changelog: [Changelog.txt](CHANGELOG.txt)
 
@@ -9,13 +9,13 @@ Description
 ---
 
 The Stanford Events module allows Drupal site owners to create event type
-content. Integration with events.stanford.edu is provided so site owners can
+content. Integration with events-legacy.stanford.edu is provided so site owners can
 dynamically import content from that source.
 
 Accessibility
 ---
 [![WCAG Conformance 2.0 AA Badge](https://www.w3.org/WAI/wcag2AA-blue.png)](https://www.w3.org/TR/WCAG20/)
-Evaluation Date: 201X-XX-XX  
+Evaluation Date: 201X-XX-XX
 This module conforms to level AA WCAG 2.0 standards as required by the university's accessibility policy. For more information on the policy please visit: [https://ucomm.stanford.edu/policies/accessibility-policy.html](https://ucomm.stanford.edu/policies/accessibility-policy.html).
 
 Installation
