@@ -12,9 +12,11 @@ function stanford_events_importer_update_8001() {
   $config_page = \Drupal::entityTypeManager()
     ->getStorage('config_pages')
     ->load('stanford_events_importer');
-  $url = $config_page->get('su_event_xml_url')->getString();
-  $config_page->set('su_event_xml_url', str_replace('events.stanford.edu', 'events-legacy.stanford.edu', $url));
-  $config_page->save();
+  if ($config_page) {
+    $url = $config_page->get('su_event_xml_url')->getString();
+    $config_page->set('su_event_xml_url', str_replace('events.stanford.edu', 'events-legacy.stanford.edu', $url));
+    $config_page->save();
+  }
 
   $migration_config = \Drupal::configFactory()
     ->getEditable('migrate_plus.migration.stanford_events_importer');
@@ -53,5 +55,5 @@ function stanford_events_importer_update_8002(&$sandbox) {
     $node->save();
   }
 
-  $sandbox['#finished'] = 1 - count($sandbox['ids']) / $sandbox['total'];
+  $sandbox['#finished'] = count($sandbox['ids']) ? 1 - count($sandbox['ids']) / $sandbox['total'] : 1;
 }
