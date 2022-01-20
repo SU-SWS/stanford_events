@@ -63,8 +63,8 @@ class StanfordEventsImporterTest extends UnitTestCase {
         <type>2</type>
         <email>eshih@stanford.edu</email>
         <phone>510-366-6550</phone>
-        <url>https://events.stanford.edu/byOrganization/279/</url>
-        <rssUrl>https://events.stanford.edu/byOrganization/279/</rssUrl>
+        <url>https://events-legacy.stanford.edu/byOrganization/279/</url>
+        <rssUrl>https://events-legacy.stanford.edu/byOrganization/279/</rssUrl>
         </Organization>
         </OrganizationList>';
 

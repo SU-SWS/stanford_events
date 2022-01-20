@@ -196,10 +196,10 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends UnitTestCase {
     $form = [];
     $form_state = new FormState();
     $results = $this->plugin->massageFormValues($values, $form, $form_state);
-    $this->assertEquals("https://events.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked", $results[0]['uri']);
-    $this->assertEquals("https://events.stanford.edu/xml/drupal/v2.php?category=23", $results[1]['uri']);
-    $this->assertEquals("https://events.stanford.edu/xml/drupal/v2.php?featured", $results[2]['uri']);
-    $this->assertEquals("https://events.stanford.edu/xml/drupal/v2.php?today", $results[3]['uri']);
+    $this->assertEquals("https://events-legacy.stanford.edu/xml/drupal/v2.php?organization=23&bookmarked", $results[0]['uri']);
+    $this->assertEquals("https://events-legacy.stanford.edu/xml/drupal/v2.php?category=23", $results[1]['uri']);
+    $this->assertEquals("https://events-legacy.stanford.edu/xml/drupal/v2.php?featured", $results[2]['uri']);
+    $this->assertEquals("https://events-legacy.stanford.edu/xml/drupal/v2.php?today", $results[3]['uri']);
 
   }
 

@@ -12,7 +12,7 @@ class StanfordEventsImporter {
   /**
    * URL Endpoint for getting categories.
    */
-  const STANFORD_EVENTS_IMPORTER_XML = "https://events.stanford.edu/xml/drupal/v2.php";
+  const STANFORD_EVENTS_IMPORTER_XML = "https://events-legacy.stanford.edu/xml/drupal/v2.php";
 
   /**
    * Bin used to get/set cache for organization information.
