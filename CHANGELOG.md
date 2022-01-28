@@ -1,6 +1,16 @@
 # Stanford Events
 
 
+8.x-1.21
+--------------------------------------------------------------------------------
+_Release Date: 2022-01-27_
+
+- D8CORE-5000: Constraining the components to the 10-of-12 col width (#92)
+- Merge branch 'master' into 8.x-1.x
+- Merge branch 'master' into 8.x-1.x
+- Added localist URL to external source field. (#90)
+
+
 8.x-1.19
 --------------------------------------------------------------------------------
 _Release Date: 2022-01-20_
