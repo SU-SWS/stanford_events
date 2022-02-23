@@ -76,12 +76,12 @@
 
     {# Event Dek  #}
     {%- if dek|render_clean is not empty %}
-      <p class="event-list_item__dek"> {{- dek -}}</p>
+      <div class="event-list_item__dek"> {{- dek -}}</div>
     {% endif -%}
 
     {# Event Date/Time  #}
     {%- if date_time|render_clean is not empty %}
-      <p class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> {{- date_time -}}</p>
+      <div class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> <div>{{- date_time -}}</div></div>
     {%- endif -%}
 
     {# Event Location  #}

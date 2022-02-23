@@ -41,5 +41,5 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "author": "Stanford Web Services",
-  "license": "GPLV2"
+  "license": "GPL-2.0-or-later"
 }
