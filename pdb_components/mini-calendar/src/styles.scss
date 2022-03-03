@@ -1,0 +1,44 @@
+.events-mini-calender {
+  margin-bottom: 20px;
+
+  button {
+    &[disabled] {
+      background-color: #ccc;
+    }
+
+    &.react-calendar__tile--now {
+      background-color: blue;
+    }
+  }
+
+  .react-calendar__navigation {
+    display: flex;
+  }
+}
+
+.calender-popover {
+  ul {
+    margin: 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .close-button {
+    background: transparent;
+    padding: 0;
+    margin: 15px;
+    float: right;
+
+    &:hover:before {
+      color: #2e2d29;
+    }
+  }
+}
