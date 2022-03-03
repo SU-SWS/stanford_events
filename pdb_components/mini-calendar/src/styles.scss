@@ -7,7 +7,7 @@
     }
 
     &.react-calendar__tile--now {
-      background-color: blue;
+      background-color: #0000ff;
     }
   }
 
@@ -37,7 +37,7 @@
     margin: 15px;
     float: right;
 
-    &:hover:before {
+    &:hover::before {
       color: #2e2d29;
     }
   }

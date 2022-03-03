@@ -4,10 +4,10 @@
     "main.js": "/static/js/main.js",
     "index.html": "/index.html",
     "main.css.map": "/static/css/main.19fa24df.css.map",
-    "main.js.map": "/static/js/main.b66cc17f.js.map"
+    "main.js.map": "/static/js/main.d688a6c3.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa24df.css",
-    "static/js/main.b66cc17f.js"
+    "static/js/main.d688a6c3.js"
   ]
 }

@@ -76,7 +76,7 @@ function App() {
       }
 
       // Append the query string to the url.
-      if (startDate !== undefined || endDate !== undefined && url.indexOf('?') === -1) {
+      if ((startDate !== undefined || endDate !== undefined) && url.indexOf('?') === -1) {
         url += '?' + qs.stringify({filter: filters}, {encodeValuesOnly: true});
       }
 
