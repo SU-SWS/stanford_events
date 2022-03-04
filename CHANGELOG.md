@@ -1,6 +1,14 @@
 # Stanford Events
 
 
+8.x-1.22
+--------------------------------------------------------------------------------
+_Release Date: 2022-03-04_
+
+- D8CORE-3990: Modified template and styles to replace <p> with <div> (#96)
+- Upgrade smartdate module (#97)
+
+
 8.x-1.21
 --------------------------------------------------------------------------------
 _Release Date: 2022-01-27_
