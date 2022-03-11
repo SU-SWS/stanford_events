@@ -3,11 +3,11 @@
     "main.css": "/static/css/main.css",
     "main.js": "/static/js/main.js",
     "index.html": "/index.html",
-    "main.css.map": "/static/css/main.19fa24df.css.map",
-    "main.js.map": "/static/js/main.d688a6c3.js.map"
+    "main.css.map": "/static/css/main.bda918ba.css.map",
+    "main.js.map": "/static/js/main.3f3a43c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.19fa24df.css",
-    "static/js/main.d688a6c3.js"
+    "static/css/main.bda918ba.css",
+    "static/js/main.3f3a43c7.js"
   ]
 }

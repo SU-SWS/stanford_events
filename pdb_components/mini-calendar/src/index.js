@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import Calendar from 'react-calendar';
+import React, {useState, useEffect} from 'react';
 import {Popover} from "@mui/material";
+import Calendar from 'react-calendar';
 import Moment from 'moment';
+import qs from 'qs';
 import './styles.scss';
-import qs from "qs";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,50 +17,33 @@ function App() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [chosenDate, setChosenDate] = useState('');
   const [events, setEvents] = useState([]);
+  const [fetchedUrls, setFetchedUrls] = useState([]);
 
   useEffect(() => {
-    getThisMonthEvents('/jsonapi/node/stanford_event');
+    const date = new Date();
+    fetchMonthEvents(date.getMonth(), date.getFullYear());
+  }, []);
 
-    // Grab the current month of events from the API first to display contents
-    // as early as possible. Once those are done, then we'll grab the remaining
-    // events from the API.
-    async function getThisMonthEvents(url) {
-      var date = new Date();
+  /**
+   * Fetch events from the api for the given month and year.
+   * @param month
+   *   Month of the year.
+   * @param year
+   *   Four digit year.
+   */
+  const fetchMonthEvents = (month, year) => {
+    const firstDay = new Date(year, month, 1).getTime() / 1000;
+    const lastDay = new Date(year, month + 1, 1).getTime() / 1000;
 
-      // Use 6 days before the first of the month & after the end of the month
-      // so that if the 1st is on a Saturday, we'll load events for the entire
-      // month display, not just the current month.
-      var firstDay = new Date(date.getFullYear(), date.getMonth(), -6).getTime() / 1000;
-      var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 6).getTime() / 1000;
+    getEvents('/jsonapi/node/stanford_event', firstDay, lastDay);
 
-      getEvents(url, firstDay, lastDay, '>=', '<=').then(() => {
-        getEvents(url, lastDay).then(() => getEvents(url, null, firstDay));
-      });
-    }
-
-    /**
-     * Fetch from the JsonAPI and set the state with the response data.
-     *
-     * @param url
-     *   The API url.
-     * @param startDate
-     *   Optional start date timestamp filter.
-     * @param endDate
-     *   Optional end date timestamp filter.
-     * @param startDateOperator
-     *   Start filter operator.
-     * @param endDateOperator
-     *   End filter operator.
-     *
-     * @returns {Promise<void>}
-     */
-    async function getEvents(url, startDate, endDate, startDateOperator = '>', endDateOperator = '<') {
+    async function getEvents(url, startDate, endDate) {
       const filters = {};
       if (startDate !== undefined) {
         filters.startDate = {
           condition: {
             path: 'su_event_date_time.value',
-            operator: startDateOperator,
+            operator: '>=',
             value: startDate
           }
         }
@@ -69,7 +52,7 @@ function App() {
         filters.endDate = {
           condition: {
             path: 'su_event_date_time.value',
-            operator: endDateOperator,
+            operator: '<',
             value: endDate
           }
         }
@@ -77,19 +60,25 @@ function App() {
 
       // Append the query string to the url.
       if ((startDate !== undefined || endDate !== undefined) && url.indexOf('?') === -1) {
-        url += '?' + qs.stringify({filter: filters}, {encodeValuesOnly: true});
+        url += '?' + qs.stringify({
+          filter: filters,
+          sort: 'su_event_date_time.value'
+        }, {encodeValuesOnly: true});
       }
+
+      // We've already fetched this url, we don't want to fetch it again.
+      if (fetchedUrls.indexOf(url) >= 0) {
+        return;
+      }
+      // Make sure we don't fetch this url again in the future.
+      setFetchedUrls(previousFetched => [...previousFetched, url]);
 
       // Fetch the url data, set the state and follow any paginated urls.
       await fetch(url)
         .then(response => response.json())
         .then(data => {
           // Set the events state after sorting by the start date & time.
-          setEvents(events => [...events, ...data.data.map(item => item.attributes)].sort((a, b) => {
-            const aStart = new Date(a.su_event_date_time.value);
-            const bStart = new Date(b.su_event_date_time.value)
-            return aStart <= bStart ? -1 : 1;
-          }));
+          setEvents(events => [...events, ...data.data.map(item => item.attributes)]);
 
           // Follow the api data to gather all the events possible.
           if (typeof data.links.next === 'object') {
@@ -97,7 +86,7 @@ function App() {
           }
         });
     }
-  }, []);
+  }
 
   /**
    * Grab all events that occur on the given date string.
@@ -118,31 +107,22 @@ function App() {
   }
 
   /**
-   * Get the earliest available event date.
-   *
-   * @returns {Date}
+   * When the user changes the display to a different month, fetch those events.
    */
-  const getMinDate = () => {
-    return events.length === 0 ? new Date() : new Date(events[0].su_event_date_time.value);
-  }
-
-  /**
-   * Get the last available event date.
-   * @returns {Date}
-   */
-  const getMaxDate = () => {
-    return events.length === 0 ? new Date() : new Date(events[events.length - 1].su_event_date_time.value);
+  const onActiveStartDateChange = ({action, activeStartDate, value, view}) => {
+    if (view === 'month') {
+      fetchMonthEvents(activeStartDate.getMonth(), activeStartDate.getFullYear());
+    }
   }
 
   return (
     <div className="events-mini-calender">
       <Calendar
+        minDetail="year"
         nextAriaLabel="Next Month"
         next2AriaLabel="Next Year"
         prevAriaLabel="Previous Month"
         prev2AriaLabel="Previous Year"
-        minDate={getMinDate()}
-        maxDate={getMaxDate()}
         onClickDay={(value, event) => {
           setAnchorEl(event.currentTarget);
           setChosenDate(value.toLocaleDateString())
@@ -150,6 +130,7 @@ function App() {
         tileDisabled={({activeStartDate, date, view}) => {
           return view === 'month' && !getEventsForDate(date).length
         }}
+        onActiveStartDateChange={onActiveStartDateChange}
       />
       <Popover
         className="calender-popover"
