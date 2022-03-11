@@ -58,10 +58,12 @@
     }
   }
 
-  .react-calendar__tile {
-    &.react-calendar__tile--now {
-      background-color: #43423E;
-      color: #fff;
+  button {
+    &.react-calendar__tile {
+      &.react-calendar__tile--now {
+        background-color: #43423E;
+        color: #fff;
+      }
     }
   }
 
