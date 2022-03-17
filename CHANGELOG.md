@@ -1,6 +1,15 @@
 # Stanford Events
 
 
+8.x-1.23
+--------------------------------------------------------------------------------
+_Release Date: 2022-03-17_
+
+- Updated views_infinite_scroll module (#103)
+- D8CORE-5102 Events mini-calendar using PDB (#101)
+- Removed D8 Tests
+
+
 8.x-1.22
 --------------------------------------------------------------------------------
 _Release Date: 2022-03-04_
