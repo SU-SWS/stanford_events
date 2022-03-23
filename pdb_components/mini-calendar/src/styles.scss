@@ -67,6 +67,17 @@
     }
   }
 
+  button {
+    &[disabled] {
+      &.react-calendar__tile {
+        &.react-calendar__tile--now {
+          background-color: #43423E;
+          color: #fff;
+        }
+      }
+    }
+  }
+
   .react-calendar__navigation {
     align-items: center;
     display: flex;
