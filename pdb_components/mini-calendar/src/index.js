@@ -2,8 +2,9 @@ import ReactDOM from 'react-dom';
 import React, {useState, useEffect} from 'react';
 import {Popover} from "@mui/material";
 import Calendar from 'react-calendar';
-import Moment from 'moment';
 import qs from 'qs';
+import NavigationButton from "./components/NavigationButton";
+import EventCard from "./components/EventCard";
 import './styles.scss';
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ function App() {
   const [chosenDate, setChosenDate] = useState('');
   const [events, setEvents] = useState([]);
   const [fetchedUrls, setFetchedUrls] = useState([]);
+  const [currentDisplay, setCurrentDisplay] = useState('month');
 
   useEffect(() => {
     const date = new Date();
@@ -119,16 +121,34 @@ function App() {
     <div className="events-mini-calender">
       <Calendar
         minDetail="year"
-        nextAriaLabel="Next Month"
-        next2AriaLabel="Next Year"
-        prevAriaLabel="Previous Month"
-        prev2AriaLabel="Previous Year"
+        onViewChange={({view}) => setCurrentDisplay(view)}
+        nextLabel={<NavigationButton currentDisplay={currentDisplay}/>}
+        next2Label={<NavigationButton currentDisplay={currentDisplay} double/>}
+        prevLabel={<NavigationButton currentDisplay={currentDisplay} previous/>}
+        prev2Label={<NavigationButton
+          currentDisplay={currentDisplay}
+          previous
+          double
+        />}
+        navigationLabel={({label}) =>
+          <span>
+            <span aria-live="polite">{label}</span>
+            <span className="visually-hidden">
+              Change display.
+            </span>
+          </span>
+        }
         onClickDay={(value, event) => {
           setAnchorEl(event.currentTarget);
           setChosenDate(value.toLocaleDateString())
         }}
-        tileDisabled={({activeStartDate, date, view}) => {
+        tileDisabled={({date, view}) => {
           return view === 'month' && !getEventsForDate(date).length
+        }}
+        tileContent={({date, view}) => {
+          const currentDate = new Date();
+          return (view === 'month' && date.getDate() === currentDate.getDate()) || (view === 'year' && date.getMonth() === currentDate.getMonth()) ?
+            <span className="visually-hidden"> (Current)</span> : null
         }}
         onActiveStartDateChange={onActiveStartDateChange}
       />
@@ -157,23 +177,4 @@ function App() {
       </Popover>
     </div>
   );
-}
-
-/**
- * Individual event card component.
- */
-const EventCard = ({title, path, su_event_date_time}) => {
-
-  const startTime = Moment(su_event_date_time.value).format('h:mm A');
-  const endTime = Moment(su_event_date_time.end_value).format('h:mm A');
-  // Smart date stores the values that are all day as midnight and 11:59 PM, so
-  // check for those values and provide a string with the duration.
-  const duration = startTime === '12:00 AM' && endTime === '11:59 PM' ? 'All Day' : `${startTime} to ${endTime}`
-
-  return (
-    <li className="popover-item">
-      <a href={path.alias}>{title}</a>
-      <div className="duration">{duration}</div>
-    </li>
-  )
 }
