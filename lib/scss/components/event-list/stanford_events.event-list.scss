@@ -28,7 +28,8 @@ h1 {
 }
 
 .su-event-list-item {
-  @include modular-spacing('padding', 2 null 4 null);
+  @include modular-spacing('padding', null null 4 null);
+  @include modular-spacing('margin', null null 2 null);
 
   display: flex;
   border-bottom: 1px solid $su-color-cool-grey-25;
