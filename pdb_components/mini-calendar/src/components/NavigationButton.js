@@ -1,7 +1,6 @@
 import React from "react";
 
-const NavigationButton = ({currentDisplay, previous, double}) => {
-  const availableDisplays = ['month', 'year', 'decade'];
+const NavigationButton = ({previous, double}) => {
   let icon = '›';
   if (previous) {
     icon = double ? '«' : '‹';
@@ -13,7 +12,7 @@ const NavigationButton = ({currentDisplay, previous, double}) => {
   return (
     <div>
       <span className="visually-hidden">
-        {previous ? 'Previous' : 'Next'} {double ? availableDisplays[availableDisplays.indexOf(currentDisplay) + 1] : currentDisplay}
+        {previous ? 'Previous' : 'Next'} {double ? 'Year':'Month'}
       </span>
       <span aria-hidden={true}>
         {icon}
