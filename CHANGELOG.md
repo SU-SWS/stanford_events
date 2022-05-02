@@ -1,6 +1,19 @@
 # Stanford Events
 
 
+8.x-1.26
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-02_
+
+- Updated dev dependencies (#111)
+- Removed duplicate dependencies in composer.json
+- D8CORE-5801: fixed white background color (#110)
+- D8CORE-5719 D8CORE-5720 D8CORE-5724 D8CORE-5726 D8CORE-5722 D8CORE-5727 ALLY improvements to minicalendar
+- D8CORE-4128 Adjusted styles to change views to HTML lists (#108)
+- D8CORE-5663 D8CORE-5660 D8CORE-5664 Improve accessibility of the mini calendar (#109)
+- shared tags (#107)
+
+
 8.x-1.24
 --------------------------------------------------------------------------------
 _Release Date: 2022-03-23_
